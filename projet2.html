@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 2 - Amal Chkiwa</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #0b0c1b;
+            color: white;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #ff6347;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        section {
+            padding: 50px 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #ff6347;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Carousel container */
+        .carousel {
+            position: relative;
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+            max-width: 900px;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 2rem;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .btn-back {
+            padding: 12px 25px;
+            margin: 20px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #ff856c;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 30px 15px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .btn-back {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Projet 2 - Bad UI Challenge !</h1>
+    </header>
+
+    <section>
+        <h2>Explication du Projet</h2>
+        <p>
+            Ce projet consiste à créer une interface volontairement détestable en utilisant 
+            des couleurs discordantes, une typographie difficile à lire et une disposition déroutante. 
+            Vous trouverez ci-dessous un carrousel d'images de l'interface avec un design maladroit et frustrant.
+        </p>
+
+        <!-- Carousel -->
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="2/21.jpg" alt="Interface 1">
+                <img src="2/22.jpg" alt="Interface 2">
+                <img src="2/23.jpg" alt="Interface 3">
+                <img src="2/24.jpg" alt="Interface 4">
+                <img src="2/25.jpg" alt="Interface 5">
+                <img src="2/26.jpg" alt="Interface 6">
+            </div>
+
+            <!-- Navigation buttons -->
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Lien pour rediriger vers la page principale -->
+    <a href="site.htm" class="btn-back">Retour à la page principale</a>
+
+    <script>
+        let currentIndex = 0;
+
+        function moveSlide(step) {
+            const images = document.querySelectorAll('.carousel-images img');
+            const totalImages = images.length;
+            currentIndex = (currentIndex + step + totalImages) % totalImages; // Loop back to start
+            const carousel = document.querySelector('.carousel-images');
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    </script>
+
+</body>
+
+</html>

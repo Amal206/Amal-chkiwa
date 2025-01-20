@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1 - Amal Chkiwa</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #0b0c1b;
+            color: white;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #ff6347;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        section {
+            padding: 50px 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #ff6347;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        img {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-back {
+            padding: 12px 25px;
+            margin: 20px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #ff856c;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 30px 15px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .btn-back {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Projet 1 - Gestion des Switchers</h1>
+    </header>
+
+    <section>
+        <h2>Explication du Projet</h2>
+        <p>
+            Ce projet consiste en la gestion des switchers via une interface web développée avec Django pour le backend et HTML, CSS, et JavaScript pour le frontend.
+            L'application permet aux utilisateurs de configurer et de suivre l'état des différents appareils connectés dans un environnement dynamique.
+            Vous pouvez visualiser les différentes interfaces du projet ci-dessous pour voir comment cela fonctionne.
+        </p>
+
+        <!-- Affichage des interfaces -->
+        <div class="image-gallery">
+            <img src="1/15.jpg" alt="Interface 1">
+            <img src="1/12.jpg" alt="Interface 2">
+            <img src="1/11.jpg" alt="Interface 3">
+            <img src="1/13.jpg" alt="Interface 4">
+            <img src="1/14.jpg" alt="Interface 5">
+        </div>
+    </section>
+
+    <!-- Lien pour rediriger vers la page principale -->
+    <a href="site.htm" class="btn-back">Retour à la page principale</a>
+
+</body>
+
+</html>
