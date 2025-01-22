@@ -346,8 +346,47 @@
             align-items: center;
             z-index: 1000;
         }
+        .cv-download {
+    background-color: #1a1c27;
+    padding: 80px 20px;
+}
 
-  
+.cv-download h2 {
+    font-size: 2.5rem;
+    color: #ff6347;
+    margin-bottom: 20px;
+}
+
+.cv-download p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.cv-download .btn {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cv-download .btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.cv-download .btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.cv-download .btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+        
     
     </style>
     
@@ -358,7 +397,7 @@
     <div class="space-background"></div>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    av class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">Amal Chkiwa</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -611,6 +650,15 @@
             fullscreenImg.src = ''; // Réinitialise la source de l'image
         }
     });
+        <script>
+    const buttons = document.querySelectorAll('.cv-download .btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            alert('Merci d’avoir téléchargé mon CV !');
+        });
+    });
+</script>
+    
     </script>
 </body>
 </html>
