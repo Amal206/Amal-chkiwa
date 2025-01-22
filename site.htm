@@ -348,18 +348,19 @@
         }
 /* Section CV */
 .cv-section {
-    background-color: #1a1c27;
-    color: #f1f1f1;
+    background-color: #1f2833;
+    color: #c5c6c7;
     padding: 60px 20px;
     text-align: center;
 }
 
 /* Titre de la Section */
-.cv-section h2 {
-    font-size: 2.5rem;
-    color: #ff6347;
+.cv-section .section-title {
+    font-family: 'Poppins', sans-serif; /* Font utilisée sur ton site */
+    font-size: 2.8rem;
+    color: #66fcf1;
     margin-bottom: 30px;
-    font-weight: 600;
+    font-weight: bold;
 }
 
 /* Conteneur des CV */
@@ -368,24 +369,29 @@
     justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
-    margin-top: 20px;
 }
 
 /* Élément CV */
 .cv-item {
     text-align: center;
-    max-width: 200px;
-    background-color: #2d3142;
+    max-width: 220px;
+    background-color: #0b0c10;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.cv-item:hover {
+    transform: translateY(-10px);
 }
 
 /* Titre CV */
-.cv-item h3 {
-    font-size: 1.5rem;
+.cv-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
     margin-bottom: 15px;
-    color: #66fcf1;
+    color: #45a29e;
 }
 
 /* Bouton Télécharger */
@@ -393,25 +399,22 @@
     display: inline-block;
     padding: 12px 30px;
     font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     border-radius: 50px;
     color: #0b0c10;
     background-color: #66fcf1;
     text-transform: uppercase;
-    transition: all 0.3s ease-in-out;
-    position: relative;
     text-decoration: none;
+    transition: all 0.3s ease-in-out;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .cv-download-btn:hover {
-    color: #0b0c10;
     background-color: #45a29e;
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
-
-
 
         
     
@@ -586,18 +589,18 @@
     </div>
 <section id="cv-section" class="cv-section">
     <div class="container">
-        <h2 class="text-uppercase">Téléchargez Mon CV</h2>
+        <h2 class="section-title">Téléchargez Mon CV</h2>
         <div class="cv-container">
             <!-- CV Français -->
             <div class="cv-item">
-                <h3>CV en Français</h3>
+                <h3 class="cv-title">CV en Français</h3>
                 <a href="cv_c.pdf" class="cv-download-btn" download="CV_Amal_Chkiwa_FR">
                     Télécharger
                 </a>
             </div>
             <!-- CV Anglais -->
             <div class="cv-item">
-                <h3>CV en Anglais</h3>
+                <h3 class="cv-title">CV en Anglais</h3>
                 <a href="cv_eng.pdf" class="cv-download-btn" download="CV_Amal_Chkiwa_EN">
                     Télécharger
                 </a>
@@ -605,7 +608,6 @@
         </div>
     </div>
 </section>
-
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
