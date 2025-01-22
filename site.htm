@@ -346,83 +346,71 @@
             align-items: center;
             z-index: 1000;
         }
- /* Section CV */
+/* Section CV */
 .cv-section {
-    background-color: #1a1c27; /* Fond similaire à la section Design */
-    color: #f1f1f1; /* Texte blanc pour améliorer la lisibilité */
+    background-color: #1a1c27;
+    color: #f1f1f1;
     padding: 60px 20px;
-    border-top: 2px solid #ff6347; /* Bordure rouge clair */
-    border-bottom: 2px solid #ff6347;
     text-align: center;
 }
 
 /* Titre de la Section */
 .cv-section h2 {
     font-size: 2.5rem;
-    color: #ff6347; /* Couleur d'accentuation */
-    margin-bottom: 20px;
+    color: #ff6347;
+    margin-bottom: 30px;
     font-weight: 600;
 }
 
-/* Conteneur des CVs */
+/* Conteneur des CV */
 .cv-container {
     display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-}
-
-/* CV Item */
-.cv-item {
-    flex: 0 0 25%;
-    scroll-snap-align: start;
-}
-
-/* Effet d'image de CV */
-.cv-item img {
-    width: 100%; /* Les images remplissent le conteneur */
-    height: auto;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-/* Ajout d'un zoom au survol de l'image */
-.cv-item img:hover {
-    transform: scale(1.05);
-}
-
-/* Modal (Plein écran) */
-#fullscreenCv {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
     justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
-/* Fermeture du Modal */
-#fullscreenCv .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 2rem;
-    color: #ff6347;
-    cursor: pointer;
-}
-
-/* Frame du CV en plein écran */
-#fullscreenCv iframe {
-    max-width: 90%;
-    max-height: 90%;
+/* Élément CV */
+.cv-item {
+    text-align: center;
+    max-width: 200px;
+    background-color: #2d3142;
+    padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* Titre CV */
+.cv-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #66fcf1;
+}
+
+/* Bouton Télécharger */
+.cv-download-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    color: #0b0c10;
+    background-color: #66fcf1;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cv-download-btn:hover {
+    color: #0b0c10;
+    background-color: #45a29e;
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
 
 
         
@@ -596,35 +584,27 @@
         <div class="close-btn">&times;</div>
         <img id="fullscreenImg" src="" alt="Fullscreen Image">
     </div>
-</section>
 <section id="cv-section" class="cv-section">
     <div class="container">
-        <h2 class="text-center text-uppercase text-warning">Mes CVs</h2>
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="cv-container" style="display: flex; overflow-x: auto; gap: 20px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
-                    <!-- CV 1 -->
-                    <div class="cv-item" style="flex: 0 0 25%; scroll-snap-align: start;">
-                        <img src="cv_c.pdf" alt="CV 1" class="lazy" onclick="openFullscreen('cv_c.pdf')">
-                    </div>
-                    <!-- CV 2 -->
-                    <div class="cv-item" style="flex: 0 0 25%; scroll-snap-align: start;">
-                        <img src="cv_eng.pdf" alt="CV 2" class="lazy" onclick="openFullscreen('cv_eng.pdf')">
-                    </div>
-                </div>
+        <h2 class="text-uppercase">Téléchargez Mon CV</h2>
+        <div class="cv-container">
+            <!-- CV Français -->
+            <div class="cv-item">
+                <h3>CV en Français</h3>
+                <a href="cv-francais.pdf" class="cv-download-btn" download="CV_Amal_Chkiwa_FR">
+                    Télécharger
+                </a>
+            </div>
+            <!-- CV Anglais -->
+            <div class="cv-item">
+                <h3>CV en Anglais</h3>
+                <a href="cv-anglais.pdf" class="cv-download-btn" download="CV_Amal_Chkiwa_EN">
+                    Télécharger
+                </a>
             </div>
         </div>
     </div>
-
-    <!-- Modal de plein écran pour afficher le CV en grand -->
-    <div id="fullscreenCv" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
-        <div class="close-btn" onclick="closeFullscreen()">&times;</div>
-        <iframe id="fullscreenCvFrame" src="" style="max-width: 90%; max-height: 90%; border-radius: 10px;" frameborder="0"></iframe>
-    </div>  
 </section>
-
-
-
 
 
     <!-- Contact Section -->
@@ -705,15 +685,11 @@
         }
     });
         
-function openFullscreen(cvSrc) {
-    document.getElementById('fullscreenCv').style.display = 'flex';
-    document.getElementById('fullscreenCvFrame').src = cvSrc;
-}
-
-function closeFullscreen() {
-    document.getElementById('fullscreenCv').style.display = 'none';
-    document.getElementById('fullscreenCvFrame').src = '';
-}
+document.querySelectorAll('.cv-download-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        alert('Téléchargement en cours...');
+    });
+});
 
 
 
