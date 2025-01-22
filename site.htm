@@ -346,76 +346,82 @@
             align-items: center;
             z-index: 1000;
         }
-   /* Section Télécharger CV */
-.cv-download {
-    background-color: #1a1c27; /* Fond similaire à l'About et Contact */
+ /* Section CV */
+.cv-section {
+    background-color: #1a1c27; /* Fond similaire à la section Design */
     color: #f1f1f1; /* Texte blanc pour améliorer la lisibilité */
     padding: 60px 20px;
-    border-top: 2px solid #ff6347; /* Bordure rouge clair pour apporter une touche colorée */
+    border-top: 2px solid #ff6347; /* Bordure rouge clair */
     border-bottom: 2px solid #ff6347;
     text-align: center;
 }
 
 /* Titre de la Section */
-.cv-download h2 {
+.cv-section h2 {
     font-size: 2.5rem;
     color: #ff6347; /* Couleur d'accentuation */
     margin-bottom: 20px;
     font-weight: 600;
 }
 
-/* Description */
-.cv-download p {
-    font-size: 1.1rem;
-    color: #bbb; /* Gris clair pour la description */
-    margin-bottom: 40px;
+/* Conteneur des CVs */
+.cv-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Boutons de Téléchargement */
-.cv-download .download-btn {
-    display: inline-block;
-    padding: 14px 40px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 50px;
-    color: #1a1c27; /* Fond sombre */
-    background-color: #ff6347; /* Bouton avec couleur d'accentuation */
-    text-transform: uppercase;
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    margin: 10px 20px; /* Ajout de marge entre les boutons */
+/* CV Item */
+.cv-item {
+    flex: 0 0 25%;
+    scroll-snap-align: start;
 }
 
-/* Hover sur les boutons */
-.cv-download .download-btn:hover {
-    background-color: #ff9a8b; /* Couleur plus claire au survol */
-    color: #1a1c27;
-    transform: scale(1.1);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+/* Effet d'image de CV */
+.cv-item img {
+    width: 100%; /* Les images remplissent le conteneur */
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-/* Effet Ripple au clic */
-.cv-download .download-btn:active::after {
-    content: '';
+/* Ajout d'un zoom au survol de l'image */
+.cv-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Modal (Plein écran) */
+#fullscreenCv {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Fermeture du Modal */
+#fullscreenCv .close-btn {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    animation: ripple 0.6s ease-out;
-    pointer-events: none;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: #ff6347;
+    cursor: pointer;
 }
 
-@keyframes ripple {
-    to {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0;
-    }
+/* Frame du CV en plein écran */
+#fullscreenCv iframe {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
 }
 
 
@@ -591,17 +597,33 @@
         <img id="fullscreenImg" src="" alt="Fullscreen Image">
     </div>
 </section>
-<!-- Section Télécharger CV -->
-<section class="cv-download">
-    <div class="container text-center">
-        <h2>Téléchargez Mon CV</h2>
-        <p>Vous pouvez télécharger mon CV dans la langue de votre choix en cliquant sur les boutons ci-dessous :</p>
-        <div class="d-flex justify-content-center gap-3">
-            <a href="cv_c.pdf" class="download-btn" download>Télécharger en Français</a>
-            <a href="cv_eng.pdf" class="download-btn" download>Télécharger en Anglais</a>
+<section id="cv-section" class="cv-section">
+    <div class="container">
+        <h2 class="text-center text-uppercase text-warning">Mes CVs</h2>
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="cv-container" style="display: flex; overflow-x: auto; gap: 20px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
+                    <!-- CV 1 -->
+                    <div class="cv-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="cv_c.pdf" alt="CV 1" class="lazy" onclick="openFullscreen('cv_c.pdf')">
+                    </div>
+                    <!-- CV 2 -->
+                    <div class="cv-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="cv_eng.pdf" alt="CV 2" class="lazy" onclick="openFullscreen('cv_eng.pdf')">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- Modal de plein écran pour afficher le CV en grand -->
+    <div id="fullscreenCv" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
+        <div class="close-btn" onclick="closeFullscreen()">&times;</div>
+        <iframe id="fullscreenCvFrame" src="" style="max-width: 90%; max-height: 90%; border-radius: 10px;" frameborder="0"></iframe>
+    </div>  
 </section>
+
+
 
 
 
@@ -683,24 +705,16 @@
         }
     });
         
-document.querySelectorAll('.download-btn').forEach(button => {
-    button.addEventListener('click', function () {
-        // Effet de "ripple"
-        const ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-        this.appendChild(ripple);
+function openFullscreen(cvSrc) {
+    document.getElementById('fullscreenCv').style.display = 'flex';
+    document.getElementById('fullscreenCvFrame').src = cvSrc;
+}
 
-        const size = Math.max(this.offsetWidth, this.offsetHeight);
-        ripple.style.width = ripple.style.height = `${size}px`;
-        ripple.style.left = `${(this.offsetWidth - size) / 2}px`;
-        ripple.style.top = `${(this.offsetHeight - size) / 2}px`;
+function closeFullscreen() {
+    document.getElementById('fullscreenCv').style.display = 'none';
+    document.getElementById('fullscreenCvFrame').src = '';
+}
 
-        // Suppression de l'effet "ripple" après l'animation
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
-    });
-});
 
 
     
