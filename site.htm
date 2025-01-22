@@ -346,54 +346,57 @@
             align-items: center;
             z-index: 1000;
         }
-       /* Section Générale */
-/* Section Télécharger CV */
+   /* Section Télécharger CV */
 .cv-download {
-    background-color: #0b0c10; /* Fond sombre comme le Hero Section */
-    color: #c5c6c7; /* Texte gris clair */
+    background-color: #1a1c27; /* Fond similaire à l'About et Contact */
+    color: #f1f1f1; /* Texte blanc pour améliorer la lisibilité */
     padding: 60px 20px;
-    border-top: 1px solid #45a29e;
-    border-bottom: 1px solid #45a29e;
+    border-top: 2px solid #ff6347; /* Bordure rouge clair pour apporter une touche colorée */
+    border-bottom: 2px solid #ff6347;
+    text-align: center;
 }
 
 /* Titre de la Section */
 .cv-download h2 {
     font-size: 2.5rem;
-    color: #66fcf1;
+    color: #ff6347; /* Couleur d'accentuation */
     margin-bottom: 20px;
+    font-weight: 600;
 }
 
 /* Description */
 .cv-download p {
     font-size: 1.1rem;
-    color: #c5c6c7;
-    margin-bottom: 30px;
+    color: #bbb; /* Gris clair pour la description */
+    margin-bottom: 40px;
 }
 
 /* Boutons de Téléchargement */
 .cv-download .download-btn {
     display: inline-block;
-    padding: 12px 30px;
-    font-size: 1.1rem;
+    padding: 14px 40px;
+    font-size: 1.2rem;
     font-weight: bold;
     border-radius: 50px;
-    color: #0b0c10;
-    background-color: #66fcf1;
+    color: #1a1c27; /* Fond sombre */
+    background-color: #ff6347; /* Bouton avec couleur d'accentuation */
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 10px 20px; /* Ajout de marge entre les boutons */
 }
 
+/* Hover sur les boutons */
 .cv-download .download-btn:hover {
-    color: #0b0c10;
-    background-color: #45a29e;
+    background-color: #ff9a8b; /* Couleur plus claire au survol */
+    color: #1a1c27;
     transform: scale(1.1);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
-/* Effet Ripple au Clic */
+/* Effet Ripple au clic */
 .cv-download .download-btn:active::after {
     content: '';
     position: absolute;
