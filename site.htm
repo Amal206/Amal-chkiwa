@@ -347,6 +347,7 @@
             z-index: 1000;
         }
        /* Section Générale */
+/* Section Télécharger CV */
 .cv-download {
     background-color: #0b0c10; /* Fond sombre comme le Hero Section */
     color: #c5c6c7; /* Texte gris clair */
@@ -413,6 +414,7 @@
         opacity: 0;
     }
 }
+
 
         
     
@@ -586,17 +588,14 @@
         <img id="fullscreenImg" src="" alt="Fullscreen Image">
     </div>
 </section>
-<section id="cv-download" class="cv-download py-5">
+<!-- Section Télécharger CV -->
+<section class="cv-download">
     <div class="container text-center">
-        <h2 class="text-uppercase">Téléchargez Mon CV</h2>
-        <p>Choisissez la version souhaitée pour télécharger mon CV.</p>
-        <div class="mt-4">
-            <a href="cv_c.pdf" download="CV_Amal_Chkiwa_Francais" class="btn btn-primary download-btn me-3">
-                Français
-            </a>
-            <a href="cv_eng.pdf" download="CV_Amal_Chkiwa_Anglais" class="btn btn-primary download-btn">
-                Anglais
-            </a>
+        <h2>Téléchargez Mon CV</h2>
+        <p>Vous pouvez télécharger mon CV dans la langue de votre choix en cliquant sur les boutons ci-dessous :</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="cv_c.pdf" class="download-btn" download>Télécharger en Français</a>
+            <a href="cv_eng.pdf" class="download-btn" download>Télécharger en Anglais</a>
         </div>
     </div>
 </section>
@@ -681,16 +680,25 @@
         }
     });
         
-    document.querySelectorAll('.download-btn').forEach(button => {
-        button.addEventListener('click', function (e) {
-            const ripple = document.createElement('span');
-            ripple.className = 'ripple';
-            ripple.style.left = `${e.clientX - this.offsetLeft}px`;
-            ripple.style.top = `${e.clientY - this.offsetTop}px`;
-            this.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 500); // Enlève l'effet après 0.5s
-        });
+document.querySelectorAll('.download-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        // Effet de "ripple"
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        this.appendChild(ripple);
+
+        const size = Math.max(this.offsetWidth, this.offsetHeight);
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${(this.offsetWidth - size) / 2}px`;
+        ripple.style.top = `${(this.offsetHeight - size) / 2}px`;
+
+        // Suppression de l'effet "ripple" après l'animation
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
     });
+});
+
 
     
     </script>
