@@ -354,7 +354,6 @@
     text-align: center;
 }
 
-/* Titre de la Section */
 .cv-section h2 {
     font-family: 'Poppins', sans-serif;
     font-size: 2.8rem;
@@ -362,15 +361,17 @@
     margin-bottom: 30px;
 }
 
-/* Conteneur horizontal défilable */
+
 .cv-container {
     display: flex;
+    justify-content: center; /* Centre les éléments horizontalement */
     gap: 20px;
     overflow-x: auto;
     padding: 10px 0;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
 }
+
 
 /* Élément CV */
 .cv-item {
