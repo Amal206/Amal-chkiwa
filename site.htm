@@ -346,46 +346,62 @@
             align-items: center;
             z-index: 1000;
         }
-        .cv-download {
-    background-color: #1a1c27;
+       .cv-download {
+    background-color: #f8f9fa; /* Fond clair pour une meilleure lisibilité */
     padding: 80px 20px;
+    border-top: 2px solid #e9ecef;
+    border-bottom: 2px solid #e9ecef;
 }
 
 .cv-download h2 {
     font-size: 2.5rem;
-    color: #ff6347;
+    color: #495057;
     margin-bottom: 20px;
 }
 
 .cv-download p {
     font-size: 1.2rem;
-    color: #ccc;
+    color: #6c757d;
     margin-bottom: 30px;
 }
 
-.cv-download .btn {
-    padding: 12px 25px;
+.cv-download .download-btn {
+    padding: 12px 30px;
     font-size: 1.1rem;
-    border-radius: 5px;
+    font-weight: 600;
+    border-radius: 25px;
     text-decoration: none;
     color: #fff;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.cv-download .btn-primary {
-    background-color: #007bff;
-    border: none;
+.cv-download .download-btn:hover {
+    background: linear-gradient(90deg, #0056b3, #003d80);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.cv-download .btn-success {
-    background-color: #28a745;
-    border: none;
+.cv-download .download-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.ripple {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-animation 0.5s linear;
 }
 
-.cv-download .btn:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
 }
+
         
     
     </style>
@@ -558,20 +574,21 @@
         <img id="fullscreenImg" src="" alt="Fullscreen Image">
     </div>
 </section>
-<section id="cv" class="cv-download py-5">
+<section id="cv-download" class="cv-download py-5">
     <div class="container text-center">
-        <h2 class="text-uppercase text-warning">Télécharger Mon CV</h2>
-        <p class="text-light">Téléchargez mon CV en français ou en anglais au format PDF :</p>
-        <div class="d-flex justify-content-center gap-4 mt-4">
-            <a href="cv_c.pdf" class="btn btn-warning btn-lg" download="CV_Amal_Chkiwa_FR.pdf">
-                Télécharger en Français
+        <h2 class="text-uppercase text-primary">Téléchargez Mon CV</h2>
+        <p class="text-muted">Choisissez la version souhaitée pour télécharger mon CV.</p>
+        <div class="mt-4">
+            <a href="cv_c.pdf" download="CV_Amal_Chkiwa_Francais" class="btn download-btn me-3">
+                Français
             </a>
-            <a href="cv_eng.pdf" class="btn btn-light btn-lg" download="CV_Amal_Chkiwa_EN.pdf">
-                Télécharger en Anglais
+            <a href="cv_eng.pdf" download="CV_Amal_Chkiwa_Anglais" class="btn download-btn">
+                Anglais
             </a>
         </div>
     </div>
 </section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
@@ -650,14 +667,18 @@
             fullscreenImg.src = ''; // Réinitialise la source de l'image
         }
     });
-        <script>
-    const buttons = document.querySelectorAll('.cv-download .btn');
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            alert('Merci d’avoir téléchargé mon CV !');
+        
+    document.querySelectorAll('.download-btn').forEach(button => {
+        button.addEventListener('click', function (e) {
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = `${e.clientX - this.offsetLeft}px`;
+            ripple.style.top = `${e.clientY - this.offsetTop}px`;
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 500); // Enlève l'effet après 0.5s
         });
     });
-</script>
+
     
     </script>
 </body>
