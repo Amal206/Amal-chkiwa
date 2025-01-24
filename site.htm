@@ -263,27 +263,38 @@
         .projects .btn:hover {
             background-color: #ff856c;
         }
-        .designs-container {
+       .designs-container {
             display: flex;
             gap: 20px;
             overflow-x: auto;
-            padding: 10px 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-    
+
+        .design-item {
+            flex: 0 0 25%;
+            scroll-snap-align: start;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
         .design-item img {
             width: 100%;
             height: auto;
+            display: block;
             border-radius: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
-        .design-item img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+
+        .design-item:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
-        
+
         #fullscreenImage {
             display: none;
             position: fixed;
@@ -296,54 +307,20 @@
             align-items: center;
             z-index: 1000;
         }
-        
+
+        #fullscreenImage img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
         #fullscreenImage .close-btn {
             position: absolute;
             top: 20px;
             right: 20px;
-            color: white;
             font-size: 2rem;
+            color: #ffffff;
             cursor: pointer;
-            z-index: 1001;
-        }
-        
-
-    
-        .design-item img {
-            width: 100%; /* Images fill the container */
-            height: auto;
-            border-radius: 10px;
-        }
-    
-        /* Optional: Add a scrollbar style */
-        .designs-container::-webkit-scrollbar {
-            height: 8px;
-        }
-    
-        .designs-container::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: 4px;
-        }
-    
-        .designs-container::-webkit-scrollbar-thumb:hover {
-            background-color: #555;
-        }
-        .fullscreen-blur {
-            filter: blur(5px);
-            transition: filter 0.3s ease;
-        }
-
-        #fullscreenImage {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
         }
 /* Section CV */
 .cv-section {
@@ -687,38 +664,25 @@
           });
           
         
-        // Fonction pour fermer l'image plein écran en cliquant en dehors de l'image
-        const fullscreenContainer = document.getElementById('fullscreenImage');
-        const fullscreenImg = document.getElementById('fullscreenImg');
-        
-        fullscreenContainer.addEventListener('click', (e) => {
-            if (e.target === fullscreenContainer) {
-                fullscreenContainer.style.display = 'none';
-                fullscreenImg.src = ''; // Réinitialise la source de l'image
-            }
-        });
-        const designImages = document.querySelectorAll('.design-item img');
+        const designItems = document.querySelectorAll('.design-item img');
+    const fullscreenContainer = document.getElementById('fullscreenImage');
+    const fullscreenImg = document.getElementById('fullscreenImg');
     const closeBtn = document.querySelector('#fullscreenImage .close-btn');
 
-    // Fonction pour afficher l'image en plein écran
-    designImages.forEach(img => {
-        img.addEventListener('click', () => {
-            fullscreenImg.src = img.src; // Définit l'image à afficher
-            fullscreenContainer.style.display = 'flex'; // Affiche le conteneur
+    designItems.forEach(item => {
+        item.addEventListener('click', () => {
+            fullscreenImg.src = item.src;
+            fullscreenContainer.style.display = 'flex';
         });
     });
 
-    // Fonction pour fermer l'image plein écran
     closeBtn.addEventListener('click', () => {
         fullscreenContainer.style.display = 'none';
-        fullscreenImg.src = ''; // Réinitialise la source de l'image
     });
 
-    // Fermeture en cliquant à l'extérieur de l'image
     fullscreenContainer.addEventListener('click', (e) => {
-        if (e.target === fullscreenContainer) {
+        if (e.target === fullscreenContainer || e.target === closeBtn) {
             fullscreenContainer.style.display = 'none';
-            fullscreenImg.src = ''; // Réinitialise la source de l'image
         }
     });
         
