@@ -165,15 +165,13 @@
     background-color: #222;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
-    padding: 20px;
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 15px auto;
+    margin: 0 auto 10px; /* Centre le cercle et ajoute un espace en bas */
 }
 
 .competence-card:hover {
@@ -182,10 +180,17 @@
 }
 
 .competence-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #ff6347;
-    margin-bottom: 10px;
 }
+
+.competence-title {
+    font-size: 1rem;
+    margin-top: 5px;
+    text-align: center;
+    color: white;
+}
+
 
 
         /* Contact Section */
@@ -546,39 +551,39 @@
     <div class="container">
         <h2 class="text-center">Mes Compétences</h2>
 
-        <div class="row mt-5">
+        <div class="row mt-5 justify-content-center">
             <!-- Développement Web -->
             <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fab fa-html5"></i>
                     </div>
-                    <h5>HTML5</h5>
                 </div>
+                <h5 class="competence-title">HTML5</h5>
             </div>
             <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fab fa-css3-alt"></i>
                     </div>
-                    <h5>CSS3</h5>
                 </div>
+                <h5 class="competence-title">CSS3</h5>
             </div>
             <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fab fa-js"></i>
                     </div>
-                    <h5>JavaScript</h5>
                 </div>
+                <h5 class="competence-title">JavaScript</h5>
             </div>
             <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fab fa-python"></i>
                     </div>
-                    <h5>Django</h5>
                 </div>
+                <h5 class="competence-title">Django</h5>
             </div>
 
             <!-- Design Graphique -->
@@ -587,24 +592,24 @@
                     <div class="competence-icon">
                         <i class="fas fa-paint-brush"></i>
                     </div>
-                    <h5>Photoshop</h5>
                 </div>
+                <h5 class="competence-title">Photoshop</h5>
             </div>
             <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fas fa-vector-square"></i>
                     </div>
-                    <h5>Illustrator</h5>
                 </div>
+                <h5 class="competence-title">Illustrator</h5>
             </div>
             <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fas fa-image"></i>
                     </div>
-                    <h5>Canva</h5>
                 </div>
+                <h5 class="competence-title">Canva</h5>
             </div>
 
             <!-- Systèmes et Réseaux -->
@@ -613,28 +618,29 @@
                     <div class="competence-icon">
                         <i class="fab fa-linux"></i>
                     </div>
-                    <h5>Linux</h5>
                 </div>
+                <h5 class="competence-title">Linux</h5>
             </div>
             <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fab fa-windows"></i>
                     </div>
-                    <h5>Windows</h5>
                 </div>
+                <h5 class="competence-title">Windows</h5>
             </div>
             <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fas fa-network-wired"></i>
                     </div>
-                    <h5>Réseaux</h5>
                 </div>
+                <h5 class="competence-title">Réseaux</h5>
             </div>
         </div>
     </div>
 </section>
+
 
     <section id="projects" class="projects py-5">
     <div class="container">
