@@ -154,6 +154,30 @@
             color: #ff6347;
             margin-bottom: 20px;
         }
+        .competences {
+    padding: 80px 20px;
+    background-color: #333;
+}
+
+.competence-card {
+    background-color: #222;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: scale(1);
+}
+
+.competence-card:hover {
+    transform: scale(1.05);
+}
+
+.competence-icon {
+    font-size: 3rem;
+    color: #ff6347;
+    margin-bottom: 20px;
+}
 
         /* Contact Section */
         .contact {
@@ -508,6 +532,42 @@
             </div>
         </div>
     </section>
+    <!-- Compétences Section -->
+<section id="competences" class="competences">
+    <div class="container">
+        <h2 class="text-center">Mes Compétences</h2>
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="competence-card">
+                    <div class="competence-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h5>HTML5</h5>
+                    <p>Maîtrise des balises sémantiques et des bonnes pratiques pour un code structuré.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="competence-card">
+                    <div class="competence-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h5>CSS3</h5>
+                    <p>Stylisation avancée avec Flexbox, Grid et animations CSS.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="competence-card">
+                    <div class="competence-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h5>JavaScript</h5>
+                    <p>Interactivité avec le DOM, animations et manipulation des APIs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <section id="projects" class="projects py-5">
     <div class="container">
         <h2 class="text-center text-uppercase text-warning">Mes Projets</h2>
