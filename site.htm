@@ -157,33 +157,34 @@
         .competences {
     padding: 80px 20px;
     background-color: #333;
+    text-align: center;
     color: white;
 }
 
 .competence-card {
     background-color: #222;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 30px;
-    text-align: center;
+    border-radius: 50%;
+    padding: 20px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transform: scale(1);
+    margin: 15px auto;
 }
 
 .competence-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 99, 71, 0.5);
 }
 
 .competence-icon {
-    font-size: 3rem;
+    font-size: 2rem;
     color: #ff6347;
-    margin-bottom: 20px;
-}
-
-h3 {
-    color: #ff6347;
-    font-size: 1.8rem;
-    margin-top: 40px;
+    margin-bottom: 10px;
 }
 
 
@@ -540,90 +541,95 @@ h3 {
             </div>
         </div>
     </section>
+<!-- Compétences Section -->
 <section id="competences" class="competences">
     <div class="container">
         <h2 class="text-center">Mes Compétences</h2>
 
-        <h3 class="text-center mt-4">Développement Web</h3>
-        <div class="row mt-3">
-            <div class="col-md-4">
+        <div class="row mt-5">
+            <!-- Développement Web -->
+            <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fab fa-html5"></i>
                     </div>
                     <h5>HTML5</h5>
-                    <p>Maîtrise des balises sémantiques et bonnes pratiques.</p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fab fa-css3-alt"></i>
                     </div>
                     <h5>CSS3</h5>
-                    <p>Stylisation avancée avec Flexbox et Grid.</p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fab fa-js"></i>
                     </div>
                     <h5>JavaScript</h5>
-                    <p>Interactivité avec le DOM et manipulation d'APIs.</p>
                 </div>
             </div>
-        </div>
+            <div class="col-md-2">
+                <div class="competence-card">
+                    <div class="competence-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h5>Django</h5>
+                </div>
+            </div>
 
-        <h3 class="text-center mt-4">Design Graphique</h3>
-        <div class="row mt-3">
-            <div class="col-md-6">
+            <!-- Design Graphique -->
+            <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fas fa-paint-brush"></i>
                     </div>
-                    <h5>Adobe Photoshop</h5>
-                    <p>Retouche photo et création graphique professionnelle.</p>
+                    <h5>Photoshop</h5>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fas fa-vector-square"></i>
                     </div>
-                    <h5>Adobe Illustrator</h5>
-                    <p>Création de logos et illustrations vectorielles.</p>
+                    <h5>Illustrator</h5>
                 </div>
             </div>
-        </div>
+            <div class="col-md-2">
+                <div class="competence-card">
+                    <div class="competence-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h5>Canva</h5>
+                </div>
+            </div>
 
-        <h3 class="text-center mt-4">Systèmes d'Exploitation & Réseaux</h3>
-        <div class="row mt-3">
-            <div class="col-md-4">
+            <!-- Systèmes et Réseaux -->
+            <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fab fa-linux"></i>
                     </div>
                     <h5>Linux</h5>
-                    <p>Installation, configuration et administration.</p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fab fa-windows"></i>
                     </div>
                     <h5>Windows</h5>
-                    <p>Configuration et maintenance des systèmes.</p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <div class="competence-card">
                     <div class="competence-icon">
                         <i class="fas fa-network-wired"></i>
                     </div>
-                    <h5>Réseaux Informatiques</h5>
-                    <p>Gestion des architectures réseau et sécurité.</p>
+                    <h5>Réseaux</h5>
                 </div>
             </div>
         </div>
@@ -841,10 +847,27 @@ document.querySelectorAll('.cv-download-btn').forEach(button => {
         alert('Téléchargement en cours...');
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    let cards = document.querySelectorAll(".competence-card");
 
+    function showCards() {
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add("visible");
+            }, index * 150); // Décalage pour une belle animation
+        });
+    }
 
+    // Déclenche l'animation quand la section est visible
+    let section = document.getElementById("competences");
+    let observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            showCards();
+        }
+    }, { threshold: 0.3 });
 
-    
+    observer.observe(section);
+});    
     </script>
 </body>
 </html>
