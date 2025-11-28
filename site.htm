@@ -65,55 +65,115 @@
     mix-blend-mode: screen;
 }
 
-//* Floating Icons Background */
 .floating-icons {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
     pointer-events: none;
+    overflow: hidden;
     z-index: 1;
 }
 
 .floating-icons .icon {
     position: absolute;
     width: 70px;
-    opacity: 0.5;
-    animation: floatIcons 12s infinite ease-in-out;
+    opacity: 0;
+    animation: explodeIcons linear infinite;
 }
 
-@keyframes floatIcons {
+/* Explosion keyframes */
+@keyframes explodeIcons {
     0% {
-        transform: translateY(100vh) rotate(0deg);
         opacity: 0;
+        transform: translate(0, 0) scale(0.5) rotate(0deg);
     }
-    50% {
+    10% {
         opacity: 0.7;
     }
+    50% {
+        opacity: 1;
+        transform: translate(var(--moveX), var(--moveY)) scale(1) rotate(180deg);
+    }
     100% {
-        transform: translateY(-100vh) rotate(360deg);
         opacity: 0;
+        transform: translate(calc(var(--moveX) * 2), calc(var(--moveY) * 2)) scale(0.2) rotate(360deg);
     }
 }
 
-/* Random positions */
-.floating-icons .icon:nth-child(1) { left: 10%; animation-duration: 13s; width: 90px; }
-.floating-icons .icon:nth-child(2) { left: 25%; animation-duration: 11s; }
-.floating-icons .icon:nth-child(3) { left: 40%; animation-duration: 14s; }
-.floating-icons .icon:nth-child(4) { left: 60%; animation-duration: 12s; }
-.floating-icons .icon:nth-child(5) { left: 75%; animation-duration: 15s; width: 80px; }
-.floating-icons .icon:nth-child(6) { left: 90%; animation-duration: 10s; }
-        
-.hero {
-    position: relative;
-    z-index: 2;
+/* RANDOM positions + directions + speeds for 10 icons */
+.floating-icons .icon:nth-child(1) {
+    top: 10%; left: 10%;
+    --moveX: 180px;
+    --moveY: -200px;
+    animation-duration: 6s;
 }
-.hero .container {
+.floating-icons .icon:nth-child(2) {
+    top: 20%; left: 80%;
+    --moveX: -220px;
+    --moveY: 150px;
+    animation-duration: 7s;
+}
+.floating-icons .icon:nth-child(3) {
+    top: 50%; left: 25%;
+    --moveX: 150px;
+    --moveY: -100px;
+    animation-duration: 8s;
+}
+.floating-icons .icon:nth-child(4) {
+    top: 70%; left: 70%;
+    --moveX: -180px;
+    --moveY: 200px;
+    animation-duration: 9s;
+}
+.floating-icons .icon:nth-child(5) {
+    top: 40%; left: 50%;
+    --moveX: 200px;
+    --moveY: -180px;
+    animation-duration: 6.5s;
+}
+.floating-icons .icon:nth-child(6) {
+    top: 60%; left: 20%;
+    --moveX: 120px;
+    --moveY: 150px;
+    animation-duration: 7.5s;
+}
+.floating-icons .icon:nth-child(7) {
+    top: 15%; left: 50%;
+    --moveX: -150px;
+    --moveY: 180px;
+    animation-duration: 8.5s;
+}
+.floating-icons .icon:nth-child(8) {
+    top: 30%; left: 75%;
+    --moveX: 200px;
+    --moveY: 100px;
+    animation-duration: 9.2s;
+}
+.floating-icons .icon:nth-child(9) {
+    top: 55%; left: 35%;
+    --moveX: -180px;
+    --moveY: 200px;
+    animation-duration: 10s;
+}
+.floating-icons .icon:nth-child(10) {
+    top: 80%; left: 60%;
+    --moveX: 220px;
+    --moveY: -150px;
+    animation-duration: 11s;
+}
+
+
+        
+.hero-content {
     position: relative;
     z-index: 5;
 }
+.hero-creative .overlay {
+    z-index: 2;
+}
+
 
 /* TEXT */
 .hero-title {
@@ -597,11 +657,15 @@
 
     <!-- Floating shapes -->
     <div class="floating-icons">
+    <img src="icons/win.png" class="icon">
     <img src="icons/ps.png" class="icon">
+    <img src="icons/ae.png" class="icon">
     <img src="icons/ai.png" class="icon">
     <img src="icons/html.png" class="icon">
     <img src="icons/css.png" class="icon">
-    <img src="icons/python.png" class="icon">
+    <img src="icons/js.png" class="icon">
+    <img src="icons/canva.png" class="icon">
+    <img src="icons/Python.png" class="icon">
     <img src="icons/figma.png" class="icon">
 </div>
 
@@ -1183,6 +1247,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 </body>
 </html>
+
 
 
 
