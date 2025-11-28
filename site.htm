@@ -44,60 +44,89 @@
         }
 
         /* Hero Section */
-        .hero {
-            background: rgba(0, 0, 0, 0.6) url('image.jpg') no-repeat center center;
-            color: white;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            animation: heroAnimation;
-        }
+       /* NEW GRAPHIC DESIGN HERO SECTION */
+.hero-creative {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0d0e1f, #1b1c35, #0b0c1b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
 
-        @keyframes heroAnimation {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+.hero-creative .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('image.jpg') center/cover no-repeat;
+    opacity: 0.2;
+    mix-blend-mode: screen;
+}
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 600;
-            animation: textAnimation 3s ease-in-out;
-        }
+/* Floating shapes */
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    animation: float 8s infinite ease-in-out;
+}
 
-        @keyframes textAnimation {
-            0% { transform: translateY(20px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
+.s1 { width: 120px; height: 120px; background: #ff6347; top: 10%; left: 15%; }
+.s2 { width: 80px; height: 80px; background: #7e57ff; bottom: 15%; right: 10%; animation-delay: 2s; }
+.s3 { width: 60px; height: 60px; background: #00d4ff; top: 20%; right: 30%; animation-delay: 3s; }
+.s4 { width: 100px; height: 100px; background: #ff9a8b; bottom: 20%; left: 20%; animation-delay: 1s; }
 
-        .hero p {
-            font-size: 1.25rem;
-            margin: 20px 0;
-            opacity: 0.8;
-            animation: textFade 2s ease-in-out;
-        }
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-30px); }
+    100% { transform: translateY(0px); }
+}
 
-        @keyframes textFade {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
+/* TEXT */
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ffffff;
+    z-index: 2;
+}
 
-        .hero a {
-            background-color: #ff6347;
-            color: #fff;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            text-decoration: none;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-        }
+.hero-subtitle {
+    margin-top: 15px;
+    font-size: 1.6rem;
+    color: #ff6347;
+    font-weight: 600;
+}
 
-        .hero a:hover {
-            background-color: #ff9a8b;
-            transform: scale(1.1);
-        }
+.hero-text {
+    font-size: 1.1rem;
+    color: #dcdcdc;
+    margin-top: 10px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* BUTTON */
+.hero-btn {
+    margin-top: 25px;
+    background: #ff6347;
+    color: white;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0px 4px 15px rgba(255, 99, 71, 0.4);
+    transition: .3s;
+}
+
+.hero-btn:hover {
+    transform: translateY(-5px);
+    background: #ff856a;
+}
+
 
         /* About Section */
         .about {
@@ -517,13 +546,31 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>Bienvenue sur mon Portfolio</h1>
-            <p>développeuse Web et Graphiste passionnée par la création de solutions numériques efficaces.</p>
-            <a href="#about">En savoir plus</a>
-        </div>
-    </section>
+   <!-- Creative Hero Section -->
+<section id="home" class="hero-creative">
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+        <h1 class="hero-title">Amal Chkiwa</h1>
+
+        <h3 class="hero-subtitle">
+            <span class="typing"></span>
+        </h3>
+
+        <p class="hero-text">
+            Designer Graphique • Développeuse Web • Créatrice d’identités visuelles
+        </p>
+
+        <a href="#portfolio" class="hero-btn">Découvrir mon travail</a>
+    </div>
+
+    <!-- Floating shapes -->
+    <div class="shape s1"></div>
+    <div class="shape s2"></div>
+    <div class="shape s3"></div>
+    <div class="shape s4"></div>
+</section>
+
 
     <!-- About Section -->
     <section id="about" class="about">
@@ -979,7 +1026,45 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script>
-       
+const words = ["Graphic Designer", "Web Developer", "Brand Builder", "Creative Thinker"];
+let i = 0;
+let j = 0;
+let currentWord = "";
+let isDeleting = false;
+
+function typeEffect() {
+    const typingElement = document.querySelector(".typing");
+
+    if (!typingElement) return;
+
+    if (i < words.length) {
+        if (!isDeleting && j <= words[i].length) {
+            currentWord = words[i].substring(0, j++);
+            typingElement.textContent = currentWord;
+        }
+
+        if (isDeleting && j >= 0) {
+            currentWord = words[i].substring(0, j--);
+            typingElement.textContent = currentWord;
+        }
+
+        if (j === words[i].length + 1) {
+            isDeleting = true;
+            setTimeout(typeEffect, 1000);
+            return;
+        } 
+        else if (j < 0) {
+            isDeleting = false;
+            i++;
+            if (i === words.length) i = 0;
+        }
+    }
+
+    setTimeout(typeEffect, isDeleting ? 60 : 120);
+}
+
+typeEffect();
+
         document.querySelectorAll('.design-item img').forEach(img => {
             img.addEventListener('click', () => {
                 const fullscreen = document.getElementById('fullscreenImage');
@@ -1062,6 +1147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 </body>
 </html>
+
 
 
 
