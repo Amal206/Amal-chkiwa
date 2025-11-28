@@ -375,6 +375,11 @@
             align-items: center;
             z-index: 1000;
         }
+.logo-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.08);
+}
+
 /* Section CV */
 .cv-section {
     background-color: #1f2833;
@@ -791,45 +796,100 @@
             Mes Logos (Branding & Identité Visuelle)
         </h2>
 
-        <div class="row mt-4 g-4 justify-content-center">
+        <div class="row mt-4">
+            <div class="col-12">
 
-            <div class="col-6 col-md-3 text-center">
-                <div class="logo-card p-3 border rounded">
-                    <img src="logos/1.png" alt="Logo 1" class="img-fluid mb-2">
-                    <h6 class="text-light">Logo programme Éveil "rose blanche group"</h6>
-                </div>
-            </div>
+                <div class="logos-container" 
+                    style="display: flex; overflow-x: auto; gap: 25px;
+                    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+                    padding-bottom: 20px;">
 
-            <div class="col-6 col-md-3 text-center">
-                <div class="logo-card p-3 border rounded">
-                    <img src="logos/2.png" alt="Logo 2" class="img-fluid mb-2">
-                    <h6 class="text-light">Logo programme Éveil "rose blanche group"</h6>
-                </div>
-            </div>
+                    <div class="logo-item" 
+                        style="flex: 0 0 28%; scroll-snap-align: start;
+                        background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;
+                        text-align: center; transition: 0.3s;">
+                        
+                        <img src="logos/1.png" alt="Logo 1" class="img-fluid mb-3"
+                            style="max-height: 140px; object-fit: contain; filter: drop-shadow(0 0 6px #111);">
+                        
+                        <h5 class="text-warning mb-1">Programme Éveil</h5>
+                        <p class="text-light" style="font-size: 0.9rem;">
+                            Identité visuelle créée pour Rose Blanche Group, un concept éducatif.
+                        </p>
+                    </div>
 
-            <div class="col-6 col-md-3 text-center">
-                <div class="logo-card p-3 border rounded">
-                    <img src="logos/3.png" alt="Logo 3" class="img-fluid mb-2">
-                    <h6 class="text-light"></h6>
-                </div>
-            </div>
+                    <div class="logo-item" 
+                        style="flex: 0 0 28%; scroll-snap-align: start;
+                        background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;
+                        text-align: center; transition: 0.3s;">
+                        
+                        <img src="logos/2.png" alt="Logo 2" class="img-fluid mb-3"
+                            style="max-height: 140px; object-fit: contain; filter: drop-shadow(0 0 6px #111);">
+                        
+                        <h5 class="text-warning mb-1">Programme Éveil</h5>
+                        <p class="text-light" style="font-size: 0.9rem;">
+                            Variante du logo conçue pour le branding pédagogique.
+                        </p>
+                    </div>
 
-            <div class="col-6 col-md-3 text-center">
-                <div class="logo-card p-3 border rounded">
-                    <img src="logos/4.png" alt="Logo 4" class="img-fluid mb-2">
-                    <h6 class="text-light"></h6>
-                </div>
-            </div>
-            <div class="col-6 col-md-3 text-center">
-                <div class="logo-card p-3 border rounded">
-                    <img src="logos/5.png" alt="Logo 5" class="img-fluid mb-2">
-                    <h6 class="text-light"></h6>
-                </div>
-            </div>
-            <div class="col-6 col-md-3 text-center">
-                <div class="logo-card p-3 border rounded">
-                    <img src="logos/6.png" alt="Logo 6" class="img-fluid mb-2">
-                    <h6 class="text-light"></h6>
+                    <!-- LOGO ITEM 3 -->
+                    <div class="logo-item"
+                        style="flex: 0 0 28%; scroll-snap-align: start;
+                        background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;
+                        text-align: center; transition: 0.3s;">
+                        
+                        <img src="logos/3.png" alt="Logo 3" class="img-fluid mb-3"
+                            style="max-height: 140px; object-fit: contain; filter: drop-shadow(0 0 6px #111);">
+                        
+                        <h5 class="text-warning mb-1">Logo Créatif</h5>
+                        <p class="text-light" style="font-size: 0.9rem;">
+                            Logo moderne avec une touche abstraite et professionnelle.
+                        </p>
+                    </div>
+
+                    <!-- LOGO ITEM 4 -->
+                    <div class="logo-item"
+                        style="flex: 0 0 28%; scroll-snap-align: start;
+                        background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;
+                        text-align: center; transition: 0.3s;">
+                        
+                        <img src="logos/4.png" alt="Logo 4" class="img-fluid mb-3"
+                            style="max-height: 140px; object-fit: contain; filter: drop-shadow(0 0 6px #111);">
+                        
+                        <h5 class="text-warning mb-1">Identité Visuelle</h5>
+                        <p class="text-light" style="font-size: 0.9rem;">
+                            Logo élégant conçu pour une marque premium.
+                        </p>
+                    </div>
+
+                    <div class="logo-item"
+                        style="flex: 0 0 28%; scroll-snap-align: start;
+                        background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;
+                        text-align: center; transition: 0.3s;">
+                        
+                        <img src="logos/5.png" alt="Logo 5" class="img-fluid mb-3"
+                            style="max-height: 140px; object-fit: contain; filter: drop-shadow(0 0 6px #111);">
+                        
+                        <h5 class="text-warning mb-1">Branding</h5>
+                        <p class="text-light" style="font-size: 0.9rem;">
+                            Conception minimaliste pour un rendu moderne et clair.
+                        </p>
+                    </div>
+
+                    <div class="logo-item"
+                        style="flex: 0 0 28%; scroll-snap-align: start;
+                        background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;
+                        text-align: center; transition: 0.3s;">
+                        
+                        <img src="logos/6.png" alt="Logo 6" class="img-fluid mb-3"
+                            style="max-height: 140px; object-fit: contain; filter: drop-shadow(0 0 6px #111);">
+                        
+                        <h5 class="text-warning mb-1">Concept Visuel</h5>
+                        <p class="text-light" style="font-size: 0.9rem;">
+                            Un logo dynamique pour une marque innovante.
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -982,6 +1042,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </script>
 </body>
 </html>
+
 
 
 
