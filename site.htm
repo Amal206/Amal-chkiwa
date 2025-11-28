@@ -65,23 +65,54 @@
     mix-blend-mode: screen;
 }
 
-/* Floating shapes */
-.shape {
+//* Floating Icons Background */
+.floating-icons {
     position: absolute;
-    border-radius: 50%;
-    opacity: 0.25;
-    animation: float 8s infinite ease-in-out;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
 }
 
-.s1 { width: 120px; height: 120px; background: #ff6347; top: 10%; left: 15%; }
-.s2 { width: 80px; height: 80px; background: #7e57ff; bottom: 15%; right: 10%; animation-delay: 2s; }
-.s3 { width: 60px; height: 60px; background: #00d4ff; top: 20%; right: 30%; animation-delay: 3s; }
-.s4 { width: 100px; height: 100px; background: #ff9a8b; bottom: 20%; left: 20%; animation-delay: 1s; }
+.floating-icons .icon {
+    position: absolute;
+    width: 70px;
+    opacity: 0.5;
+    animation: floatIcons 12s infinite ease-in-out;
+}
 
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-30px); }
-    100% { transform: translateY(0px); }
+@keyframes floatIcons {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Random positions */
+.floating-icons .icon:nth-child(1) { left: 10%; animation-duration: 13s; width: 90px; }
+.floating-icons .icon:nth-child(2) { left: 25%; animation-duration: 11s; }
+.floating-icons .icon:nth-child(3) { left: 40%; animation-duration: 14s; }
+.floating-icons .icon:nth-child(4) { left: 60%; animation-duration: 12s; }
+.floating-icons .icon:nth-child(5) { left: 75%; animation-duration: 15s; width: 80px; }
+.floating-icons .icon:nth-child(6) { left: 90%; animation-duration: 10s; }
+        
+.hero {
+    position: relative;
+    z-index: 2;
+}
+.hero .container {
+    position: relative;
+    z-index: 5;
 }
 
 /* TEXT */
@@ -158,7 +189,7 @@
             border: 4px solid #ff6347;
         }
 
-        /* Services Section */
+/* Services Section */
         .services {
             padding: 80px 20px;
             background-color: #333;
@@ -565,10 +596,15 @@
     </div>
 
     <!-- Floating shapes -->
-    <div class="shape s1"></div>
-    <div class="shape s2"></div>
-    <div class="shape s3"></div>
-    <div class="shape s4"></div>
+    <div class="floating-icons">
+    <img src="icons/ps.png" class="icon">
+    <img src="icons/ai.png" class="icon">
+    <img src="icons/html.png" class="icon">
+    <img src="icons/css.png" class="icon">
+    <img src="icons/python.png" class="icon">
+    <img src="icons/figma.png" class="icon">
+</div>
+
 </section>
 
 
@@ -1147,6 +1183,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 </body>
 </html>
+
 
 
 
