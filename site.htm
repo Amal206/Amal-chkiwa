@@ -1045,110 +1045,83 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script>
-const words = [
-    "Designer Graphique",
-    "Développeuse Web",
-    "Créatrice d’identités visuelles"
-];
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const words = [
+        "Designer Graphique",
+        "Développeuse Web",
+        "Créatrice d’identités visuelles"
+    ];
 
-let i = 0;
-let j = 0;
-let currentWord = "";
-let isDeleting = false;
+    let i = 0;
+    let j = 0;
+    let currentWord = "";
+    let isDeleting = false;
 
-function typeEffect() {
-    const typingElement = document.querySelector(".typing");
+    function typeEffect() {
+        const typingElement = document.querySelector(".typing");
 
-    if (!typingElement) return;
+        if (!typingElement) return;
 
-    if (i < words.length) {
-        if (!isDeleting && j <= words[i].length) {
-            currentWord = words[i].substring(0, j++);
-            typingElement.textContent = currentWord;
+        if (i < words.length) {
+            if (!isDeleting && j <= words[i].length) {
+                currentWord = words[i].substring(0, j++);
+                typingElement.textContent = currentWord;
+            }
+
+            if (isDeleting && j >= 0) {
+                currentWord = words[i].substring(0, j--);
+                typingElement.textContent = currentWord;
+            }
+
+            if (j === words[i].length + 1) {
+                isDeleting = true;
+                setTimeout(typeEffect, 1000);
+                return;
+            } 
+            else if (j < 0) {
+                isDeleting = false;
+                i++;
+                if (i === words.length) i = 0;
+            }
         }
 
-        if (isDeleting && j >= 0) {
-            currentWord = words[i].substring(0, j--);
-            typingElement.textContent = currentWord;
-        }
-
-        if (j === words[i].length + 1) {
-            isDeleting = true;
-            setTimeout(typeEffect, 1000);
-            return;
-        } 
-        else if (j < 0) {
-            isDeleting = false;
-            i++;
-            if (i === words.length) i = 0;
-        }
+        setTimeout(typeEffect, isDeleting ? 60 : 120);
     }
 
-    setTimeout(typeEffect, isDeleting ? 60 : 120);
-}
+    typeEffect();
 
-typeEffect();
 
-        document.querySelectorAll('.design-item img').forEach(img => {
-            img.addEventListener('click', () => {
-                const fullscreen = document.getElementById('fullscreenImage');
-                const fullscreenImg = document.getElementById('fullscreenImg');
-                fullscreenImg.src = img.src;
-                fullscreen.style.display = 'flex';
-            });
-        });
-        
-        document.querySelector('form').addEventListener('submit', function (event) {
-            const email = document.querySelector('[name="email"]').value;
-            if (!email.includes('@')) {
-              alert('Veuillez entrer un email valide');
-              event.preventDefault();
-            }
-          });
-          
-        
-         const fullscreenContainer = document.getElementById('fullscreenImage');
-        const fullscreenImg = document.getElementById('fullscreenImg');
-        
-        fullscreenContainer.addEventListener('click', (e) => {
-            if (e.target === fullscreenContainer) {
-                fullscreenContainer.style.display = 'none';
-                fullscreenImg.src = ''; // Réinitialise la source de l'image
-            }
-        });
-        const designImages = document.querySelectorAll('.design-item img');
+
+    // FULLSCREEN IMAGE LOGIC
+    const fullscreenContainer = document.getElementById('fullscreenImage');
+    const fullscreenImg = document.getElementById('fullscreenImg');
+    const designImages = document.querySelectorAll('.design-item img');
     const closeBtn = document.querySelector('#fullscreenImage .close-btn');
 
-    // Fonction pour afficher l'image en plein écran
     designImages.forEach(img => {
         img.addEventListener('click', () => {
-            fullscreenImg.src = img.src; // Définit l'image à afficher
-            fullscreenContainer.style.display = 'flex'; // Affiche le conteneur
+            fullscreenImg.src = img.src;
+            fullscreenContainer.style.display = 'flex';
         });
     });
 
-    // Fonction pour fermer l'image plein écran
     closeBtn.addEventListener('click', () => {
         fullscreenContainer.style.display = 'none';
-        fullscreenImg.src = ''; // Réinitialise la source de l'image
+        fullscreenImg.src = '';
     });
 
-    // Fermeture en cliquant à l'extérieur de l'image
     fullscreenContainer.addEventListener('click', (e) => {
         if (e.target === fullscreenContainer) {
             fullscreenContainer.style.display = 'none';
-            fullscreenImg.src = ''; // Réinitialise la source de l'image
+            fullscreenImg.src = '';
         }
     });
-        
-document.querySelectorAll('.cv-download-btn').forEach(button => {
-    button.addEventListener('click', (e) => {
-        alert('Téléchargement en cours...');
-    });
-});
-document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".competence-card");
 
+
+
+    // ANIMATION CARDS COMPETENCES
+    const cards = document.querySelectorAll(".competence-card");
     const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
             cards.forEach((card, i) => {
@@ -1159,21 +1132,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     observer.observe(document.getElementById("competences"));
 });
+</script>
 
-
-    // Déclenche l'animation quand la section est visible
-    let section = document.getElementById("competences");
-    let observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            showCards();
-        }
-    }, { threshold: 0.3 });
-
-    observer.observe(section);
-});    
 </script>
 </body>
 </html>
+
 
 
 
