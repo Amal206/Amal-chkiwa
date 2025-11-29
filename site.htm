@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <style>
         html {
@@ -39,22 +39,6 @@
     margin-bottom: 40px;
     font-weight: 700;
 }
-.hero-content {
-    text-align: center;
-}
-
-.hero-title {
-    font-size: 55px;
-    font-weight: 800;
-}
-
-.hero-subtitle {
-    font-size: 22px;
-    margin-top: 10px;
-    color: #ffffffc5;
-    display: block;
-    text-align: center;
-}
 .section-title, .hero-title {
     font-family: 'Space Grotesk', sans-serif;
     letter-spacing: 1px;
@@ -84,17 +68,15 @@
 }
 
 
-      #home { height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 0 8%; position: relative; }
-.text-content { max-width: 50%; }
-.text-content h1 { font-size: 55px; margin: 0; }
-.buttons { margin-top: 20px; display: flex; gap: 20px; }
-.buttons a { padding: 12px 22px; background: #000; color: #fff; border-radius: 6px; text-decoration: none; }
-
-
-/* Floating Icons */
-.floating-icons { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 15px; }
-.floating-icons img { width: 60px; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2)); animation: float 5s infinite ease-in-out; }
-@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0);} }
+        /* Floating Icons */
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
         .floating-icons .icon {
             position: absolute;
             width: 70px;
@@ -220,12 +202,26 @@
 }
 
 /* RANDOM positions + directions + speeds for 10 icons */
-.services { padding: 100px 8%; text-align: center;  }
-.services h2 { font-size: 36px; margin-bottom: 40px; }
-.services .container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-.service-card { width: 280px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); opacity: 0; transform: translateY(30px); transition: 0.6s ease; }
-.service-card.show { opacity: 1; transform: translateY(0); }
-.service-icon { font-size: 45px; margin-bottom: 15px; color: #000; }
+.services { 
+    background:#0f101f url('assets/polygon-pattern.png') repeat; 
+    background-size:cover; padding:80px 20px; } 
+.services h2 { 
+    color:#ff6347; margin-bottom:50px; } 
+        .service-card { 
+            opacity: 0;
+            transform: translateY(20px);
+            background: rgba(0,0,0,0.5);
+            padding:30px;
+            border-radius:15px;
+            transition: 0.3s;
+            box-shadow:0 5px 15px rgba(255,99,71,0.2); }
+        .service-card:hover { transform: translateY(-5px); box-shadow:0 10px 30px rgba(255,99,71,0.4); }
+        .service-icon { font-size:2.5rem; margin-bottom:15px; color:#ff6347; }
+        .service-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: .6s;
+}
 #competences {
     padding: 80px 0;
     background: linear-gradient(135deg, #11121f, #0b0c1b);
@@ -409,11 +405,34 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
- #fullscreen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 999; }
-#fullscreen img { max-width: 80%; max-height: 80%; border-radius: 10px; }
-.close-btn { position: absolute; top: 20px; right: 40px; font-size: 45px; color: white; cursor: pointer; }
+ #fullscreenImage {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        #fullscreenImage .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1001;
+        }.design-item img {
+            width: 100%; /* Images fill the container */
+            height: auto;
+            border-radius: 10px;
+        }
     
-.designs-container::-webkit-scrollbar {
+        .designs-container::-webkit-scrollbar {
             height: 8px;
         }
     
@@ -631,47 +650,50 @@
         </div>
     </section>
 
-<!-- Services Section -->
-<section id="services" class="services py-5">
-    <div class="container">
-        <h2 class="section-title">Mes Services</h2>
-
-        <div class="row justify-content-center mt-4">
-
-            <!-- Service 1 -->
-           <section id="services" class="services">
+    <!-- Services Section -->
+    <section id="services" class="services">
     <h2 class="section-title">Mes Services</h2>
 
     <div class="container">
-
+        
+        <!-- Service 1 -->
         <div class="service-card">
-            <i class="bi bi-palette service-icon"></i>
+            <div class="service-icon">
+                <i class="bi bi-palette"></i>
+            </div>
             <h3>Design Graphique</h3>
-            <p>Création d’affiches, logos, flyers et contenu visuel professionnel.</p>
+            <p>Création d’affiches, logos, identités visuelles, bannières, flyers et contenus pour réseaux sociaux.</p>
         </div>
 
+        <!-- Service 2 -->
         <div class="service-card">
-            <i class="bi bi-code-slash service-icon"></i>
+            <div class="service-icon">
+                <i class="bi bi-code-slash"></i>
+            </div>
             <h3>Développement Web</h3>
-            <p>Sites web modernes en HTML, CSS, JS.</p>
+            <p>Conception de sites web modernes en HTML, CSS, JS, et intégration avec backend (Django, API…).</p>
         </div>
 
+        <!-- Service 3 -->
         <div class="service-card">
-            <i class="bi bi-phone service-icon"></i>
+            <div class="service-icon">
+                <i class="bi bi-phone"></i>
+            </div>
             <h3>UI/UX Design</h3>
-            <p>Prototypes, maquettes mobiles et web.</p>
+            <p>Création de maquettes interactives, prototypes mobiles et web optimisés pour l’expérience utilisateur.</p>
         </div>
 
+        <!-- Service 4 -->
         <div class="service-card">
-            <i class="bi bi-megaphone service-icon"></i>
+            <div class="service-icon">
+                <i class="bi bi-megaphone"></i>
+            </div>
             <h3>Community Management</h3>
-            <p>Gestion de réseaux sociaux et création de contenu.</p>
+            <p>Gestion des réseaux sociaux, contenu visuel, planification, engagement et optimisation de visibilité.</p>
         </div>
 
     </div>
 </section>
-
-
 
 <!-- Compétences Section -->
 <section id="competences" class="competences py-5">
@@ -1106,23 +1128,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     typeEffect();
-const images = document.querySelectorAll('.portfolio-item img');
-const fullscreen = document.getElementById('fullscreen');
-const fullscreenImg = document.getElementById('fullscreen-img');
 
-images.forEach(img => {
-    img.addEventListener('click', () => {
-        fullscreenImg.src = img.src;
-        fullscreen.style.display = 'flex';
-    });
-});
-
-// Fermer en cliquant en dehors
-fullscreen.addEventListener('click', (e) => {
-    if (e.target === fullscreen) {
-        fullscreen.style.display = 'none';
-    }
-});
 
 
     // FULLSCREEN IMAGE LOGIC
@@ -1153,52 +1159,22 @@ fullscreen.addEventListener('click', (e) => {
 
 
     // ANIMATION CARDS COMPETENCES
-const cards = document.querySelectorAll('.service-card');
+    const cards = document.querySelectorAll(".competence-card");
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            cards.forEach((card, i) => {
+                setTimeout(() => card.classList.add("visible"), i * 120);
+            });
+        }
+    }, { threshold: 0.3 });
 
-function showCards() {
-  cards.forEach(card => {
-    const rect = card.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      card.classList.add("show");
-    }
-  });
-}
-window.addEventListener('scroll', showCards);
-showCards();
-
-// FULLSCREEN VIEWER LOGIC
-const fullscreen = document.getElementById('fullscreen');
-const fullImg = document.getElementById('full-image');
-const closeBtn = document.querySelector('.close-btn');
-
-
-// Open on click (you will attach .design-img class to your designs)
-document.querySelectorAll('.design-img').forEach(img => {
-img.addEventListener('click', () => {
-fullImg.src = img.src;
-fullscreen.style.display = 'flex';
+    observer.observe(document.getElementById("competences"));
 });
-});
+</script>
 
-
-// Close
-closeBtn.addEventListener('click', () => {
-fullscreen.style.display = 'none';
-});
-
-
-fullscreen.addEventListener('click', (e) => {
-if (e.target === fullscreen) fullscreen.style.display = 'none';
-});
 </script>
 </body>
 </html>
-
-
-
-
-
-
 
 
 
