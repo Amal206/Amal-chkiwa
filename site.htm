@@ -202,77 +202,26 @@
 }
 
 /* RANDOM positions + directions + speeds for 10 icons */
-/* ===== Services Section ===== */
 .services { 
-    background: #0f101f url('assets/polygon-pattern.png') repeat; 
-    background-size: cover; 
-    padding: 80px 20px; 
-    text-align: center;
-}
-
-.services h2.section-title { 
-    color: #ff6347; 
-    margin-bottom: 50px; 
-    font-size: 2.8rem;
-}
-
-/* Container for cards */
-/* Remove these lines */
-.services .container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-}
-
-
-/* Individual service card */
-.service-card { 
-    background: rgba(0,0,0,0.5);
-    padding: 30px;
-    border-radius: 15px;
-    width: 100%; /* add this line */
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(255,99,71,0.2);
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-
-/* Hover effect */
-.service-card:hover { 
-    transform: translateY(-5px); 
-    box-shadow: 0 10px 30px rgba(255,99,71,0.4); 
-}
-
-/* Service icon */
-.service-icon { 
-    font-size: 2.5rem; 
-    margin-bottom: 15px; 
-    color: #ff6347; 
-}
-
-/* Card content */
-.service-card h3 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #fff;
-}
-
-.service-card p {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #ccc;
-}
-
-/* Animation class for visibility */
-.service-card.visible {
+    background:#0f101f url('assets/polygon-pattern.png') repeat; 
+    background-size:cover; padding:80px 20px; } 
+.services h2 { 
+    color:#ff6347; margin-bottom:50px; } 
+        .service-card { 
+            opacity: 0;
+            transform: translateY(20px);
+            background: rgba(0,0,0,0.5);
+            padding:30px;
+            border-radius:15px;
+            transition: 0.3s;
+            box-shadow:0 5px 15px rgba(255,99,71,0.2); }
+        .service-card:hover { transform: translateY(-5px); box-shadow:0 10px 30px rgba(255,99,71,0.4); }
+        .service-icon { font-size:2.5rem; margin-bottom:15px; color:#ff6347; }
+        .service-card.visible {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: .6s;
 }
-
 #competences {
     padding: 80px 0;
     background: linear-gradient(135deg, #11121f, #0b0c1b);
@@ -451,12 +400,11 @@
             border-radius: 10px;
         }
         
-        .design-item img:hover, .logo-item img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    transition: 0.3s;
-}
-
+        .design-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
  #fullscreenImage {
             display: none;
             position: fixed;
@@ -635,7 +583,6 @@
 </head>
 <body>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <!-- Background Space Animation -->
     <div class="space-background"></div>
@@ -704,135 +651,138 @@
     </section>
 
     <!-- Services Section -->
-    <!-- Services Section -->
-<section id="services" class="services">
-    <div class="container">
-        <h2 class="section-title">Mes Services</h2>
-        <div class="row">
-            <div class="col-md-6 col-lg-3">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-palette"></i></div>
-                    <h3>Design Graphique</h3>
-                    <p>Création d’affiches, logos...</p>
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="text-center">Mes Services</h2>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h5>Développement Web</h5>
+                        <p>Je crée des sites web modernes, responsives et optimisés pour tous les appareils.</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-code-slash"></i></div>
-                    <h3>Développement Web</h3>
-                    <p>Conception de sites web modernes...</p>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h5>Design Graphique</h5>
+                        <p>Création de visuels élégants et professionnels pour améliorer l'image de votre marque.</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-phone"></i></div>
-                    <h3>UI/UX Design</h3>
-                    <p>Création de maquettes interactives...</p>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h5>MONTAGE VIDEO</h5>
+                        <p>Conception de montages vidéo professionnels et
+                             esthétiquement travaillés.</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-megaphone"></i></div>
-                    <h3>Community Management</h3>
-                    <p>Gestion des réseaux sociaux...</p>
-                </div>
+                
             </div>
         </div>
-    </div>
-</section>
-
-
-
+    </section>
 <!-- Compétences Section -->
-<!-- Compétences Section -->
-<section id="competences" class="competences">
+<section id="competences" class="competences py-5">
     <div class="container">
-        <h2 class="section-title text-center">Mes Compétences</h2>
+        <h2 class="text-center text-warning mb-5">Mes Compétences</h2>
+
         <div class="row g-4 justify-content-center">
 
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card visible">
-                    <i class="fab fa-html5"></i>
-                </div>
-                <h5 class="competence-title">HTML5</h5>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card visible">
-                    <i class="fab fa-css3-alt"></i>
-                </div>
-                <h5 class="competence-title">CSS3</h5>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card visible">
-                    <i class="fab fa-js"></i>
-                </div>
-                <h5 class="competence-title">JavaScript</h5>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card visible">
-                    <i class="fab fa-python"></i>
-                </div>
-                <h5 class="competence-title">Python</h5>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card visible">
-                    <i class="fas fa-file-excel"></i>
-                </div>
-                <h5 class="competence-title">Excel</h5>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card visible">
-                    <i class="fas fa-file-word"></i>
-                </div>
-                <h5 class="competence-title">Word</h5>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card visible">
-                    <i class="fas fa-image"></i>
-                </div>
-                <h5 class="competence-title">Photoshop</h5>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card visible">
-                    <i class="fas fa-vector-square"></i>
-                </div>
-                <h5 class="competence-title">Illustrator</h5>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card visible">
-                    <i class="fas fa-image"></i>
-                </div>
-                <h5 class="competence-title">Canva</h5>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card visible">
-                    <i class="fab fa-linux"></i>
-                </div>
-                <h5 class="competence-title">Linux</h5>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card visible">
-                    <i class="fab fa-windows"></i>
-                </div>
-                <h5 class="competence-title">Windows</h5>
-            </div>
+    <!-- HTML5 -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fab fa-html5"></i>
         </div>
+        <h5 class="competence-title">HTML5</h5>
     </div>
-</section>
 
+    <!-- CSS3 -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fab fa-css3-alt"></i>
+        </div>
+        <h5 class="competence-title">CSS3</h5>
+    </div>
+
+    <!-- JavaScript -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fab fa-js"></i>
+        </div>
+        <h5 class="competence-title">JavaScript</h5>
+    </div>
+
+    <!-- Python -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fab fa-python"></i>
+        </div>
+        <h5 class="competence-title">Python</h5>
+    </div>
+
+    <!-- Excel -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fas fa-file-excel"></i>
+        </div>
+        <h5 class="competence-title">Microsoft Excel</h5>
+    </div>
+
+    <!-- Word -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fas fa-file-word"></i>
+        </div>
+        <h5 class="competence-title">Microsoft Word</h5>
+    </div>
+
+    <!-- Photoshop -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fas fa-image"></i>
+        </div>
+        <h5 class="competence-title">Photoshop</h5>
+    </div>
+
+    <!-- Illustrator -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fas fa-vector-square"></i>
+        </div>
+        <h5 class="competence-title">Illustrator</h5>
+    </div>
+
+    <!-- Canva -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fas fa-image"></i>
+        </div>
+        <h5 class="competence-title">Canva</h5>
+    </div>
+
+    <!-- Linux -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fab fa-linux"></i>
+        </div>
+        <h5 class="competence-title">Linux</h5>
+    </div>
+
+    <!-- Windows -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fab fa-windows"></i>
+        </div>
+        <h5 class="competence-title">Windows</h5>
+    </div>
+</div>
+</section>
 
     <section id="projects" class="projects py-5">
     <div class="container">
@@ -1094,8 +1044,8 @@
 <section id="contact" class="contact">
     <div class="container">
         <h2>Contactez-moi</h2>
-       <p>Si vous avez un projet en tête ou des questions, n'hésitez pas à me contacter. Je serai ravi de discuter de vos idées !</p>
-        <a href="mailto:amalch206@gmail.com" style="color: gray; text-decoration: none;">amalch206@gmail.com</a>
+        <p>Si vous avez un projet en tête ou des questions, n'hésitez pas à me contacter. Je serai ravi de discuter de vos idées !</p>
+        <form action="mailto:amalch206@gmail.com" method="post" enctype="text/plain">
             <input type="text" name="name" placeholder="Votre nom" required>
             <input type="email" name="email" placeholder="Votre email" required>
             <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
@@ -1197,21 +1147,6 @@ document.addEventListener("DOMContentLoaded", function () {
             fullscreenImg.src = '';
         }
     });
-const serviceCards = document.querySelectorAll('.service-card');
-
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.2 });
-
-serviceCards.forEach(card => observer.observe(card));
-window.addEventListener('load', () => {
-    const cards = document.querySelectorAll('.service-card, .competence-card');
-    cards.forEach(card => card.classList.add('visible'));
-});
 
 
 
@@ -1232,10 +1167,6 @@ window.addEventListener('load', () => {
 </script>
 </body>
 </html>
-
-
-
-
 
 
 
