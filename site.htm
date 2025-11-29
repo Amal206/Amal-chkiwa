@@ -7,7 +7,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
     <style>
         html {
             scroll-behavior: smooth;
@@ -37,6 +38,22 @@
     text-align: center;
     margin-bottom: 40px;
     font-weight: 700;
+}
+.hero-content {
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 55px;
+    font-weight: 800;
+}
+
+.hero-subtitle {
+    font-size: 22px;
+    margin-top: 10px;
+    color: #ffffffc5;
+    display: block;
+    text-align: center;
 }
 .section-title, .hero-title {
     font-family: 'Space Grotesk', sans-serif;
@@ -615,7 +632,6 @@
     </section>
 
 <!-- Services Section -->
-<!-- ===== Services Section ===== -->
 <section id="services" class="services py-5">
     <div class="container">
         <h2 class="section-title">Mes Services</h2>
@@ -623,63 +639,38 @@
         <div class="row justify-content-center mt-4">
 
             <!-- Service 1 -->
-            <div class="col-md-4 mb-4">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="bi bi-brush"></i>
-                    </div>
-                    <h4>Design Graphique</h4>
-                    <p>Création d’affiches, logos, flyers, bannières et visuels professionnels adaptés à vos besoins.</p>
-                </div>
-            </div>
+           <section id="services" class="services">
+    <h2 class="section-title">Mes Services</h2>
 
-            <!-- Service 2 -->
-            <div class="col-md-4 mb-4">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="bi bi-window-fullscreen"></i>
-                    </div>
-                    <h4>Web Design</h4>
-                    <p>Conception d’interfaces modernes et responsives pour sites web et applications.</p>
-                </div>
-            </div>
+    <div class="container">
 
-            <!-- Service 3 -->
-            <div class="col-md-4 mb-4">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="bi bi-code-slash"></i>
-                    </div>
-                    <h4>Développement Web</h4>
-                    <p>Création de sites web modernes avec HTML, CSS, JS et frameworks adaptés.</p>
-                </div>
-            </div>
-
-            <!-- Service 4 -->
-            <div class="col-md-4 mb-4">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="bi bi-people"></i>
-                    </div>
-                    <h4>Community Management</h4>
-                    <p>Gestion professionnelle de vos réseaux sociaux et création de contenu engageant.</p>
-                </div>
-            </div>
-
-            <!-- Service 5 -->
-            <div class="col-md-4 mb-4">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="bi bi-camera-reels"></i>
-                    </div>
-                    <h4>Montage Vidéo</h4>
-                    <p>Montage de vidéos promotionnelles, interviews et contenus créatifs.</p>
-                </div>
-            </div>
-
+        <div class="service-card">
+            <i class="bi bi-palette service-icon"></i>
+            <h3>Design Graphique</h3>
+            <p>Création d’affiches, logos, flyers et contenu visuel professionnel.</p>
         </div>
+
+        <div class="service-card">
+            <i class="bi bi-code-slash service-icon"></i>
+            <h3>Développement Web</h3>
+            <p>Sites web modernes en HTML, CSS, JS.</p>
+        </div>
+
+        <div class="service-card">
+            <i class="bi bi-phone service-icon"></i>
+            <h3>UI/UX Design</h3>
+            <p>Prototypes, maquettes mobiles et web.</p>
+        </div>
+
+        <div class="service-card">
+            <i class="bi bi-megaphone service-icon"></i>
+            <h3>Community Management</h3>
+            <p>Gestion de réseaux sociaux et création de contenu.</p>
+        </div>
+
     </div>
 </section>
+
 
 
 <!-- Compétences Section -->
@@ -1115,7 +1106,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     typeEffect();
+const images = document.querySelectorAll('.portfolio-item img');
+const fullscreen = document.getElementById('fullscreen');
+const fullscreenImg = document.getElementById('fullscreen-img');
 
+images.forEach(img => {
+    img.addEventListener('click', () => {
+        fullscreenImg.src = img.src;
+        fullscreen.style.display = 'flex';
+    });
+});
+
+// Fermer en cliquant en dehors
+fullscreen.addEventListener('click', (e) => {
+    if (e.target === fullscreen) {
+        fullscreen.style.display = 'none';
+    }
+});
 
 
     // FULLSCREEN IMAGE LOGIC
@@ -1186,6 +1193,7 @@ if (e.target === fullscreen) fullscreen.style.display = 'none';
 </script>
 </body>
 </html>
+
 
 
 
