@@ -1,116 +1,555 @@
-<!DOCTYPE html>
+omg mes services a été supprimer : <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Amal Chkiwa (corrigé)</title>
+    <title>Portfolio - Amal Chkiwa</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
-        html { scroll-behavior: smooth; }
-        body {
+        html {
+            scroll-behavior: smooth;
+          }
+       body {
             overflow-x: hidden;
-            font-family: 'Inter', sans-serif;
-            margin: 0; padding: 0;
-            background: #0b0c1b;
-            color: white;
+     font-family: 'Inter', sans-serif;
+        margin: 0; padding: 0;
+    background: #0b0c1b;
+    color: white;
         }
         a { text-decoration: none; }
 
-        /* Navbar */
+        /* ===== Navbar ===== */
         .navbar { background-color: rgba(0, 0, 0, 0.8); }
         .navbar-brand { color: #ff6347; font-weight: bold; font-size: 1.8rem; }
         .navbar-nav .nav-link { color: #fff !important; margin-left: 20px; }
         .navbar-nav .nav-link:hover { color: #ff6347 !important; }
-
-        .section-title { font-family: 'Playfair Display', serif; font-size: 2.4rem; letter-spacing: 2px; text-transform: uppercase; color:#ff6347; text-align:center; margin-bottom:30px; font-weight:700; }
-
-        .hero-creative {
-            background: radial-gradient(circle at center, rgba(255,99,71,0.12), transparent), linear-gradient(120deg, #0b0c1b, #1a1c27);
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ff6347, #ffcc70);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+.section-title, .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 1px;
+}
+.hero-creative {
+            background: radial-gradient(circle at center, rgba(255,99,71,0.12), transparent), 
+            linear-gradient(120deg, #0b0c1b, #1a1c27);
             position: relative;
             overflow: hidden;
-            height: 90vh;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
         }
         .hero-creative::after {
-            content:"";
-            position:absolute;
-            inset:0;
-            background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.02) 0px, transparent 2px, transparent 4px);
-            pointer-events:none;
+    content:"";
+    position:absolute;
+    inset:0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03) 0px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events:none;
+}
+
+
+      #home { height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 0 8%; position: relative; }
+.text-content { max-width: 50%; }
+.text-content h1 { font-size: 55px; margin: 0; }
+.buttons { margin-top: 20px; display: flex; gap: 20px; }
+.buttons a { padding: 12px 22px; background: #000; color: #fff; border-radius: 6px; text-decoration: none; }
+
+
+/* Floating Icons */
+.floating-icons { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 15px; }
+.floating-icons img { width: 60px; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2)); animation: float 5s infinite ease-in-out; }
+@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0);} }
+        .floating-icons .icon {
+            position: absolute;
+            width: 70px;
+            opacity: 0;
+            animation: explodeIcons linear infinite;
         }
+        @keyframes explodeIcons {
+            0% { opacity: 0; transform: translate(0,0) scale(0.5) rotate(0deg); }
+            10% { opacity: 0.7; }
+            50% { opacity: 1; transform: translate(var(--moveX), var(--moveY)) scale(1) rotate(180deg); }
+            100% { opacity: 0; transform: translate(calc(var(--moveX)*2), calc(var(--moveY)*2)) scale(0.2) rotate(360deg); }
+        }
+       .floating-icons .icon:nth-child(1) {
+    top: 10%; left: 10%;
+    --moveX: 180px;
+    --moveY: -200px;
+    animation-duration: 6s;
+}
+.floating-icons .icon:nth-child(2) {
+    top: 20%; left: 80%;
+    --moveX: -220px;
+    --moveY: 150px;
+    animation-duration: 7s;
+}
+.floating-icons .icon:nth-child(3) {
+    top: 50%; left: 25%;
+    --moveX: 150px;
+    --moveY: -100px;
+    animation-duration: 8s;
+}
+.floating-icons .icon:nth-child(4) {
+    top: 70%; left: 70%;
+    --moveX: -180px;
+    --moveY: 200px;
+    animation-duration: 9s;
+}
+.floating-icons .icon:nth-child(5) {
+    top: 40%; left: 50%;
+    --moveX: 200px;
+    --moveY: -180px;
+    animation-duration: 6.5s;
+}
+.floating-icons .icon:nth-child(6) {
+    top: 60%; left: 20%;
+    --moveX: 120px;
+    --moveY: 150px;
+    animation-duration: 7.5s;
+}
+.floating-icons .icon:nth-child(7) {
+    top: 15%; left: 50%;
+    --moveX: -150px;
+    --moveY: 180px;
+    animation-duration: 8.5s;
+}
+.floating-icons .icon:nth-child(8) {
+    top: 30%; left: 75%;
+    --moveX: 200px;
+    --moveY: 100px;
+    animation-duration: 9.2s;
+}
+.floating-icons .icon:nth-child(9) {
+    top: 55%; left: 35%;
+    --moveX: -180px;
+    --moveY: 200px;
+    animation-duration: 10s;
+}
+.floating-icons .icon:nth-child(10) {
+    top: 80%; left: 60%;
+    --moveX: 220px;
+    --moveY: -150px;
+    animation-duration: 11s;
+}
 
-        /* Floating Icons */
-        .floating-icons { position: absolute; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
-        .floating-icons .icon { position: absolute; width: 70px; opacity: 0; animation: explodeIcons linear infinite; }
-        @keyframes explodeIcons { 0% { opacity:0; transform: translate(0,0) scale(0.5) rotate(0deg);} 10% { opacity:0.7;} 50% { opacity:1; transform: translate(var(--moveX), var(--moveY)) scale(1) rotate(180deg);} 100% { opacity:0; transform: translate(calc(var(--moveX)*2), calc(var(--moveY)*2)) scale(0.2) rotate(360deg);} }
-        .floating-icons .icon:nth-child(1) { top:10%; left:10%; --moveX:180px; --moveY:-200px; animation-duration:6s; }
-        .floating-icons .icon:nth-child(2) { top:20%; left:80%; --moveX:-220px; --moveY:150px; animation-duration:7s; }
-        .floating-icons .icon:nth-child(3) { top:50%; left:25%; --moveX:150px; --moveY:-100px; animation-duration:8s; }
-        .floating-icons .icon:nth-child(4) { top:70%; left:70%; --moveX:-180px; --moveY:200px; animation-duration:9s; }
-        .floating-icons .icon:nth-child(5) { top:40%; left:50%; --moveX:200px; --moveY:-180px; animation-duration:6.5s; }
-        .floating-icons .icon:nth-child(6) { top:60%; left:20%; --moveX:120px; --moveY:150px; animation-duration:7.5s; }
-        .floating-icons .icon:nth-child(7) { top:15%; left:50%; --moveX:-150px; --moveY:180px; animation-duration:8.5s; }
-        .floating-icons .icon:nth-child(8) { top:30%; left:75%; --moveX:200px; --moveY:100px; animation-duration:9.2s; }
-        .floating-icons .icon:nth-child(9) { top:55%; left:35%; --moveX:-180px; --moveY:200px; animation-duration:10s; }
-        .floating-icons .icon:nth-child(10) { top:80%; left:60%; --moveX:220px; --moveY:-150px; animation-duration:11s; }
-
+        /* Hero Text */
         .hero-content { position: relative; z-index: 5; }
-        .hero-title { font-size: 3.2rem; font-weight: 700; color: #fff; animation: glow 3s ease-in-out infinite; }
-        .hero-subtitle { margin-top: 15px; font-size: 1.2rem; color: #ff6347; font-weight: 600; }
-        .hero-btn { margin-top: 25px; background: #ff6347; color: white; padding: 12px 25px; border-radius: 50px; font-size:1rem; display:inline-block; box-shadow:0 4px 15px rgba(255,99,71,0.4); transition:.3s; }
-        @keyframes glow { 0%,100% { text-shadow: 0 0 8px #ff6347; } 50% { text-shadow: 0 0 22px #ffcc70; } }
+        .hero-title { font-size: 4rem; font-weight: 700; color: #fff; animation: glow 3s ease-in-out infinite;}
+        .hero-subtitle { margin-top: 15px; font-size: 1.6rem; color: #ff6347; font-weight: 600; }
+        .hero-text { font-size: 1.1rem; color: #dcdcdc; margin-top: 10px; max-width: 600px; margin-left:auto; margin-right:auto; }
+        .hero-btn {
+            margin-top: 25px; background: #ff6347; color: white;
+            padding: 12px 35px; border-radius: 50px; font-size:1.2rem;
+            display:inline-block; box-shadow:0 4px 15px rgba(255,99,71,0.4);
+            transition:.3s;
+        }
+        @keyframes glow {
+    0%, 100% { text-shadow: 0 0 8px #ff6347; }
+    50% { text-shadow: 0 0 22px #ffcc70; }
+}
         .hero-btn:hover { transform: translateY(-5px); background:#ff856a; }
 
-        /* About */
-        .about { padding: 60px 20px; text-align: center; background: linear-gradient(135deg, #1a1c27, #232536); position: relative; overflow: hidden; }
-        .about h2 { font-size: 2rem; margin-bottom: 20px; color: #ff6347; }
-        .about p { font-size: 1.05rem; color: #ccc; max-width:800px; margin:0 auto; opacity:0.9; }
-        .about img { box-shadow: 0 0 30px rgba(255, 99, 71, 0.6); border-radius:50%; width:180px; height:180px; object-fit:cover; margin-top:20px; border:4px solid #ff6347; }
+        /* ===== About Section ===== */
+        .about {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1c27, #232536);
+            position: relative;
+            overflow: hidden;
+        }
+        .about h2 { font-size: 2.5rem; margin-bottom: 30px; color: #ff6347; }
+        .about p { font-size: 1.125rem; color: #ccc; max-width:800px; margin:0 auto; opacity:0.9; }
+        .about img {
+            position: relative;
+            box-shadow: 0 0 30px rgba(255, 99, 71, 0.6);
+            border-radius:50%; width:200px; height:200px; object-fit:cover;
+            margin-top:30px; border:4px solid #ff6347; box-shadow:0 0 20px rgba(255,99,71,0.5);
+        }
+        .about img::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle,#ff6347,transparent);
+    z-index: -1;
+    border-radius: 50%;
+}
 
-        /* Services */
-        .services { background:#0f101f url('assets/polygon-pattern.png') repeat; padding:60px 20px; }
-        .service-card { opacity: 0; transform: translateY(20px); background: rgba(0,0,0,0.45); padding:25px; border-radius:12px; transition: 0.4s; box-shadow:0 5px 15px rgba(255,99,71,0.15); pointer-events: auto; }
-        .service-card.visible { opacity: 1; transform: translateY(0); }
-        .service-icon { font-size:2.2rem; margin-bottom:12px; color:#ff6347; }
+        .about-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 850px;
+    margin: auto;
+    font-weight: 300;
+}
 
-        /* Competences */
-        #competences { padding: 60px 0; background: linear-gradient(135deg, #11121f, #0b0c1b); }
-        .competence-card { position: relative; width: 95px; height: 95px; background: #222; border-radius: 50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; transition: 0.3s; font-size:2rem; color:#ff6347; opacity:0; transform: translateY(20px); }
-        .competence-card.visible { opacity:1; transform: translateY(0); transition:0.5s ease-out; }
-        .competence-card:hover { transform: scale(1.12); box-shadow: 0 0 15px rgba(255, 99, 71, 0.6); }
-        .competence-title { font-weight:700; font-size:1.05rem; margin-top:12px; }
+/* RANDOM positions + directions + speeds for 10 icons */
+.services { padding: 100px 8%; text-align: center; }
+.services h2 { font-size: 36px; margin-bottom: 40px; }
+.services .container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+.service-card { width: 280px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); opacity: 0; transform: translateY(30px); transition: 0.6s ease; }
+.service-card.show { opacity: 1; transform: translateY(0); }
+.service-icon { font-size: 45px; margin-bottom: 15px; color: #000; }
+#competences {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #11121f, #0b0c1b);
+}
 
-        /* Designs */
-        .designs-container { background: radial-gradient(circle at center, rgba(255,99,71,0.1), transparent); }
-        .design-item img { width:100%; height:250px; object-fit:cover; border-radius:12px; cursor:pointer; transition: transform 0.25s ease, box-shadow 0.25s ease; }
-        .design-item img:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
+.competences {
+    background: linear-gradient(120deg, #1a1c27, #0b0c1b);
+    padding: 70px 0;
+}
 
-        #fullscreenImage { display:none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:1000; }
-        #fullscreenImage img { max-width:90%; max-height:90%; border-radius:10px; }
-        #fullscreenImage .close-btn { position:absolute; top:20px; right:20px; color:white; font-size:2rem; cursor:pointer; z-index:1001; }
-        .fullscreen-blur { filter: blur(5px); transition: filter 0.3s ease; }
+/* Icônes dans les cercles */
+.competence-card {
+    position: relative;
+    width: 95px;
+    height: 95px;
+    background: #222;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    transition: 0.3s;
+    font-size: 2rem;
+    color: #ff6347;
+}
 
-        /* Logos, projects, footer simplified styles */
-        .logos-container, .projects .row { gap:20px; }
-        footer { background-color: #0b0c1b; color: #fff; text-align:center; padding:20px; }
-        footer a { color: #ff6347; text-decoration:none; }
+.competence-card:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 15px rgba(255, 99, 71, 0.6);
+}
 
-        /* small screens adjustments */
-        @media (max-width: 576px) { .hero-title { font-size: 2rem; } .floating-icons .icon { width:50px; } }
-    </style>
+.competence-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 12px;
+    letter-spacing: 1px;
+}
+
+/* Animation d’apparition */
+.competence-card {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.competence-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.5s ease-out;
+}
+.competence-card i,
+.service-icon i,
+.logo-item img {
+    filter: var(--glow);
+}
+
+:root {
+    --glow: drop-shadow(0 0 12px rgba(255, 99, 71, 0.6));
+}
+
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(120deg,#0b0c1b,#1a1c27); padding:80px 20px; position:relative; overflow:hidden;
+        }
+
+
+        .contact h2 {
+            font-size: 2.5rem;
+            color: #ff6347;
+            margin-bottom: 30px;
+        }
+
+        .contact p {
+            font-size: 1.125rem;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #222;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .contact form input, .contact form textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+
+        .contact form button {
+            background-color: #ff6347;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact form button:hover {
+            background-color: #ff9a8b;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b0c1b;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: #ff6347;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Fun animations for space effect */
+        .space-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('https://cdn.pixabay.com/photo/2018/11/12/09/26/space-3803371_960_720.jpg') no-repeat center center;
+            background-size: cover;
+            animation: spaceMove 120s linear infinite;
+        }
+
+        @keyframes spaceMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+        .projects .card {
+            background-color: #222;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .projects .card:hover {
+            transform: scale(1.05);
+        }
+        
+        .projects .btn {
+            background-color: #ff6347;
+            color: white;
+            border-radius: 5px;
+        }
+        
+        .projects .btn:hover {
+            background-color: #ff856c;
+        }
+    .designs-container {
+    background: radial-gradient(circle at center, rgba(255,99,71,0.1), transparent);
+}
+    
+        .design-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .design-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+ #fullscreen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 999; }
+#fullscreen img { max-width: 80%; max-height: 80%; border-radius: 10px; }
+.close-btn { position: absolute; top: 20px; right: 40px; font-size: 45px; color: white; cursor: pointer; }
+    
+.designs-container::-webkit-scrollbar {
+            height: 8px;
+        }
+    
+        .designs-container::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
+    
+        .designs-container::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+        .fullscreen-blur {
+            filter: blur(5px);
+            transition: filter 0.3s ease;
+        }
+
+        #fullscreenImage {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+.logo-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.08);
+}
+.logos-container {
+    padding-bottom: 0 !important;
+}
+
+.logos-container::-webkit-scrollbar {
+    height: 8px;
+    background: transparent !important;
+}
+
+.logos-container::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 10px;
+}
+
+.logo-item {
+    margin-bottom: 0 !important;
+}
+
+
+/* Section CV */
+.cv-section {
+    background-color: #1f2833;
+    padding: 60px 20px;
+    color: #c5c6c7;
+    text-align: center;
+}
+
+.cv-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.8rem;
+    color: #66fcf1;
+    margin-bottom: 30px;
+}
+
+
+.cv-container {
+    display: flex;
+    justify-content: center; /* Centre les éléments horizontalement */
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* Élément CV */
+.cv-item {
+    flex: 0 0 30%;
+    scroll-snap-align: start;
+    text-align: center;
+    background-color: #0b0c10;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cv-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Titre CV */
+.cv-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    color: #45a29e;
+    margin-bottom: 20px;
+}
+
+/* Boutons de Téléchargement */
+.download-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 1rem;
+    color: #0b0c10;
+    border-radius: 50px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Couleur pour le bouton CV Français */
+.download-btn.btn-fr {
+    background-color: #66fcf1; /* Bleu clair */
+}
+
+.download-btn.btn-fr:hover {
+    background-color: #45a29e; /* Vert */
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Couleur pour le bouton CV Anglais */
+.download-btn.btn-en {
+    background-color: #f1c40f; /* Jaune */
+}
+
+.download-btn.btn-en:hover {
+    background-color: #f39c12; /* Orange foncé */
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+.portfolio-item img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+    transition: 0.3s;
+}
+
+ </style>
+
 </head>
 <body>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <!-- Background Space Animation -->
-    <div class="space-background" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:url('https://cdn.pixabay.com/photo/2018/11/12/09/26/space-3803371_960_720.jpg') no-repeat center center; background-size:cover; opacity:0.12;"></div>
+    <div class="space-background"></div>
 
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
@@ -131,35 +570,46 @@
     </nav>
 
     <!-- Hero Section -->
+   <!-- Creative Hero Section -->
 <section id="home" class="hero-creative">
     <div class="overlay"></div>
 
     <div class="hero-content">
         <h1 class="hero-title">Amal Chkiwa</h1>
-        <h3 class="hero-subtitle"><span class="typing"></span></h3>
+
+        <h3 class="hero-subtitle">
+    <span class="typing"></span>
+</h3>
+
         <a href="#portfolio" class="hero-btn">Découvrir mon travail</a>
     </div>
 
     <!-- Floating shapes -->
-    <div class="floating-icons" aria-hidden="true">
-        <img src="icons/win.png" class="icon" alt="Windows">
-        <img src="icons/ps.png" class="icon" alt="Photoshop">
-        <img src="icons/ae.png" class="icon" alt="After Effects">
-        <img src="icons/ai.png" class="icon" alt="Illustrator">
-        <img src="icons/html.png" class="icon" alt="HTML5">
-        <img src="icons/css.png" class="icon" alt="CSS3">
-        <img src="icons/js.png" class="icon" alt="JavaScript">
-        <img src="icons/canva.png" class="icon" alt="Canva">
-        <img src="icons/Python.png" class="icon" alt="Python">
-        <img src="icons/figma.png" class="icon" alt="Figma">
-    </div>
+    <div class="floating-icons">
+    <img src="icons/win.png" class="icon">
+    <img src="icons/ps.png" class="icon">
+    <img src="icons/ae.png" class="icon">
+    <img src="icons/ai.png" class="icon">
+    <img src="icons/html.png" class="icon">
+    <img src="icons/css.png" class="icon">
+    <img src="icons/js.png" class="icon">
+    <img src="icons/canva.png" class="icon">
+    <img src="icons/Python.png" class="icon">
+    <img src="icons/figma.png" class="icon">
+</div>
+
 </section>
+
 
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">À propos de moi</h2>
-            <p class="about-text">Passionnée par le design visuel et le développement web, je transforme des idées en expériences immersives. J’allie créativité, technique et sens du détail pour concevoir des identités visuelles fortes, des interfaces élégantes et des solutions digitales modernes.</p>
+            <h2  class="section-title">À propos de moi</h2>
+            <p class="about-text">
+    Passionnée par le design visuel et le développement web, je transforme des idées en expériences immersives. 
+    J’allie créativité, technique et sens du détail pour concevoir des identités visuelles fortes, des interfaces élégantes 
+    et des solutions digitales modernes. Mon objectif ? Créer des projets qui racontent une histoire et qui marquent.
+ </p>
             <img src="1.jpg" alt="Amal Chkiwa">
         </div>
     </section>
@@ -167,123 +617,359 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <h2 class="text-center section-title">Mes Services</h2>
-            <div class="row mt-4 gy-4">
+            <h2 class="text-center">Mes Services</h2>
+            <div class="row mt-5">
                 <div class="col-md-4">
                     <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
                         <h5>Développement Web</h5>
                         <p>Je crée des sites web modernes, responsives et optimisés pour tous les appareils.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
                         <h5>Design Graphique</h5>
                         <p>Création de visuels élégants et professionnels pour améliorer l'image de votre marque.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-video"></i></div>
-                        <h5>Montage Vidéo</h5>
-                        <p>Conception de montages vidéo professionnels et esthétiquement travaillés.</p>
+                        <div class="service-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h5>MONTAGE VIDEO</h5>
+                        <p>Conception de montages vidéo professionnels et
+                             esthétiquement travaillés.</p>
                     </div>
                 </div>
+                
             </div>
         </div>
     </section>
-
 <!-- Compétences Section -->
 <section id="competences" class="competences py-5">
     <div class="container">
         <h2 class="text-center text-warning mb-5">Mes Compétences</h2>
+
         <div class="row g-4 justify-content-center">
-            <!-- plusieurs compétences... (inchangées) -->
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card"><i class="fab fa-html5"></i></div>
-                <h5 class="competence-title">HTML5</h5>
+
+    <!-- HTML5 -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fab fa-html5"></i>
+        </div>
+        <h5 class="competence-title">HTML5</h5>
+    </div>
+
+    <!-- CSS3 -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fab fa-css3-alt"></i>
+        </div>
+        <h5 class="competence-title">CSS3</h5>
+    </div>
+
+    <!-- JavaScript -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fab fa-js"></i>
+        </div>
+        <h5 class="competence-title">JavaScript</h5>
+    </div>
+
+    <!-- Python -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fab fa-python"></i>
+        </div>
+        <h5 class="competence-title">Python</h5>
+    </div>
+
+    <!-- Excel -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fas fa-file-excel"></i>
+        </div>
+        <h5 class="competence-title">Microsoft Excel</h5>
+    </div>
+
+    <!-- Word -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fas fa-file-word"></i>
+        </div>
+        <h5 class="competence-title">Microsoft Word</h5>
+    </div>
+
+    <!-- Photoshop -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fas fa-image"></i>
+        </div>
+        <h5 class="competence-title">Photoshop</h5>
+    </div>
+
+    <!-- Illustrator -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fas fa-vector-square"></i>
+        </div>
+        <h5 class="competence-title">Illustrator</h5>
+    </div>
+
+    <!-- Canva -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fas fa-image"></i>
+        </div>
+        <h5 class="competence-title">Canva</h5>
+    </div>
+
+    <!-- Linux -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fab fa-linux"></i>
+        </div>
+        <h5 class="competence-title">Linux</h5>
+    </div>
+
+    <!-- Windows -->
+    <div class="col-6 col-md-4 col-lg-2 text-center">
+        <div class="competence-card">
+            <i class="fab fa-windows"></i>
+        </div>
+        <h5 class="competence-title">Windows</h5>
+    </div>
+</div>
+</section>
+
+    <section id="projects" class="projects py-5">
+    <div class="container">
+        <h2 class="text-center text-uppercase text-warning">Mes Projets</h2>
+        <div class="row mt-4">
+            <!-- Project 1 -->
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="1/15.jpg" class="card-img-top" alt="Projet 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Gestion des Switchers</h5>
+                        <a href="projet1.html" class="btn btn-warning">Voir le projet</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card"><i class="fab fa-css3-alt"></i></div>
-                <h5 class="competence-title">CSS3</h5>
+            <!-- Project 2 -->
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="2/21.jpg" class="card-img-top" alt="Projet 2">
+                    <div class="card-body">
+                        <h5 class="card-title">BAD UI</h5>
+                        <a href="projet2.html" class="btn btn-warning">Voir le projet</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card"><i class="fab fa-js"></i></div>
-                <h5 class="competence-title">JavaScript</h5>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card"><i class="fab fa-python"></i></div>
-                <h5 class="competence-title">Python</h5>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card"><i class="fas fa-file-excel"></i></div>
-                <h5 class="competence-title">Microsoft Excel</h5>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2 text-center">
-                <div class="competence-card"><i class="fas fa-image"></i></div>
-                <h5 class="competence-title">Photoshop</h5>
+            <!-- Project 3 -->
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="3/1.jpg" class="card-img-top" alt="Projet 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Explorer de Tunisie</h5>
+                        <a href="projet3.html" class="btn btn-warning">Voir le projet</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
-
-    <!-- Projects (inchangés) -->
-    <section id="projects" class="projects py-5">
-        <div class="container">
-            <h2 class="text-center text-uppercase text-warning">Mes Projets</h2>
-            <div class="row mt-4">
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="1/15.jpg" class="card-img-top" alt="Projet 1">
-                        <div class="card-body"><h5 class="card-title">Gestion des Switchers</h5><a href="#" class="btn btn-warning">Voir le projet</a></div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="2/21.jpg" class="card-img-top" alt="Projet 2">
-                        <div class="card-body"><h5 class="card-title">BAD UI</h5><a href="#" class="btn btn-warning">Voir le projet</a></div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="3/1.jpg" class="card-img-top" alt="Projet 3">
-                        <div class="card-body"><h5 class="card-title">Explorer de Tunisie</h5><a href="#" class="btn btn-warning">Voir le projet</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<section id="designs" class="designs py-4">
+<div class="space-background"></div>
+<section id="designs" class="designs">
     <div class="container">
-        <h2 class="text-center text-uppercase text-warning">Mes Designs Graphiques (Adobe Photoshop & Illustrator)</h2>
+        <h2 class="text-center text-uppercase text-warning">Mes Designs Graphiques(Adobe Photoshop & Adobe Illustrator)</h2>
         <div class="row mt-4">
             <div class="col-12">
-                <div class="designs-container" style="display:flex; overflow-x:auto; gap:20px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;">
-                    <!-- Exemples d'items -->
-                    <div class="design-item" style="flex:0 0 25%; scroll-snap-align:start;"><img src="des/23 (2).png" alt="Design 23" class="lazy"></div>
-                    <div class="design-item" style="flex:0 0 25%; scroll-snap-align:start;"><img src="des/31.jpg" alt="Design 31" class="lazy"></div>
-                    <div class="design-item" style="flex:0 0 25%; scroll-snap-align:start;"><img src="des/32.jpg" alt="Design 32" class="lazy"></div>
-                    <div class="design-item" style="flex:0 0 25%; scroll-snap-align:start;"><img src="des/33.jpg" alt="Design 33" class="lazy"></div>
+                 <div class="designs-container" style="display: flex; overflow-x: auto; gap: 20px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/23 (2).png" alt="Design 23" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/31.jpg" alt="Design 31" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/32.jpg" alt="Design 32" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/33.jpg" alt="Design 33" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/34.jpg" alt="Design 34" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/35.jpg" alt="Design 35" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/36.jpg" alt="Design 36" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/30.jpg" alt="Design 30" class="lazy">
+                    </div>
+                    <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/2.jpg" alt="Design 2" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/20.png" alt="Design 20" class="lazy">
+                    </div>
+                    <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/3.jpg" alt="Design 3" class="lazy">
+                    </div>
+                    <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/4.jpg" alt="Design 4" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/22.png" alt="Design 22" class="lazy">
+                     </div>
+                    <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/5.jpg" alt="Design 5" class="lazy">
+                    </div>
+                    <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/11.jpg" alt="Design 11" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/16.png" alt="Design 16" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/16.jpg" alt="Design 16" class="lazy">
+                    </div>
+                    <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/13.jpg" alt="Design 13" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/15.jpg" alt="Design 15" class="lazy">
+                    </div>
+                     <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/17.jpg" alt="Design 17" class="lazy">
+                    </div>
+                    <div class="design-item" style="flex: 0 0 25%; scroll-snap-align: start;">
+                        <img src="des/14.jpg" alt="Design 14" class="lazy">
+                    </div>
+                    <div class="design-item" style="flex: 0 0 35%; scroll-snap-align: start;">
+                        <img src="des/6.jpg" alt="Design 6" class="lazy">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div id="fullscreenImage" aria-hidden="true">
-        <span class="close-btn" aria-label="Fermer">&times;</span>
+    <div id="fullscreenImage" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
+        <img id="fullscreenImg" src="" alt="Fullscreen Image" style="max-width: 90%; max-height: 90%; border-radius: 10px;">
+    </div>    
+    <div id="fullscreenImage">
+        <div class="close-btn">&times;</div>
         <img id="fullscreenImg" src="" alt="Fullscreen Image">
     </div>
-</section>
-
+</section>  
 <section id="logos" class="logos py-5">
     <div class="container">
-        <h2 class="text-center text-uppercase text-warning">Mes Logos (Branding & Identité Visuelle)</h2>
+        <h2 class="text-center text-uppercase text-warning">
+            Mes Logos (Branding & Identité Visuelle)
+        </h2>
+
         <div class="row mt-4">
             <div class="col-12">
-                <div class="logos-container" style="display:flex; overflow-x:auto; gap:25px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding-bottom:20px;">
-                    <div class="logo-item" style="flex:0 0 28%; scroll-snap-align:start; background:rgba(255,255,255,0.05); padding:20px; border-radius:15px; text-align:center;"><img src="logos/1.png" alt="Logo 1" class="img-fluid mb-3" style="max-height:140px; object-fit:contain;"><h5 class="text-warning mb-1">Programme Éveil</h5><p class="text-light" style="font-size:0.9rem;">Identité visuelle créée pour Rose Blanche Group.</p></div>
+
+                <div class="logos-container" 
+                    style="display: flex; overflow-x: auto; gap: 25px;
+                    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+                    padding-bottom: 20px;">
+
+                    <div class="logo-item" 
+                        style="flex: 0 0 28%; scroll-snap-align: start;
+                        background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;
+                        text-align: center; transition: 0.3s;">
+                        
+                        <img src="logos/1.png" alt="Logo 1" class="img-fluid mb-3"
+                            style="max-height: 140px; object-fit: contain; filter: drop-shadow(0 0 6px #111);">
+                        
+                        <h5 class="text-warning mb-1">Programme Éveil</h5>
+                        <p class="text-light" style="font-size: 0.9rem;">
+                            Identité visuelle créée pour Rose Blanche Group, un concept éducatif.
+                        </p>
+                    </div>
+
+                    <div class="logo-item" 
+                        style="flex: 0 0 28%; scroll-snap-align: start;
+                        background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;
+                        text-align: center; transition: 0.3s;">
+                        
+                        <img src="logos/2.png" alt="Logo 2" class="img-fluid mb-3"
+                            style="max-height: 140px; object-fit: contain; filter: drop-shadow(0 0 6px #111);">
+                        
+                        <h5 class="text-warning mb-1">Programme Éveil</h5>
+                        <p class="text-light" style="font-size: 0.9rem;">
+                            Variante du logo conçue pour le branding pédagogique.
+                        </p>
+                    </div>
+
+                    <!-- LOGO ITEM 3 -->
+                    <div class="logo-item"
+                        style="flex: 0 0 28%; scroll-snap-align: start;
+                        background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;
+                        text-align: center; transition: 0.3s;">
+                        
+                        <img src="logos/3.png" alt="Logo 3" class="img-fluid mb-3"
+                            style="max-height: 140px; object-fit: contain; filter: drop-shadow(0 0 6px #111);">
+                        
+                        <h5 class="text-warning mb-1">Logo Créatif</h5>
+                        <p class="text-light" style="font-size: 0.9rem;">
+                            Logo moderne avec une touche abstraite et professionnelle.
+                        </p>
+                    </div>
+
+                    <!-- LOGO ITEM 4 -->
+                    <div class="logo-item"
+                        style="flex: 0 0 28%; scroll-snap-align: start;
+                        background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;
+                        text-align: center; transition: 0.3s;">
+                        
+                        <img src="logos/4.png" alt="Logo 4" class="img-fluid mb-3"
+                            style="max-height: 140px; object-fit: contain; filter: drop-shadow(0 0 6px #111);">
+                        
+                        <h5 class="text-warning mb-1">Identité Visuelle</h5>
+                        <p class="text-light" style="font-size: 0.9rem;">
+                            Logo élégant conçu pour une marque premium.
+                        </p>
+                    </div>
+
+                    <div class="logo-item"
+                        style="flex: 0 0 28%; scroll-snap-align: start;
+                        background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;
+                        text-align: center; transition: 0.3s;">
+                        
+                        <img src="logos/5.png" alt="Logo 5" class="img-fluid mb-3"
+                            style="max-height: 140px; object-fit: contain; filter: drop-shadow(0 0 6px #111);">
+                        
+                        <h5 class="text-warning mb-1">Branding</h5>
+                        <p class="text-light" style="font-size: 0.9rem;">
+                            Conception minimaliste pour un rendu moderne et clair.
+                        </p>
+                    </div>
+
+                    <div class="logo-item"
+                        style="flex: 0 0 28%; scroll-snap-align: start;
+                        background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;
+                        text-align: center; transition: 0.3s;">
+                        
+                        <img src="logos/6.png" alt="Logo 6" class="img-fluid mb-3"
+                            style="max-height: 140px; object-fit: contain; filter: drop-shadow(0 0 6px #111);">
+                        
+                        <h5 class="text-warning mb-1">Concept Visuel</h5>
+                        <p class="text-light" style="font-size: 0.9rem;">
+                            Un logo dynamique pour une marque innovante.
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -291,108 +977,205 @@
 </section>
 
 <section id="cv-section" class="cv-section">
-    <div class="container text-center">
+    <div class="container">
         <h2 class="text-center text-uppercase text-warning">Téléchargez Mon CV</h2>
-        <div class="cv-container mt-4" style="display:flex; gap:20px; justify-content:center;">
-            <div class="cv-item" style="background:#0b0c10;padding:20px;border-radius:10px;"><h3 class="cv-title">CV Français</h3><a href="cv-amal-fr.pdf" download class="download-btn btn-fr" style="background:#66fcf1;color:#0b0c10;padding:10px 20px;border-radius:30px;">Télécharger CV</a></div>
-            <div class="cv-item" style="background:#0b0c10;padding:20px;border-radius:10px;"><h3 class="cv-title">CV Anglais</h3><a href="Eng-cv.pdf" download class="download-btn btn-en" style="background:#f1c40f;color:#0b0c10;padding:10px 20px;border-radius:30px;">Télécharger CV</a></div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="cv-container">
+                    <!-- CV Français -->
+                    <div class="cv-item">
+                        <h3 class="cv-title">CV Français</h3>
+                        <a href="cv-amal-fr.pdf" download="CV_Amal_Chkiwa_FR" class="download-btn btn-fr">
+                            Télécharger CV
+                        </a>
+                    </div>
+                    <!-- CV Anglais -->
+                    <div class="cv-item">
+                        <h3 class="cv-title">CV Anglais</h3>
+                        <a href="Eng-cv.pdf" download="CV_Amal_Chkiwa_EN" class="download-btn btn-en">
+                            Télécharger CV
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
+
+
+    <!-- Contact Section -->
 <section id="contact" class="contact">
     <div class="container">
         <h2>Contactez-moi</h2>
-        <p>Si vous avez un projet en tête ou des questions, n'hésitez pas à me contacter.</p>
+        <p>Si vous avez un projet en tête ou des questions, n'hésitez pas à me contacter. Je serai ravi de discuter de vos idées !</p>
         <form action="mailto:amalch206@gmail.com" method="post" enctype="text/plain">
-            <input type="text" name="name" placeholder="Votre nom" required style="width:100%;padding:12px;margin:8px 0;background:#333;border-radius:6px;border:1px solid #444;color:#fff;">
-            <input type="email" name="email" placeholder="Votre email" required style="width:100%;padding:12px;margin:8px 0;background:#333;border-radius:6px;border:1px solid #444;color:#fff;">
-            <textarea name="message" rows="5" placeholder="Votre message" required style="width:100%;padding:12px;margin:8px 0;background:#333;border-radius:6px;border:1px solid #444;color:#fff;"></textarea>
-            <button type="submit" style="background:#ff6347;color:#fff;padding:12px 20px;border:none;border-radius:8px;">Envoyer le message</button>
+            <input type="text" name="name" placeholder="Votre nom" required>
+            <input type="email" name="email" placeholder="Votre email" required>
+            <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+            <button type="submit">Envoyer le message</button>
         </form>
-        <div class="contact-details" style="text-align:center;color:gray;margin-top:20px;"><p><i class="fas fa-envelope"></i> <a href="mailto:amalch206@gmail.com" style="color:gray;text-decoration:none;">amalch206@gmail.com</a></p><p><i class="fas fa-phone-alt"></i> <a href="tel:+21626450657" style="color:gray;text-decoration:none;">+216 26450657</a></p></div>
+        <!-- Contact Details -->
+        <div class="contact-details" style="text-align: center; color: gray; margin-top: 20px;">
+            <p>
+                <i class="fas fa-envelope"></i> 
+                <a href="mailto:amalch206@gmail.com" style="color: gray; text-decoration: none;">amalch206@gmail.com</a>
+            </p>
+            <p>
+                <i class="fas fa-phone-alt"></i> 
+                <a href="tel:+21626450657" style="color: gray; text-decoration: none;">+216 26450657</a>
+            </p>
+        </div>
     </div>
 </section>
 
-<footer><p>&copy; 2025 Amal Chkiwa | <a href="#contact">Contact</a></p></footer>
+    
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Amal Chkiwa | <a href="#contact">Contact</a></p>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    /* Typing effect */
-    const words = ["Designer Graphique","Développeuse Web","Créatrice d’identités visuelles"];
-    let i = 0, j = 0, currentWord = "", isDeleting = false;
+    const words = [
+        "Designer Graphique",
+        "Développeuse Web",
+        "Créatrice d’identités visuelles"
+    ];
+
+    let i = 0;
+    let j = 0;
+    let currentWord = "";
+    let isDeleting = false;
+
     function typeEffect() {
-        const typingElement = document.querySelector(".typing"); if (!typingElement) return;
+        const typingElement = document.querySelector(".typing");
+
+        if (!typingElement) return;
+
         if (i < words.length) {
-            if (!isDeleting && j <= words[i].length) { currentWord = words[i].substring(0, j++); typingElement.textContent = currentWord; }
-            if (isDeleting && j >= 0) { currentWord = words[i].substring(0, j--); typingElement.textContent = currentWord; }
-            if (j === words[i].length + 1) { isDeleting = true; setTimeout(typeEffect, 1000); return; }
-            else if (j < 0) { isDeleting = false; i++; if (i === words.length) i = 0; }
+            if (!isDeleting && j <= words[i].length) {
+                currentWord = words[i].substring(0, j++);
+                typingElement.textContent = currentWord;
+            }
+
+            if (isDeleting && j >= 0) {
+                currentWord = words[i].substring(0, j--);
+                typingElement.textContent = currentWord;
+            }
+
+            if (j === words[i].length + 1) {
+                isDeleting = true;
+                setTimeout(typeEffect, 1000);
+                return;
+            } 
+            else if (j < 0) {
+                isDeleting = false;
+                i++;
+                if (i === words.length) i = 0;
+            }
         }
+
         setTimeout(typeEffect, isDeleting ? 60 : 120);
     }
+
     typeEffect();
 
-    /* Fullscreen image logic */
+
+
+    // FULLSCREEN IMAGE LOGIC
     const fullscreenContainer = document.getElementById('fullscreenImage');
     const fullscreenImg = document.getElementById('fullscreenImg');
     const designImages = document.querySelectorAll('.design-item img');
     const closeBtn = document.querySelector('#fullscreenImage .close-btn');
 
     designImages.forEach(img => {
-        img.addEventListener('click', (e) => {
-            e.stopPropagation();
+        img.addEventListener('click', () => {
             fullscreenImg.src = img.src;
             fullscreenContainer.style.display = 'flex';
-            fullscreenContainer.setAttribute('aria-hidden', 'false');
-            document.body.classList.add('fullscreen-blur');
         });
     });
 
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            fullscreenContainer.style.display = 'none';
-            fullscreenImg.src = '';
-            fullscreenContainer.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('fullscreen-blur');
-        });
-    }
+    closeBtn.addEventListener('click', () => {
+        fullscreenContainer.style.display = 'none';
+        fullscreenImg.src = '';
+    });
 
     fullscreenContainer.addEventListener('click', (e) => {
         if (e.target === fullscreenContainer) {
             fullscreenContainer.style.display = 'none';
             fullscreenImg.src = '';
-            fullscreenContainer.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('fullscreen-blur');
         }
     });
 
-    /* Reveal competence cards when in view */
-    const competenceCards = document.querySelectorAll('.competence-card');
-    const competenceObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                competenceCards.forEach((card, idx) => setTimeout(() => card.classList.add('visible'), idx * 120));
-                competenceObserver.disconnect();
-            }
-        });
-    }, { threshold: 0.25 });
-    const compSection = document.getElementById('competences'); if (compSection) competenceObserver.observe(compSection);
 
-    /* Reveal service cards similarly (fix: they were invisible by default) */
-    const serviceCards = document.querySelectorAll('.service-card');
-    const serviceObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                serviceCards.forEach((card, idx) => setTimeout(() => card.classList.add('visible'), idx * 120));
-                serviceObserver.disconnect();
-            }
-        });
-    }, { threshold: 0.2 });
-    const servicesSection = document.getElementById('services'); if (servicesSection) serviceObserver.observe(servicesSection);
 
+    // ANIMATION CARDS COMPETENCES
+    const cards = document.querySelectorAll('.service-card');
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('show');
+}
+});
+});
+cards.forEach(card => observer.observe(card));
+
+
+// FULLSCREEN VIEWER LOGIC
+const fullscreen = document.getElementById('fullscreen');
+const fullImg = document.getElementById('full-image');
+const closeBtn = document.querySelector('.close-btn');
+
+
+// Open on click (you will attach .design-img class to your designs)
+document.querySelectorAll('.design-img').forEach(img => {
+img.addEventListener('click', () => {
+fullImg.src = img.src;
+fullscreen.style.display = 'flex';
+});
+});
+
+
+// Close
+closeBtn.addEventListener('click', () => {
+fullscreen.style.display = 'none';
+});
+
+
+fullscreen.addEventListener('click', (e) => {
+if (e.target === fullscreen) fullscreen.style.display = 'none';
 });
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
