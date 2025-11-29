@@ -1133,8 +1133,8 @@ function showCards() {
     }
   });
 }
-cards.forEach(card => observer.observe(card));
-
+window.addEventListener('scroll', showCards);
+showCards();
 
 // FULLSCREEN VIEWER LOGIC
 const fullscreen = document.getElementById('fullscreen');
@@ -1163,6 +1163,7 @@ if (e.target === fullscreen) fullscreen.style.display = 'none';
 </script>
 </body>
 </html>
+
 
 
 
