@@ -614,29 +614,48 @@ omg mes services a été supprimer : <!DOCTYPE html>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <!-- Services Section -->
+<!-- Services Section -->
 <section id="services" class="services">
     <h2 class="section-title">Mes Services</h2>
 
     <div class="container">
+        
+        <!-- Service 1 -->
         <div class="service-card">
-            <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+            <div class="service-icon">
+                <i class="bi bi-palette"></i>
+            </div>
             <h3>Design Graphique</h3>
-            <p>Création de visuels professionnels : affiches, logos, flyers, réseaux sociaux.</p>
+            <p>Création d’affiches, logos, identités visuelles, bannières, flyers et contenus pour réseaux sociaux.</p>
         </div>
 
+        <!-- Service 2 -->
         <div class="service-card">
-            <div class="service-icon"><i class="fas fa-code"></i></div>
+            <div class="service-icon">
+                <i class="bi bi-code-slash"></i>
+            </div>
             <h3>Développement Web</h3>
-            <p>Sites vitrines, portfolios, pages modernes & responsive.</p>
+            <p>Conception de sites web modernes en HTML, CSS, JS, et intégration avec backend (Django, API…).</p>
         </div>
 
+        <!-- Service 3 -->
         <div class="service-card">
-            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+            <div class="service-icon">
+                <i class="bi bi-phone"></i>
+            </div>
             <h3>UI/UX Design</h3>
-            <p>Design d’applications mobile & expériences utilisateur optimisées.</p>
+            <p>Création de maquettes interactives, prototypes mobiles et web optimisés pour l’expérience utilisateur.</p>
         </div>
+
+        <!-- Service 4 -->
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="bi bi-megaphone"></i>
+            </div>
+            <h3>Community Management</h3>
+            <p>Gestion des réseaux sociaux, contenu visuel, planification, engagement et optimisation de visibilité.</p>
+        </div>
+
     </div>
 </section>
 
@@ -1104,14 +1123,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // ANIMATION CARDS COMPETENCES
-    const cards = document.querySelectorAll('.service-card');
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.classList.add('show');
+const cards = document.querySelectorAll('.service-card');
+
+function showCards() {
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      card.classList.add("show");
+    }
+  });
 }
-});
-});
 cards.forEach(card => observer.observe(card));
 
 
@@ -1142,6 +1163,7 @@ if (e.target === fullscreen) fullscreen.style.display = 'none';
 </script>
 </body>
 </html>
+
 
 
 
