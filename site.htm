@@ -202,26 +202,74 @@
 }
 
 /* RANDOM positions + directions + speeds for 10 icons */
+/* ===== Services Section ===== */
 .services { 
-    background:#0f101f url('assets/polygon-pattern.png') repeat; 
-    background-size:cover; padding:80px 20px; } 
-.services h2 { 
-    color:#ff6347; margin-bottom:50px; } 
-        .service-card { 
-            opacity: 0;
-            transform: translateY(20px);
-            background: rgba(0,0,0,0.5);
-            padding:30px;
-            border-radius:15px;
-            transition: 0.3s;
-            box-shadow:0 5px 15px rgba(255,99,71,0.2); }
-        .service-card:hover { transform: translateY(-5px); box-shadow:0 10px 30px rgba(255,99,71,0.4); }
-        .service-icon { font-size:2.5rem; margin-bottom:15px; color:#ff6347; }
-        .service-card.visible {
+    background: #0f101f url('assets/polygon-pattern.png') repeat; 
+    background-size: cover; 
+    padding: 80px 20px; 
+    text-align: center;
+}
+
+.services h2.section-title { 
+    color: #ff6347; 
+    margin-bottom: 50px; 
+    font-size: 2.8rem;
+}
+
+/* Container for cards */
+.services .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Individual service card */
+.service-card { 
+    background: rgba(0,0,0,0.5);
+    padding: 30px;
+    border-radius: 15px;
+    flex: 0 0 250px; /* Adjust width of each card */
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255,99,71,0.2);
+    opacity: 0; /* Hidden initially for animation */
+    transform: translateY(20px);
+}
+
+/* Hover effect */
+.service-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 30px rgba(255,99,71,0.4); 
+}
+
+/* Service icon */
+.service-icon { 
+    font-size: 2.5rem; 
+    margin-bottom: 15px; 
+    color: #ff6347; 
+}
+
+/* Card content */
+.service-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.service-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ccc;
+}
+
+/* Animation class for visibility */
+.service-card.visible {
     opacity: 1;
     transform: translateY(0);
-    transition: .6s;
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
 #competences {
     padding: 80px 0;
     background: linear-gradient(135deg, #11121f, #0b0c1b);
@@ -651,49 +699,42 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
-    <h2 class="section-title">Mes Services</h2>
-
     <div class="container">
-        
-        <!-- Service 1 -->
-        <div class="service-card">
-            <div class="service-icon">
-                <i class="bi bi-palette"></i>
+    <div class="row">
+        <div class="col-md-6 col-lg-3">
+            <div class="service-card">
+                <div class="service-icon"><i class="bi bi-palette"></i></div>
+                <h3>Design Graphique</h3>
+                <p>Création d’affiches, logos...</p>
             </div>
-            <h3>Design Graphique</h3>
-            <p>Création d’affiches, logos, identités visuelles, bannières, flyers et contenus pour réseaux sociaux.</p>
         </div>
 
-        <!-- Service 2 -->
-        <div class="service-card">
-            <div class="service-icon">
-                <i class="bi bi-code-slash"></i>
+        <div class="col-md-6 col-lg-3">
+            <div class="service-card">
+                <div class="service-icon"><i class="bi bi-code-slash"></i></div>
+                <h3>Développement Web</h3>
+                <p>Conception de sites web modernes...</p>
             </div>
-            <h3>Développement Web</h3>
-            <p>Conception de sites web modernes en HTML, CSS, JS, et intégration avec backend (Django, API…).</p>
         </div>
 
-        <!-- Service 3 -->
-        <div class="service-card">
-            <div class="service-icon">
-                <i class="bi bi-phone"></i>
+        <div class="col-md-6 col-lg-3">
+            <div class="service-card">
+                <div class="service-icon"><i class="bi bi-phone"></i></div>
+                <h3>UI/UX Design</h3>
+                <p>Création de maquettes interactives...</p>
             </div>
-            <h3>UI/UX Design</h3>
-            <p>Création de maquettes interactives, prototypes mobiles et web optimisés pour l’expérience utilisateur.</p>
         </div>
 
-        <!-- Service 4 -->
-        <div class="service-card">
-            <div class="service-icon">
-                <i class="bi bi-megaphone"></i>
+        <div class="col-md-6 col-lg-3">
+            <div class="service-card">
+                <div class="service-icon"><i class="bi bi-megaphone"></i></div>
+                <h3>Community Management</h3>
+                <p>Gestion des réseaux sociaux...</p>
             </div>
-            <h3>Community Management</h3>
-            <p>Gestion des réseaux sociaux, contenu visuel, planification, engagement et optimisation de visibilité.</p>
         </div>
-
     </div>
-</section>
+</div>
+
 
 <!-- Compétences Section -->
 <section id="competences" class="competences py-5">
@@ -1155,6 +1196,17 @@ document.addEventListener("DOMContentLoaded", function () {
             fullscreenImg.src = '';
         }
     });
+const serviceCards = document.querySelectorAll('.service-card');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.2 });
+
+serviceCards.forEach(card => observer.observe(card));
 
 
 
@@ -1175,6 +1227,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 </body>
 </html>
+
 
 
 
