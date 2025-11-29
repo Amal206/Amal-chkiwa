@@ -203,7 +203,7 @@ omg mes services a été supprimer : <!DOCTYPE html>
 }
 
 /* RANDOM positions + directions + speeds for 10 icons */
-.services { padding: 100px 8%; text-align: center; }
+.services { padding: 100px 8%; text-align: center;  }
 .services h2 { font-size: 36px; margin-bottom: 40px; }
 .services .container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
 .service-card { width: 280px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); opacity: 0; transform: translateY(30px); transition: 0.6s ease; }
@@ -615,42 +615,31 @@ omg mes services a été supprimer : <!DOCTYPE html>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="text-center">Mes Services</h2>
-            <div class="row mt-5">
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h5>Développement Web</h5>
-                        <p>Je crée des sites web modernes, responsives et optimisés pour tous les appareils.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h5>Design Graphique</h5>
-                        <p>Création de visuels élégants et professionnels pour améliorer l'image de votre marque.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-video"></i>
-                        </div>
-                        <h5>MONTAGE VIDEO</h5>
-                        <p>Conception de montages vidéo professionnels et
-                             esthétiquement travaillés.</p>
-                    </div>
-                </div>
-                
-            </div>
+    <!-- Services Section -->
+<section id="services" class="services">
+    <h2 class="section-title">Mes Services</h2>
+
+    <div class="container">
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+            <h3>Design Graphique</h3>
+            <p>Création de visuels professionnels : affiches, logos, flyers, réseaux sociaux.</p>
         </div>
-    </section>
+
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-code"></i></div>
+            <h3>Développement Web</h3>
+            <p>Sites vitrines, portfolios, pages modernes & responsive.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>UI/UX Design</h3>
+            <p>Design d’applications mobile & expériences utilisateur optimisées.</p>
+        </div>
+    </div>
+</section>
+
 <!-- Compétences Section -->
 <section id="competences" class="competences py-5">
     <div class="container">
@@ -1153,6 +1142,7 @@ if (e.target === fullscreen) fullscreen.style.display = 'none';
 </script>
 </body>
 </html>
+
 
 
 
