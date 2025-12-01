@@ -207,14 +207,15 @@
       padding: 80px 20px;  } 
 .services h2 { 
     color:#ff6347; margin-bottom:50px; } 
-        .service-card { 
-            opacity: 0;
-            transform: translateY(20px);
-            background: rgba(0,0,0,0.5);
-            padding:30px;
-            border-radius:15px;
-            transition: 0.3s;
-            box-shadow:0 5px 15px rgba(255,99,71,0.2); }
+.service-card { 
+    opacity: 1;             /* <-- ICI la cause du problème */
+    transform: translateY(0); /* <-- enlever l’animation d’entrée */
+    background: rgba(0,0,0,0.5);
+    padding:30px;
+    border-radius:15px;
+    transition: 0.3s;
+    box-shadow:0 5px 15px rgba(255,99,71,0.2); 
+    }
         .service-card:hover { transform: translateY(-5px); box-shadow:0 10px 30px rgba(255,99,71,0.4); }
         .service-icon { font-size:2.5rem; margin-bottom:15px; color:#ff6347; }
         .service-card.visible {
@@ -1111,7 +1112,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".service-card");
 
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.3 });
+
+    cards.forEach(card => observer.observe(card));
+});
 
     // ANIMATION CARDS COMPETENCES
     const cards = document.querySelectorAll(".competence-card");
@@ -1130,6 +1143,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 </body>
 </html>
+
 
 
 
