@@ -43,7 +43,7 @@
     font-family: 'Space Grotesk', sans-serif;
     letter-spacing: 1px;
 }
-        .light-text {
+.light-text {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 3rem;
     text-transform: uppercase;
@@ -58,6 +58,48 @@
     0% { background-position: 0%; }
     50% { background-position: 100%; }
     100% { background-position: 0%; }
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+        .glow-box {
+    position: relative;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.1);
+    overflow: hidden;
+}
+
+.glow-box::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: conic-gradient(
+        from 0deg,
+        #ff6347,
+        #ffcc70,
+        #ff6347
+    );
+    animation: rotate 6s linear infinite;
+    border-radius: inherit;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.glow-box > * {
+    position: relative;
+    z-index: 2;
 }
 .hero-creative {
             background: radial-gradient(circle at center, rgba(255,99,71,0.12), transparent), 
@@ -686,7 +728,7 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-   <h2 class="light-text">Mes Services</h2>
+   <h2 class="text-center" class="light-text">Mes Services</h2>
             <div class="row mt-5">
                 <div class="col-md-4">
                     <div class="service-card">
@@ -1154,11 +1196,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     observer.observe(document.getElementById("competences"));
 });
+    onst reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll() {
+    for (let el of reveals) {
+        const pos = el.getBoundingClientRect().top;
+        if (pos < window.innerHeight - 80) {
+            el.classList.add('visible');
+        }
+    }
+}
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
 </script>
 
 </script>
 </body>
 </html>
+
 
 
 
