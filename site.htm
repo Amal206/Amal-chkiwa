@@ -43,6 +43,22 @@
     font-family: 'Space Grotesk', sans-serif;
     letter-spacing: 1px;
 }
+        .light-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ff6347, #ffcc70, #ff6347);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: lightFlow 6s ease-in-out infinite;
+}
+
+@keyframes lightFlow {
+    0% { background-position: 0%; }
+    50% { background-position: 100%; }
+    100% { background-position: 0%; }
+}
 .hero-creative {
             background: radial-gradient(circle at center, rgba(255,99,71,0.12), transparent), 
             linear-gradient(120deg, #0b0c1b, #1a1c27);
@@ -670,7 +686,7 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <h2 class="text-center">Mes Services</h2>
+   <h2 class="light-text">Mes Services</h2>
             <div class="row mt-5">
                 <div class="col-md-4">
                     <div class="service-card">
@@ -1143,6 +1159,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
