@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <style>
         :root {
@@ -88,6 +88,58 @@
         .navbar-nav .nav-link.active { 
             color: var(--primary) !important; 
         }
+        
+        .navbar-toggler {
+            border: 1px solid rgba(255, 99, 71, 0.3);
+            padding: 5px 10px;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 2px rgba(255, 99, 71, 0.3);
+        }
+
+        /* ===== SECTIONS COMMON STYLES ===== */
+        section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+        }
 
         /* ===== HERO SECTION ===== */
         .hero-creative {
@@ -101,6 +153,135 @@
             align-items: center;
             text-align: center;
             padding-top: 80px;
+        }
+        
+        .hero-creative::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(102, 252, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 99, 71, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-creative::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255,255,255,0.02) 0px,
+                rgba(255,255,255,0.02) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+        }
+        
+        /* Floating Icons avec retour (restauré de l'original) */
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .floating-icons .icon {
+            position: absolute;
+            width: 70px;
+            opacity: 0;
+            animation: explodeIcons linear infinite;
+        }
+        
+        @keyframes explodeIcons {
+            0% { opacity: 0; transform: translate(0,0) scale(0.5) rotate(0deg); }
+            10% { opacity: 0.7; }
+            50% { opacity: 1; transform: translate(var(--moveX), var(--moveY)) scale(1) rotate(180deg); }
+            100% { opacity: 0; transform: translate(calc(var(--moveX)*2), calc(var(--moveY)*2)) scale(0.2) rotate(360deg); }
+        }
+        
+        .floating-icons .icon:nth-child(1) {
+            top: 10%; left: 10%;
+            --moveX: 180px;
+            --moveY: -200px;
+            animation-duration: 6s;
+        }
+        
+        .floating-icons .icon:nth-child(2) {
+            top: 20%; left: 80%;
+            --moveX: -220px;
+            --moveY: 150px;
+            animation-duration: 7s;
+        }
+        
+        .floating-icons .icon:nth-child(3) {
+            top: 50%; left: 25%;
+            --moveX: 150px;
+            --moveY: -100px;
+            animation-duration: 8s;
+        }
+        
+        .floating-icons .icon:nth-child(4) {
+            top: 70%; left: 70%;
+            --moveX: -180px;
+            --moveY: 200px;
+            animation-duration: 9s;
+        }
+        
+        .floating-icons .icon:nth-child(5) {
+            top: 40%; left: 50%;
+            --moveX: 200px;
+            --moveY: -180px;
+            animation-duration: 6.5s;
+        }
+        
+        .floating-icons .icon:nth-child(6) {
+            top: 60%; left: 20%;
+            --moveX: 120px;
+            --moveY: 150px;
+            animation-duration: 7.5s;
+        }
+        
+        .floating-icons .icon:nth-child(7) {
+            top: 15%; left: 50%;
+            --moveX: -150px;
+            --moveY: 180px;
+            animation-duration: 8.5s;
+        }
+        
+        .floating-icons .icon:nth-child(8) {
+            top: 30%; left: 75%;
+            --moveX: 200px;
+            --moveY: 100px;
+            animation-duration: 9.2s;
+        }
+        
+        .floating-icons .icon:nth-child(9) {
+            top: 55%; left: 35%;
+            --moveX: -180px;
+            --moveY: 200px;
+            animation-duration: 10s;
+        }
+        
+        .floating-icons .icon:nth-child(10) {
+            top: 80%; left: 60%;
+            --moveX: 220px;
+            --moveY: -150px;
+            animation-duration: 11s;
+        }
+        
+        /* Hero Content */
+        .hero-content { 
+            position: relative; 
+            z-index: 5;
+            max-width: 900px;
+            padding: 0 20px;
         }
         
         .hero-title { 
@@ -117,16 +298,302 @@
             0%, 100% { text-shadow: 0 0 8px var(--primary); }
             50% { text-shadow: 0 0 22px #ffcc70; }
         }
-
-        /* ===== GALERIE DESIGNS CREATIVE ===== */
-        .designs-section {
-            background: linear-gradient(135deg, var(--dark), #11121f);
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
+        
+        .hero-title span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
-        .designs-section::before {
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            min-height: 60px;
+        }
+        
+        .typing {
+            color: var(--primary);
+            font-weight: 600;
+            border-right: 3px solid var(--primary);
+            padding-right: 5px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: var(--primary); }
+        }
+        
+        .hero-text { 
+            font-size: 1.2rem; 
+            color: var(--gray); 
+            margin: 0 auto 40px;
+            max-width: 700px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .hero-btn {
+            background: linear-gradient(135deg, var(--primary), #ff856a);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(255, 99, 71, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .hero-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(255, 99, 71, 0.2);
+        }
+        
+        .hero-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 99, 71, 0.6);
+        }
+        
+        .hero-btn.secondary:hover {
+            background: rgba(255, 99, 71, 0.1);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            color: var(--gray);
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .scroll-indicator i {
+            animation: bounce 2s infinite;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* ===== ABOUT SECTION AVEC ANIMATIONS ENRICHIES ===== */
+        .about {
+            background: linear-gradient(135deg, var(--dark-light), #232536);
+            position: relative;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--dark-light));
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .about-img {
+            flex: 0 0 300px;
+            position: relative;
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 5px solid rgba(255, 99, 71, 0.3);
+            position: relative;
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
+            filter: brightness(1.05) contrast(1.1);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        .about-img::before {
+            content: '';
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            top: -5%;
+            left: -5%;
+            z-index: 1;
+            opacity: 0.3;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.05); }
+        }
+        
+        .about-img::after {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            border: 2px dashed rgba(255, 99, 71, 0.2);
+            border-radius: 50%;
+            top: -10%;
+            left: -10%;
+            z-index: 0;
+            animation: spin 20s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 1s ease;
+        }
+        
+        .about-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-family: 'Space Grotesk', sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 1s ease 0.5s;
+        }
+        
+        .about-text.visible h3::after {
+            width: 100%;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .about-text.visible p:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+        
+        .about-text.visible p:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+        
+        .about-text.visible p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .about-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+        
+        .about-text.visible .about-stats {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.9s;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            min-width: 120px;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 99, 71, 0.1);
+            box-shadow: 0 10px 20px rgba(255, 99, 71, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            line-height: 1;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services { 
+            background: var(--dark);
+            position: relative;
+        }
+        
+        .services::before {
             content: '';
             position: absolute;
             top: 0;
@@ -134,443 +601,582 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 99, 71, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(102, 252, 241, 0.05) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(255, 99, 71, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(102, 252, 241, 0.05) 0%, transparent 40%);
             pointer-events: none;
         }
         
-        .designs-filter {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .filter-btn {
-            padding: 10px 25px;
+        .service-card { 
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--gray);
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 99, 71, 0.3);
-        }
-        
-        /* Container créatif avec effet parallaxe */
-        .designs-parallax-container {
-            position: relative;
-            height: 600px;
-            overflow: hidden;
-            border-radius: 20px;
-            margin: 40px auto;
-            max-width: 1400px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-        }
-        
-        .parallax-layer {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            will-change: transform;
-        }
-        
-        /* Grille créative avec animations */
-        .designs-creative-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 20px;
-            perspective: 1000px;
-        }
-        
-        .design-card {
-            position: relative;
+            padding: 40px 30px;
             border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
             overflow: hidden;
-            height: 300px;
-            transform-style: preserve-3d;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             opacity: 0;
-            transform: translateY(50px) rotateX(10deg);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transform: translateY(30px);
         }
         
-        .design-card.visible {
+        .service-card.visible {
             opacity: 1;
-            transform: translateY(0) rotateX(0);
+            transform: translateY(0);
         }
         
-        .design-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(255, 99, 71, 0.3);
-            z-index: 10;
-        }
-        
-        .design-card::before {
+        .service-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 5px;
             height: 100%;
-            background: linear-gradient(45deg, 
-                rgba(255, 99, 71, 0.1) 0%,
-                rgba(102, 252, 241, 0.1) 100%);
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .service-card:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+        
+        .service-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 40px rgba(255, 99, 71, 0.2); 
+            border-color: rgba(255, 99, 71, 0.3);
+        }
+        
+        .service-icon { 
+            font-size: 3rem; 
+            margin-bottom: 25px; 
+            color: var(--primary);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-card h5 { 
+            font-size: 1.5rem; 
+            margin-bottom: 15px; 
+            color: white;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-card p { 
+            color: var(--gray); 
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== COMPETENCES SECTION ===== */
+        .competences {
+            background: linear-gradient(135deg, #11121f, var(--dark));
+            position: relative;
+        }
+        
+        .competences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 30px;
+        }
+        
+        .competence-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
+            transform: translateY(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 180px;
         }
         
-        .design-card:hover::before {
+        .competence-card.visible {
             opacity: 1;
+            transform: translateY(0);
         }
         
-        .design-card img {
+        .competence-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 99, 71, 0.2);
+            border-color: rgba(255, 99, 71, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .competence-icon { 
+            font-size: 3rem; 
+            margin-bottom: 15px; 
+            color: var(--primary);
+        }
+        
+        .competence-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: white;
+            margin: 0;
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects {
+            background: var(--dark-light);
+            position: relative;
+        }
+        
+        .projects .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .projects .card-img-top {
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .projects .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 99, 71, 0.2);
+        }
+        
+        .projects .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        
+        .projects .card-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .projects .card-title {
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .projects .card-text {
+            color: var(--gray);
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+        
+        .projects .btn {
+            background: linear-gradient(135deg, var(--primary), #ff856a);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: 600;
+            align-self: flex-start;
+        }
+        
+        .projects .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 99, 71, 0.4);
+        }
+
+        /* ===== DESIGNS SECTION ===== */
+        .designs {
+            background: var(--dark);
+            position: relative;
+        }
+        
+        .designs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 10px 0;
+        }
+        
+        .design-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            height: 250px;
+        }
+        
+        .design-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: transform 0.5s ease;
         }
         
-        .design-card:hover img {
+        .design-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 99, 71, 0.3);
+        }
+        
+        .design-item:hover img {
             transform: scale(1.1);
         }
         
-        .design-overlay {
+        .design-item::after {
+            content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 25px;
-            background: linear-gradient(to top, 
-                rgba(0, 0, 0, 0.9) 0%,
-                rgba(0, 0, 0, 0.7) 50%,
-                transparent 100%);
-            transform: translateY(100%);
-            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            z-index: 2;
-        }
-        
-        .design-card:hover .design-overlay {
-            transform: translateY(0);
-        }
-        
-        .design-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 8px;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        
-        .design-category {
-            font-size: 0.9rem;
-            color: var(--primary);
-            display: inline-block;
-            padding: 5px 15px;
-            background: rgba(255, 99, 71, 0.2);
-            border-radius: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .design-zoom {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.3s ease;
-            z-index: 3;
-            cursor: pointer;
-        }
-        
-        .design-card:hover .design-zoom {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        .design-zoom:hover {
-            background: var(--primary);
-            transform: scale(1.1);
-        }
-        
-        /* Effet de particules flottantes */
-        .floating-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
             pointer-events: none;
-            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 99, 71, 0.5);
-            border-radius: 50%;
-            animation: floatParticle linear infinite;
+        .design-item:hover::after {
+            opacity: 1;
         }
         
-        @keyframes floatParticle {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
-        }
-
-        /* Section témoignages */
-        .testimonials {
+        /* ===== LOGOS SECTION ===== */
+        .logos-section {
             background: linear-gradient(135deg, var(--dark-light), var(--dark));
-            padding: 100px 0;
             position: relative;
         }
         
-        .testimonial-slider {
-            max-width: 900px;
-            margin: 0 auto;
+        .logos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
         
-        .testimonial-card {
+        .logo-item {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
-        .testimonial-card:hover {
+        .logo-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 99, 71, 0.3);
+            box-shadow: 0 15px 30px rgba(255, 99, 71, 0.2);
+        }
+        
+        .logo-item img {
+            max-height: 120px;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+        
+        .logo-item h5 {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .logo-item p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* ===== CV SECTION ===== */
+        .cv-section {
+            background: linear-gradient(135deg, #1f2833, var(--dark-light));
+            position: relative;
+        }
+        
+        .cv-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .cv-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            min-width: 280px;
+        }
+        
+        .cv-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(255, 99, 71, 0.2);
             border-color: rgba(255, 99, 71, 0.3);
         }
         
-        /* Section process créatif */
-        .creative-process {
-            background: var(--dark);
-            padding: 100px 0;
+        .cv-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 25px;
         }
         
-        .process-step {
-            text-align: center;
-            padding: 30px;
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn.btn-fr {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .download-btn.btn-fr:hover {
+            background: #45a29e;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(102, 252, 241, 0.3);
+        }
+        
+        .download-btn.btn-en {
+            background: #f1c40f;
+            color: var(--dark);
+        }
+        
+        .download-btn.btn-en:hover {
+            background: #f39c12;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(243, 156, 18, 0.3);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background: linear-gradient(135deg, var(--dark), var(--dark-light));
             position: relative;
         }
         
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
+        .contact-form-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .contact form input, 
+        .contact form textarea {
+            width: 100%;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact form input:focus, 
+        .contact form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .contact form button {
+            background: linear-gradient(135deg, var(--primary), #ff856a);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 20px;
-            color: white;
-            position: relative;
-            z-index: 2;
+            gap: 10px;
+            margin-top: 20px;
         }
         
-        /* Section blog/articles */
-        .blog-section {
-            background: linear-gradient(135deg, #11121f, var(--dark));
-            padding: 100px 0;
+        .contact form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 99, 71, 0.4);
         }
         
-        .blog-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 99, 71, 0.2);
-        }
-        
-        /* Section statistiques */
-        .stats-section {
-            background: linear-gradient(135deg, var(--primary), #ff856a);
-            padding: 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .stat-card {
-            text-align: center;
-            padding: 30px;
-            color: white;
-        }
-        
-        /* Footer amélioré */
-        footer {
-            background: #0a0b18;
-            color: var(--gray);
-            text-align: center;
-            padding: 60px 0 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .footer-links {
+        .contact-details {
+            margin-top: 40px;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 30px;
-            margin: 30px 0;
-            flex-wrap: wrap;
         }
         
-        .footer-links a {
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--gray);
+        }
+        
+        .contact-detail i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .contact-detail a {
             color: var(--gray);
             transition: color 0.3s ease;
         }
         
-        .footer-links a:hover {
+        .contact-detail a:hover {
             color: var(--primary);
         }
 
-        /* Modal fullscreen amélioré */
-        .fullscreen-modal {
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0a0b18;
+            color: var(--gray);
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: var(--gray);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        footer a {
+            color: var(--primary);
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== FULLSCREEN IMAGE MODAL ===== */
+        #fullscreenImage {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: none;
+            background: rgba(0, 0, 0, 0.9);
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            padding: 20px;
         }
         
-        .fullscreen-modal.active {
-            display: flex;
-            opacity: 1;
-        }
-        
-        .modal-content {
+        #fullscreenImage img {
             max-width: 90%;
             max-height: 90%;
-            position: relative;
-            animation: modalAppear 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        
-        @keyframes modalAppear {
-            0% { transform: scale(0.8) translateY(50px); opacity: 0; }
-            100% { transform: scale(1) translateY(0); opacity: 1; }
-        }
-        
-        .modal-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 20px;
-            transform: translateY(-50%);
-            z-index: 10000;
-        }
-        
-        .nav-btn {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-        }
-        
-        .nav-btn:hover {
-            background: var(--primary);
-            transform: scale(1.1);
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            z-index: 10000;
-        }
-        
-        .modal-close:hover {
-            background: var(--primary);
-            transform: rotate(90deg);
-        }
-        
-        .modal-img {
-            max-width: 100%;
-            max-height: 80vh;
             object-fit: contain;
             border-radius: 10px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
         
-        .modal-info {
+        .close-btn {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(to top, 
-                rgba(0, 0, 0, 0.9) 0%,
-                rgba(0, 0, 0, 0.7) 50%,
-                transparent 100%);
+            top: 30px;
+            right: 30px;
             color: white;
-            text-align: center;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 10001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255, 99, 71, 0.8);
+            transform: rotate(90deg);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 3.5rem; }
+            .section-title { font-size: 2.5rem; }
+            .about-content { gap: 40px; }
+            .about-img { flex: 0 0 250px; }
+        }
+        
+        @media (max-width: 768px) {
+            section { padding: 80px 0; }
+            .hero-title { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 1.5rem; }
+            .section-title { font-size: 2.2rem; }
+            .about-content { flex-direction: column; }
+            .about-img { flex: 0 0 auto; width: 100%; max-width: 300px; margin: 0 auto; }
+            .designs-container { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+            .logos-container { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .hero-btn { padding: 12px 30px; }
+            .section-title { font-size: 1.8rem; }
+            .competences-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 20px; }
+            .competence-card { height: 150px; padding: 20px 15px; }
+            .competence-icon { font-size: 2.5rem; }
+            .cv-container { gap: 20px; }
+            .cv-item { padding: 30px 20px; min-width: 100%; }
         }
     </style>
 </head>
 
 <body>
+    <!-- Background Space Animation -->
+    <div class="space-background"></div>
+
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
@@ -583,360 +1189,99 @@
                     <li class="nav-item"><a class="nav-link active" href="#home">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
                     <li class="nav-item"><a class="nav-link" href="#designs">Designs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#process">Processus</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimonials">Témoignages</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- SECTION DESIGNS CREATIVE -->
-    <section id="designs" class="designs-section">
-        <div class="container">
-            <h2 class="section-title animate__animated animate__fadeInDown">Galerie Créative</h2>
-            <p class="section-subtitle animate__animated animate__fadeInUp">
-                Découvrez mes créations graphiques réalisées avec passion et expertise
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-creative">
+        <div class="hero-content">
+            <h1 class="hero-title">Amal Chkiwa</h1>
+            <h3 class="hero-subtitle">
+                <span class="typing"></span>
+            </h3>
+            <p class="hero-text">
+                Je transforme des idées en expériences digitales mémorables. Passionnée par le design et le développement, je crée des solutions visuelles qui captivent et engagent.
             </p>
-            
-            <!-- Filtres -->
-            <div class="designs-filter animate__animated animate__fadeInUp">
-                <button class="filter-btn active" data-filter="all">Tous</button>
-                <button class="filter-btn" data-filter="photoshop">Photoshop</button>
-                <button class="filter-btn" data-filter="illustrator">Illustrator</button>
-                <button class="filter-btn" data-filter="branding">Branding</button>
-                <button class="filter-btn" data-filter="print">Print</button>
-                <button class="filter-btn" data-filter="digital">Digital</button>
+            <div class="hero-buttons">
+                <a href="#projects" class="hero-btn">
+                    <i class="fas fa-eye"></i> Voir mes projets
+                </a>
+                <a href="#contact" class="hero-btn secondary">
+                    <i class="fas fa-envelope"></i> Me contacter
+                </a>
             </div>
-            
-            <!-- Grille de designs -->
-            <div class="designs-creative-grid" id="designs-grid">
-                <!-- Tous vos designs organisés par catégorie -->
-                <div class="design-card" data-category="branding digital" data-index="1">
-                    <img src="des/23 (2).png" alt="Design 23 - Branding" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Branding</span>
-                        <h4 class="design-title">Logo Modern</h4>
-                        <p>Création d'identité visuelle</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="photoshop digital" data-index="2">
-                    <img src="des/31.jpg" alt="Design 31 - Photoshop" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Photoshop</span>
-                        <h4 class="design-title">Composition Artistique</h4>
-                        <p>Manipulation photo créative</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="photoshop" data-index="3">
-                    <img src="des/32.jpg" alt="Design 32 - Photoshop" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Photoshop</span>
-                        <h4 class="design-title">Retouche Avancée</h4>
-                        <p>Travail sur la lumière et les couleurs</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="illustrator branding" data-index="4">
-                    <img src="des/33.jpg" alt="Design 33 - Illustrator" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Illustrator</span>
-                        <h4 class="design-title">Vector Art</h4>
-                        <p>Illustration vectorielle moderne</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="digital photoshop" data-index="5">
-                    <img src="des/34.jpg" alt="Design 34 - Digital Art" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Digital Art</span>
-                        <h4 class="design-title">Art Numérique</h4>
-                        <p>Création digitale contemporaine</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="print branding" data-index="6">
-                    <img src="des/35.jpg" alt="Design 35 - Print" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Print Design</span>
-                        <h4 class="design-title">Affiche Publicitaire</h4>
-                        <p>Design pour impression</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="photoshop" data-index="7">
-                    <img src="des/36.jpg" alt="Design 36 - Photoshop" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Photoshop</span>
-                        <h4 class="design-title">Montage Photo</h4>
-                        <p>Composition complexe</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="digital" data-index="8">
-                    <img src="des/30.jpg" alt="Design 30 - Digital" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Digital Design</span>
-                        <h4 class="design-title">Design Web</h4>
-                        <p>Interface utilisateur moderne</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="branding" data-index="9">
-                    <img src="des/2.jpg" alt="Design 2 - Branding" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Branding</span>
-                        <h4 class="design-title">Identité Visuelle</h4>
-                        <p>Packaging et logo</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="illustrator" data-index="10">
-                    <img src="des/20.png" alt="Design 20 - Illustrator" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Illustrator</span>
-                        <h4 class="design-title">Illustration Vectorielle</h4>
-                        <p>Travail des formes et couleurs</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="photoshop" data-index="11">
-                    <img src="des/3.jpg" alt="Design 3 - Photoshop" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Photoshop</span>
-                        <h4 class="design-title">Retouche Créative</h4>
-                        <p>Effets spéciaux et corrections</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="photoshop" data-index="12">
-                    <img src="des/4.jpg" alt="Design 4 - Photoshop" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Photoshop</span>
-                        <h4 class="design-title">Design Graphique</h4>
-                        <p>Composition visuelle</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="illustrator" data-index="13">
-                    <img src="des/22.png" alt="Design 22 - Illustrator" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Illustrator</span>
-                        <h4 class="design-title">Logo Design</h4>
-                        <p>Création de marque</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="print" data-index="14">
-                    <img src="des/5.jpg" alt="Design 5 - Print" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Print Design</span>
-                        <h4 class="design-title">Design Editorial</h4>
-                        <p>Mise en page créative</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="digital" data-index="15">
-                    <img src="des/11.jpg" alt="Design 11 - Digital" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Digital Design</span>
-                        <h4 class="design-title">UI/UX Design</h4>
-                        <p>Interface utilisateur</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="illustrator" data-index="16">
-                    <img src="des/16.png" alt="Design 16 - Illustrator" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Illustrator</span>
-                        <h4 class="design-title">Icon Design</h4>
-                        <p>Système d'icônes vectorielles</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="photoshop" data-index="17">
-                    <img src="des/16.jpg" alt="Design 16 - Photoshop" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Photoshop</span>
-                        <h4 class="design-title">Photo Manipulation</h4>
-                        <p>Art digital avancé</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="branding" data-index="18">
-                    <img src="des/13.jpg" alt="Design 13 - Branding" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Branding</span>
-                        <h4 class="design-title">Identity Design</h4>
-                        <p>Charte graphique complète</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="print" data-index="19">
-                    <img src="des/15.jpg" alt="Design 15 - Print" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Print Design</span>
-                        <h4 class="design-title">Brochure Design</h4>
-                        <p>Design imprimé professionnel</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="digital" data-index="20">
-                    <img src="des/17.jpg" alt="Design 17 - Digital" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Digital Art</span>
-                        <h4 class="design-title">Digital Painting</h4>
-                        <p>Peinture numérique</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="photoshop" data-index="21">
-                    <img src="des/14.jpg" alt="Design 14 - Photoshop" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Photoshop</span>
-                        <h4 class="design-title">Creative Editing</h4>
-                        <p>Édition photo artistique</p>
-                    </div>
-                </div>
-                
-                <div class="design-card" data-category="illustrator branding" data-index="22">
-                    <img src="des/6.jpg" alt="Design 6 - Illustrator" loading="lazy">
-                    <div class="design-zoom">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="design-overlay">
-                        <span class="design-category">Illustrator</span>
-                        <h4 class="design-title">Vector Branding</h4>
-                        <p>Identité visuelle vectorielle</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Particules flottantes -->
-            <div class="floating-particles" id="particles"></div>
+        </div>
+
+        <!-- Floating Icons avec retour (restauré) -->
+        <div class="floating-icons">
+            <img src="icons/win.png" class="icon">
+            <img src="icons/ps.png" class="icon">
+            <img src="icons/ae.png" class="icon">
+            <img src="icons/ai.png" class="icon">
+            <img src="icons/html.png" class="icon">
+            <img src="icons/css.png" class="icon">
+            <img src="icons/js.png" class="icon">
+            <img src="icons/canva.png" class="icon">
+            <img src="icons/Python.png" class="icon">
+            <img src="icons/figma.png" class="icon">
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll pour découvrir</span>
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
-    <!-- SECTION PROCESSUS CREATIF (NOUVELLE SECTION) -->
-    <section id="process" class="creative-process">
+    <!-- ABOUT SECTION AVEC ANIMATIONS ENRICHIES -->
+    <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">Mon Processus Créatif</h2>
+            <h2 class="section-title">À propos de moi</h2>
             <p class="section-subtitle">
-                Découvrez ma méthodologie pour transformer vos idées en designs impactants
+                Passionnée par l'art du design et la puissance du code, je crée des expériences digitales uniques et impactantes.
             </p>
             
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="process-step">
-                        <div class="step-number">01</div>
-                        <h4>Découverte</h4>
-                        <p>Analyse du brief et recherche approfondie pour comprendre vos besoins</p>
-                    </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="1.jpg" alt="Amal Chkiwa">
                 </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="process-step">
-                        <div class="step-number">02</div>
-                        <h4>Conceptualisation</h4>
-                        <p>Création de moodboards et développement des concepts créatifs</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="process-step">
-                        <div class="step-number">03</div>
-                        <h4>Design</h4>
-                        <p>Réalisation des designs avec les outils professionnels adéquats</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="process-step">
-                        <div class="step-number">04</div>
-                        <h4>Livraison</h4>
-                        <p>Présentation et ajustements finaux avant livraison des fichiers</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION TEMOIGNAGES (NOUVELLE SECTION) -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="section-title">Ce qu'ils disent de mon travail</h2>
-            
-            <div class="testimonial-slider">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Amal a transformé notre identité visuelle avec une créativité exceptionnelle. Son professionnalisme et son sens du détail sont remarquables."</p>
-                        <div class="testimonial-author">
-                            <h5>Sarah M.</h5>
-                            <span>Directrice Marketing, TechStart</span>
+                <div class="about-text" id="about-text">
+                    <h3>Designer & Développeuse Créative</h3>
+                    <p>
+                        Passionnée par le design visuel et le développement web, je transforme des idées en expériences immersives. 
+                        J'allie créativité, technique et sens du détail pour concevoir des identités visuelles fortes, des interfaces élégantes 
+                        et des solutions digitales modernes.
+                    </p>
+                    <p>
+                        Mon objectif ? Créer des projets qui racontent une histoire et qui marquent. Chaque pixel, chaque ligne de code 
+                        est pensé pour offrir une expérience utilisateur optimale et esthétiquement aboutie.
+                    </p>
+                    <p>
+                        Mon approche combine une vision artistique aiguisée avec une expertise technique solide, 
+                        permettant de créer des solutions qui sont à la fois belles et fonctionnelles.
+                    </p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="50">0</span>
+                            <span class="stat-label">Projets réalisés</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="15">0</span>
+                            <span class="stat-label">Clients satisfaits</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="3">0</span>
+                            <span class="stat-label">Années d'expérience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="10">0</span>
+                            <span class="stat-label">Technologies maîtrisées</span>
                         </div>
                     </div>
                 </div>
@@ -944,44 +1289,149 @@
         </div>
     </section>
 
-    <!-- SECTION BLOG (NOUVELLE SECTION) -->
-    <section id="blog" class="blog-section">
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Articles & Tutoriels</h2>
+            <h2 class="section-title">Mes Services</h2>
             <p class="section-subtitle">
-                Partages d'expertise et conseils en design
+                Je propose une gamme complète de services pour transformer vos idées en réalité digitale.
             </p>
             
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="blog-card">
-                        <div class="blog-image" style="height: 200px; background: linear-gradient(135deg, var(--primary), var(--secondary));"></div>
-                        <div class="blog-content p-4">
-                            <h4>Les tendances design 2024</h4>
-                            <p>Découvrez les tendances qui vont marquer l'année en design graphique et digital.</p>
-                            <a href="#" class="text-primary">Lire l'article →</a>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h5>Développement Web</h5>
+                        <p>Création de sites web modernes, responsives et optimisés pour tous les appareils avec les dernières technologies.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h5>Design Graphique</h5>
+                        <p>Création de visuels élégants et professionnels pour améliorer l'image de votre marque et captiver votre audience.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h5>Montage Vidéo</h5>
+                        <p>Conception de montages vidéo professionnels et esthétiquement travaillés pour communiquer efficacement votre message.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPETENCES SECTION -->
+    <section id="competences" class="competences">
+        <div class="container">
+            <h2 class="section-title">Mes Compétences</h2>
+            <p class="section-subtitle">
+                Un panel de compétences techniques et créatives pour répondre à tous vos besoins digitaux.
+            </p>
+            
+            <div class="competences-grid">
+                <div class="competence-card">
+                    <i class="fab fa-html5 competence-icon"></i>
+                    <h5 class="competence-title">HTML5</h5>
+                </div>
+                <div class="competence-card">
+                    <i class="fab fa-css3-alt competence-icon"></i>
+                    <h5 class="competence-title">CSS3</h5>
+                </div>
+                <div class="competence-card">
+                    <i class="fab fa-js competence-icon"></i>
+                    <h5 class="competence-title">JavaScript</h5>
+                </div>
+                <div class="competence-card">
+                    <i class="fab fa-python competence-icon"></i>
+                    <h5 class="competence-title">Python</h5>
+                </div>
+                <div class="competence-card">
+                    <i class="fas fa-file-excel competence-icon"></i>
+                    <h5 class="competence-title">Excel</h5>
+                </div>
+                <div class="competence-card">
+                    <i class="fas fa-file-word competence-icon"></i>
+                    <h5 class="competence-title">Word</h5>
+                </div>
+                <div class="competence-card">
+                    <i class="fas fa-image competence-icon"></i>
+                    <h5 class="competence-title">Photoshop</h5>
+                </div>
+                <div class="competence-card">
+                    <i class="fas fa-vector-square competence-icon"></i>
+                    <h5 class="competence-title">Illustrator</h5>
+                </div>
+                <div class="competence-card">
+                    <i class="fas fa-palette competence-icon"></i>
+                    <h5 class="competence-title">Canva</h5>
+                </div>
+                <div class="competence-card">
+                    <i class="fab fa-linux competence-icon"></i>
+                    <h5 class="competence-title">Linux</h5>
+                </div>
+                <div class="competence-card">
+                    <i class="fab fa-windows competence-icon"></i>
+                    <h5 class="competence-title">Windows</h5>
+                </div>
+                <div class="competence-card">
+                    <i class="fas fa-cube competence-icon"></i>
+                    <h5 class="competence-title">3D Design</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Mes Projets</h2>
+            <p class="section-subtitle">
+                Découvrez une sélection de mes réalisations les plus marquantes.
+            </p>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <img src="1/15.jpg" class="card-img-top" alt="Gestion des Switchers">
+                        <div class="card-body">
+                            <h5 class="card-title">Gestion des Switchers</h5>
+                            <p class="card-text">Solution innovante pour la gestion et le monitoring des équipements réseau.</p>
+                            <a href="projet1.html" class="btn">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="blog-card">
-                        <div class="blog-image" style="height: 200px; background: linear-gradient(135deg, #667eea, #764ba2);"></div>
-                        <div class="blog-content p-4">
-                            <h4>Photoshop vs Illustrator</h4>
-                            <p>Quel outil utiliser pour quel projet ? Guide complet pour bien choisir.</p>
-                            <a href="#" class="text-primary">Lire l'article →</a>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <img src="2/21.jpg" class="card-img-top" alt="BAD UI">
+                        <div class="card-body">
+                            <h5 class="card-title">BAD UI</h5>
+                            <p class="card-text">Étude et redesign d'interfaces utilisateur pour améliorer l'expérience.</p>
+                            <a href="projet2.html" class="btn">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="blog-card">
-                        <div class="blog-image" style="height: 200px; background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
-                        <div class="blog-content p-4">
-                            <h4>Créer une charte graphique</h4>
-                            <p>Les étapes essentielles pour développer une identité visuelle cohérente.</p>
-                            <a href="#" class="text-primary">Lire l'article →</a>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <img src="3/1.jpg" class="card-img-top" alt="Explorer de Tunisie">
+                        <div class="card-body">
+                            <h5 class="card-title">Explorer de Tunisie</h5>
+                            <p class="card-text">Plateforme touristique interactive pour découvrir les merveilles de la Tunisie.</p>
+                            <a href="projet3.html" class="btn">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -989,270 +1439,188 @@
         </div>
     </section>
 
-    <!-- MODAL FULLSCREEN -->
-    <div class="fullscreen-modal" id="fullscreenModal">
-        <button class="modal-close">
-            <i class="fas fa-times"></i>
-        </button>
-        
-        <div class="modal-nav">
-            <button class="nav-btn prev-btn">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="nav-btn next-btn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-        
-        <div class="modal-content">
-            <img class="modal-img" src="" alt="Design en plein écran">
-            <div class="modal-info">
-                <h3 class="modal-title"></h3>
-                <p class="modal-description"></p>
+    <!-- DESIGNS SECTION -->
+    <section id="designs" class="designs">
+        <div class="container">
+            <h2 class="section-title">Mes Designs Graphiques</h2>
+            <p class="section-subtitle">
+                Créations réalisées avec Adobe Photoshop, Illustrator et autres outils de design.
+            </p>
+            
+            <div class="designs-container">
+                <!-- Design items will be loaded here -->
+                <div class="design-item">
+                    <img src="des/23 (2).png" alt="Design 23" loading="lazy">
+                </div>
+                <div class="design-item">
+                    <img src="des/31.jpg" alt="Design 31" loading="lazy">
+                </div>
+                <div class="design-item">
+                    <img src="des/32.jpg" alt="Design 32" loading="lazy">
+                </div>
+                <div class="design-item">
+                    <img src="des/33.jpg" alt="Design 33" loading="lazy">
+                </div>
+                <div class="design-item">
+                    <img src="des/34.jpg" alt="Design 34" loading="lazy">
+                </div>
+                <div class="design-item">
+                    <img src="des/35.jpg" alt="Design 35" loading="lazy">
+                </div>
+                <div class="design-item">
+                    <img src="des/36.jpg" alt="Design 36" loading="lazy">
+                </div>
+                <div class="design-item">
+                    <img src="des/30.jpg" alt="Design 30" loading="lazy">
+                </div>
+                <!-- Add more design items as needed -->
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- LOGOS SECTION -->
+    <section id="logos" class="logos-section">
+        <div class="container">
+            <h2 class="section-title">Mes Logos</h2>
+            <p class="section-subtitle">
+                Identités visuelles créées pour diverses marques et projets.
+            </p>
+            
+            <div class="logos-container">
+                <div class="logo-item">
+                    <img src="logos/1.png" alt="Logo Programme Éveil">
+                    <h5>Programme Éveil</h5>
+                    <p>Identité visuelle créée pour Rose Blanche Group</p>
+                </div>
+                <div class="logo-item">
+                    <img src="logos/2.png" alt="Logo Programme Éveil variante">
+                    <h5>Programme Éveil</h5>
+                    <p>Variante du logo pour le branding pédagogique</p>
+                </div>
+                <div class="logo-item">
+                    <img src="logos/3.png" alt="Logo parcours CAPTE">
+                    <h5>Parcours CAPTE</h5>
+                    <p>Logo moderne avec une touche abstraite</p>
+                </div>
+                <div class="logo-item">
+                    <img src="logos/4.png" alt="Logo parcours RESET">
+                    <h5>Parcours RESET</h5>
+                    <p>Logo élégant pour une marque premium</p>
+                </div>
+                <div class="logo-item">
+                    <img src="logos/5.png" alt="Logo société OCTOGO">
+                    <h5>Société OCTOGO</h5>
+                    <p>Logo moderne avec une touche abstraite</p>
+                </div>
+                <div class="logo-item">
+                    <img src="logos/6.png" alt="Logo parcours NEXUS">
+                    <h5>Parcours NEXUS</h5>
+                    <p>Logo dynamique pour une marque innovante</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV SECTION -->
+    <section id="cv" class="cv-section">
+        <div class="container">
+            <h2 class="section-title">Mon CV</h2>
+            <p class="section-subtitle">
+                Téléchargez mon curriculum vitae pour en savoir plus sur mon parcours et mes compétences.
+            </p>
+            
+            <div class="cv-container">
+                <div class="cv-item">
+                    <h3 class="cv-title">CV Français</h3>
+                    <p>Téléchargez ma version française</p>
+                    <a href="cv-amal-fr.pdf" download="CV_Amal_Chkiwa_FR" class="download-btn btn-fr">
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                </div>
+                <div class="cv-item">
+                    <h3 class="cv-title">CV Anglais</h3>
+                    <p>Download my English version</p>
+                    <a href="Eng-cv.pdf" download="CV_Amal_Chkiwa_EN" class="download-btn btn-en">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contactez-moi</h2>
+            <p class="section-subtitle">
+                Discutons de votre prochain projet ! Je suis disponible pour collaborer sur des projets créatifs et innovants.
+            </p>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form-container">
+                        <form action="mailto:amalch206@gmail.com" method="post" enctype="text/plain">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" name="name" placeholder="Votre nom" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" name="email" placeholder="Votre email" required>
+                                </div>
+                            </div>
+                            <input type="text" name="subject" placeholder="Sujet" required>
+                            <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+                            <button type="submit">
+                                <i class="fas fa-paper-plane"></i> Envoyer le message
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:amalch206@gmail.com">amalch206@gmail.com</a>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:+21626450657">+216 26 450 657</a>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Tunis, Tunisie</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="social-links">
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
                 <a href="#"><i class="fab fa-behance"></i></a>
                 <a href="#"><i class="fab fa-dribbble"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
-            
-            <div class="footer-links">
-                <a href="#home">Accueil</a>
-                <a href="#about">À propos</a>
-                <a href="#services">Services</a>
-                <a href="#designs">Portfolio</a>
-                <a href="#process">Processus</a>
-                <a href="#contact">Contact</a>
-            </div>
-            
             <p>&copy; 2024 Amal Chkiwa. Tous droits réservés.</p>
-            <p>Designé avec passion et développé avec expertise</p>
+            <p>Designé et développé avec <i class="fas fa-heart" style="color: #ff6347;"></i> par Amal Chkiwa</p>
         </div>
     </footer>
 
+    <!-- FULLSCREEN IMAGE MODAL -->
+    <div id="fullscreenImage">
+        <div class="close-btn">&times;</div>
+        <img id="fullscreenImg" src="" alt="Fullscreen Image">
+    </div>
+
+    <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // GSAP Animations
-            gsap.registerPlugin(ScrollTrigger);
-            
-            // Animation des cartes designs
-            const designCards = document.querySelectorAll('.design-card');
-            designCards.forEach((card, index) => {
-                gsap.fromTo(card, 
-                    {
-                        opacity: 0,
-                        y: 50,
-                        rotationX: 10
-                    },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        rotationX: 0,
-                        duration: 0.8,
-                        delay: index * 0.1,
-                        scrollTrigger: {
-                            trigger: card,
-                            start: "top 80%",
-                            toggleActions: "play none none reverse"
-                        },
-                        ease: "power2.out"
-                    }
-                );
-            });
-            
-            // Animation du titre
-            gsap.from('.section-title', {
-                y: -50,
-                opacity: 0,
-                duration: 1,
-                ease: "power3.out"
-            });
-            
-            // Filtrage des designs
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const designCardsAll = document.querySelectorAll('.design-card');
-            
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Active le bouton
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    
-                    const filter = btn.dataset.filter;
-                    
-                    // Animation de filtrage
-                    designCardsAll.forEach(card => {
-                        const categories = card.dataset.category.split(' ');
-                        
-                        if (filter === 'all' || categories.includes(filter)) {
-                            gsap.to(card, {
-                                scale: 1,
-                                opacity: 1,
-                                duration: 0.5,
-                                ease: "power2.out"
-                            });
-                        } else {
-                            gsap.to(card, {
-                                scale: 0.8,
-                                opacity: 0.3,
-                                duration: 0.5,
-                                ease: "power2.out"
-                            });
-                        }
-                    });
-                });
-            });
-            
-            // Modal Fullscreen
-            const modal = document.getElementById('fullscreenModal');
-            const modalImg = modal.querySelector('.modal-img');
-            const modalTitle = modal.querySelector('.modal-title');
-            const modalDescription = modal.querySelector('.modal-description');
-            const closeBtn = modal.querySelector('.modal-close');
-            const prevBtn = modal.querySelector('.prev-btn');
-            const nextBtn = modal.querySelector('.next-btn');
-            
-            let currentIndex = 0;
-            let currentDesigns = [];
-            
-            // Ouvrir modal
-            designCards.forEach(card => {
-                card.addEventListener('click', (e) => {
-                    if (!e.target.closest('.design-zoom')) return;
-                    
-                    const img = card.querySelector('img');
-                    const title = card.querySelector('.design-title').textContent;
-                    const category = card.querySelector('.design-category').textContent;
-                    const description = card.querySelector('p').textContent;
-                    
-                    currentIndex = parseInt(card.dataset.index) - 1;
-                    currentDesigns = Array.from(designCards);
-                    
-                    modalImg.src = img.src;
-                    modalTitle.textContent = title;
-                    modalDescription.textContent = `${category} - ${description}`;
-                    
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-            
-            // Navigation modal
-            function showDesign(index) {
-                if (index < 0) index = currentDesigns.length - 1;
-                if (index >= currentDesigns.length) index = 0;
-                
-                currentIndex = index;
-                const card = currentDesigns[index];
-                const img = card.querySelector('img');
-                const title = card.querySelector('.design-title').textContent;
-                const category = card.querySelector('.design-category').textContent;
-                const description = card.querySelector('p').textContent;
-                
-                // Animation de transition
-                gsap.to(modalImg, {
-                    opacity: 0,
-                    duration: 0.3,
-                    onComplete: () => {
-                        modalImg.src = img.src;
-                        modalTitle.textContent = title;
-                        modalDescription.textContent = `${category} - ${description}`;
-                        
-                        gsap.to(modalImg, {
-                            opacity: 1,
-                            duration: 0.3
-                        });
-                    }
-                });
-            }
-            
-            prevBtn.addEventListener('click', () => showDesign(currentIndex - 1));
-            nextBtn.addEventListener('click', () => showDesign(currentIndex + 1));
-            
-            // Fermer modal
-            closeBtn.addEventListener('click', () => {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-            
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            
-            // Navigation clavier
-            document.addEventListener('keydown', (e) => {
-                if (!modal.classList.contains('active')) return;
-                
-                if (e.key === 'Escape') {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                } else if (e.key === 'ArrowLeft') {
-                    showDesign(currentIndex - 1);
-                } else if (e.key === 'ArrowRight') {
-                    showDesign(currentIndex + 1);
-                }
-            });
-            
-            // Effet de parallaxe sur les cartes
-            designCards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    const rotateY = ((x - centerX) / centerX) * 5;
-                    const rotateX = ((centerY - y) / centerY) * 5;
-                    
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-                });
-            });
-            
-            // Effet de particules
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                // Position aléatoire
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                // Animation aléatoire
-                const duration = 10 + Math.random() * 20;
-                const delay = Math.random() * 5;
-                
-                particle.style.animation = `floatParticle ${duration}s linear ${delay}s infinite`;
-                particle.style.width = `${2 + Math.random() * 4}px`;
-                particle.style.height = particle.style.width;
-                particle.style.background = `rgba(255, 99, 71, ${0.2 + Math.random() * 0.3})`;
-                
-                particlesContainer.appendChild(particle);
-            }
-            
             // Navbar scroll effect
             const navbar = document.querySelector('.navbar');
             window.addEventListener('scroll', function() {
@@ -1262,7 +1630,194 @@
                     navbar.classList.remove('scrolled');
                 }
             });
+
+            // Navbar active link
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Typing effect
+            const words = [
+                "Designer Graphique",
+                "Développeuse Web",
+                "Créatrice d'identités visuelles",
+                "Passionnée par l'innovation"
+            ];
+            
+            let i = 0;
+            let j = 0;
+            let currentWord = "";
+            let isDeleting = false;
+            let speed = 100;
+
+            function typeEffect() {
+                const typingElement = document.querySelector(".typing");
+
+                if (!typingElement) return;
+
+                if (i < words.length) {
+                    if (!isDeleting && j <= words[i].length) {
+                        currentWord = words[i].substring(0, j++);
+                        typingElement.textContent = currentWord;
+                        speed = 100;
+                    }
+
+                    if (isDeleting && j >= 0) {
+                        currentWord = words[i].substring(0, j--);
+                        typingElement.textContent = currentWord;
+                        speed = 50;
+                    }
+
+                    if (j === words[i].length + 1) {
+                        isDeleting = true;
+                        speed = 1000;
+                        setTimeout(typeEffect, speed);
+                        return;
+                    } 
+                    else if (j < 0) {
+                        isDeleting = false;
+                        i++;
+                        if (i === words.length) i = 0;
+                        speed = 500;
+                    }
+                }
+
+                setTimeout(typeEffect, speed);
+            }
+
+            typeEffect();
+
+            // Animation About section
+            const aboutText = document.getElementById('about-text');
+            const aboutObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        aboutText.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            aboutObserver.observe(aboutText);
+
+            // Stats counter animation
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        statNumbers.forEach(stat => {
+                            const target = stat;
+                            const count = parseInt(target.getAttribute('data-count'));
+                            const duration = 2000;
+                            const increment = count / (duration / 16);
+                            let current = 0;
+
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= count) {
+                                    target.textContent = count;
+                                    clearInterval(timer);
+                                } else {
+                                    target.textContent = Math.floor(current);
+                                }
+                            }, 16);
+                        });
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            statsObserver.observe(document.querySelector('.about-stats'));
+
+            // Service cards animation
+            const serviceCards = document.querySelectorAll(".service-card");
+            const serviceObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add("visible");
+                        }, index * 200);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            serviceCards.forEach(card => serviceObserver.observe(card));
+
+            // Competence cards animation
+            const competenceCards = document.querySelectorAll(".competence-card");
+            const competenceObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    competenceCards.forEach((card, i) => {
+                        setTimeout(() => card.classList.add("visible"), i * 100);
+                    });
+                }
+            }, { threshold: 0.1 });
+
+            competenceObserver.observe(document.getElementById("competences"));
+
+            // Fullscreen image modal
+            const fullscreenContainer = document.getElementById('fullscreenImage');
+            const fullscreenImg = document.getElementById('fullscreenImg');
+            const designImages = document.querySelectorAll('.design-item img');
+            const closeBtn = document.querySelector('.close-btn');
+
+            designImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    fullscreenImg.src = img.src;
+                    fullscreenContainer.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                fullscreenContainer.style.display = 'none';
+                fullscreenImg.src = '';
+                document.body.style.overflow = 'auto';
+            });
+
+            fullscreenContainer.addEventListener('click', (e) => {
+                if (e.target === fullscreenContainer) {
+                    fullscreenContainer.style.display = 'none';
+                    fullscreenImg.src = '';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
 </html>
+
