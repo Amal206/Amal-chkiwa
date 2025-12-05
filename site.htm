@@ -787,137 +787,60 @@
             box-shadow: 0 10px 20px rgba(255, 99, 71, 0.4);
         }
 
-        /* ===== SCROLLBAR POUR LA SECTION DESIGNS UNIQUEMENT ===== */
-.designs-container {
-    --scrollbar-hue: 10;
-    --top-blur: 0px;
-    --bottom-blur: 0px;
-}
-
-/* Scrollbar personnalisée pour le conteneur des designs */
-.designs-container::-webkit-scrollbar {
-    width: 10px;
-}
-
-.designs-container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    margin: 10px 0;
-}
-
-.designs-container::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 10px;
-    border: 2px solid var(--dark);
-    transition: all 0.3s ease;
-}
-
-.designs-container::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #ff856a, #85fff5);
-    transform: scale(1.1);
-}
-
-/* Animation de la scrollbar */
-@keyframes scrollbarPulse {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 1; }
-}
-
-.designs-container::-webkit-scrollbar-thumb {
-    animation: scrollbarPulse 3s infinite ease-in-out;
-}
-/* Effet de lueur au survol */
-.designs-container::-webkit-scrollbar-thumb:hover {
-    animation: scrollbarPulse 1s infinite ease-in-out;
-}
-/* Wrapper pour la section designs */
-.designs-wrapper {
-    position: relative;
-    margin-bottom: 30px;
-}
-
-/* Compteur de designs */
-.designs-counter {
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px;
-    background: rgba(255, 99, 71, 0.1);
-    border-radius: 10px;
-    display: inline-block;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.designs-counter #designs-count {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary);
-    font-family: 'Space Grotesk', sans-serif;
-}
-
-/* Animation pour les nouveaux designs qui apparaissent */
-@keyframes designAppear {
-    from {
-        opacity: 0;
-        transform: scale(0.9) rotate(-5deg);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-    }
-}
-
-.design-item {
-    animation: designAppear 0.5s ease forwards;
-    animation-delay: calc(var(--item-index) * 0.05s);
-}
-
-/* Effet de chargement progressif */
-.design-item img {
-    opacity: 0;
-    transform: scale(0.95);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.design-item img.loaded {
-    opacity: 1;
-}
-/* Indicateur de scroll */
-.scroll-hint {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--primary);
-    opacity: 0.7;
-    animation: bounceHint 2s infinite ease-in-out;
-    pointer-events: none;
-}
-.designs-container::before,
-.designs-container::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 10px;
-    height: 40px;
-    z-index: 1;
-    pointer-events: none;
-    transition: backdrop-filter 0.3s ease;
-}
-.designs-container::before {
-    top: 0;
-    background: linear-gradient(to bottom, var(--dark-light) 0%, transparent 100%);
-}
-
-.designs-container::after {
-    bottom: 0;
-    background: linear-gradient(to top, var(--dark-light) 0%, transparent 100%);
-}
-@keyframes bounceHint {
-    0%, 100% { transform: translateY(-50%) translateX(0); }
-    50% { transform: translateY(-50%) translateX(-5px); }
-}
+        /* ===== DESIGNS SECTION ===== */
+        .designs {
+            background: var(--dark);
+            position: relative;
+        }
+        
+        .designs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 10px 0;
+        }
+        
+        .design-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            height: 250px;
+        }
+        
+        .design-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .design-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 99, 71, 0.3);
+        }
+        
+        .design-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .design-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .design-item:hover::after {
+            opacity: 1;
+        }
         
         /* ===== LOGOS SECTION ===== */
         .logos-section {
@@ -1187,9 +1110,11 @@
         }
         
         #fullscreenImage img {
-              transition: transform 0.3s ease, opacity 0.3s ease;
-    transform: scale(0.9);
-    opacity: 0;
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
         
         .close-btn {
@@ -1515,16 +1440,13 @@
     </section>
 
     <!-- DESIGNS SECTION -->
-    <!-- DESIGNS SECTION -->
-<section id="designs" class="designs">
-    <div class="container">
-        <h2 class="section-title">Mes Designs Graphiques</h2>
-        <p class="section-subtitle">
-            Créations réalisées avec Adobe Photoshop, Illustrator et autres outils de design.
-            <br><small style="color: var(--primary);">↓ Utilisez la barre de défilement pour voir plus de designs ↓</small>
-        </p>
-        
-        <div class="designs-wrapper">
+    <section id="designs" class="designs">
+        <div class="container">
+            <h2 class="section-title">Mes Designs Graphiques</h2>
+            <p class="section-subtitle">
+                Créations réalisées avec Adobe Photoshop, Illustrator et autres outils de design.
+            </p>
+            
             <div class="designs-container">
                 <!-- Design items will be loaded here -->
                 <div class="design-item">
@@ -1551,43 +1473,10 @@
                 <div class="design-item">
                     <img src="des/30.jpg" alt="Design 30" loading="lazy">
                 </div>
-                <!-- Ajoutez encore plus de designs ici -->
-                <div class="design-item">
-                    <img src="des/37.jpg" alt="Design 37" loading="lazy">
-                </div>
-                <div class="design-item">
-                    <img src="des/38.jpg" alt="Design 38" loading="lazy">
-                </div>
-                <div class="design-item">
-                    <img src="des/39.jpg" alt="Design 39" loading="lazy">
-                </div>
-                <div class="design-item">
-                    <img src="des/40.jpg" alt="Design 40" loading="lazy">
-                </div>
-                <div class="design-item">
-                    <img src="des/41.jpg" alt="Design 41" loading="lazy">
-                </div>
-                <div class="design-item">
-                    <img src="des/42.jpg" alt="Design 42" loading="lazy">
-                </div>
-                <div class="design-item">
-                    <img src="des/43.jpg" alt="Design 43" loading="lazy">
-                </div>
-                <div class="design-item">
-                    <img src="des/44.jpg" alt="Design 44" loading="lazy">
-                </div>
-            </div>
-            <div class="scroll-hint">
-                <i class="fas fa-chevron-right fa-2x"></i>
+                <!-- Add more design items as needed -->
             </div>
         </div>
-        
-        <!-- Compteur de designs -->
-        <div class="designs-counter">
-            <span id="designs-count">0</span> designs disponibles
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- LOGOS SECTION -->
     <section id="logos" class="logos-section">
@@ -1882,223 +1771,34 @@
 
             competenceObserver.observe(document.getElementById("competences"));
 
-          // Fullscreen image modal - Version améliorée avec lazy loading
-const fullscreenContainer = document.getElementById('fullscreenImage');
-const fullscreenImg = document.getElementById('fullscreenImg');
-const designImages = document.querySelectorAll('.design-item img');
-const closeBtn = document.querySelector('.close-btn');
+            // Fullscreen image modal
+            const fullscreenContainer = document.getElementById('fullscreenImage');
+            const fullscreenImg = document.getElementById('fullscreenImg');
+            const designImages = document.querySelectorAll('.design-item img');
+            const closeBtn = document.querySelector('.close-btn');
 
-// Chargement progressif des images de design
-designImages.forEach(img => {
-    // Lazy loading pour les images
-    if ('loading' in HTMLImageElement.prototype) {
-        img.loading = 'lazy';
-    }
-    
-    // Animation au chargement
-    img.addEventListener('load', function() {
-        this.style.opacity = '1';
-        this.style.transform = 'scale(1)';
-    });
-    
-    // Plein écran au clic
-    img.addEventListener('click', (e) => {
-        e.stopPropagation(); // Empêche la propagation du clic
-        fullscreenImg.src = img.src;
-        fullscreenImg.alt = img.alt;
-        fullscreenContainer.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        
-        // Animation d'entrée
-        setTimeout(() => {
-            fullscreenImg.style.transform = 'scale(1)';
-            fullscreenImg.style.opacity = '1';
-        }, 10);
-    });
-});
-
-// Fermeture du plein écran
-closeBtn.addEventListener('click', () => {
-    fullscreenImg.style.transform = 'scale(0.9)';
-    fullscreenImg.style.opacity = '0';
-    
-    setTimeout(() => {
-        fullscreenContainer.style.display = 'none';
-        fullscreenImg.src = '';
-        document.body.style.overflow = 'auto';
-        fullscreenImg.style.transform = 'scale(1)';
-        fullscreenImg.style.opacity = '1';
-    }, 300);
-});
-
-// Fermeture en cliquant en dehors de l'image
-fullscreenContainer.addEventListener('click', (e) => {
-    if (e.target === fullscreenContainer) {
-        closeBtn.click();
-    }
-});
-
-// Navigation au clavier
-document.addEventListener('keydown', (e) => {
-    if (fullscreenContainer.style.display === 'flex') {
-        if (e.key === 'Escape' || e.key === 'Esc') {
-            closeBtn.click();
-        }
-    }
-});
-
-// Gestion de la barre de défilement pour la section Designs
-document.addEventListener('DOMContentLoaded', function() {
-    const designsContainer = document.querySelector('.designs-container');
-    
-    // Initialiser le compteur de designs
-    const designCount = designImages.length;
-    const counterElement = document.getElementById('designs-count') || createCounterElement();
-    
-    function createCounterElement() {
-        const counter = document.createElement('div');
-        counter.className = 'designs-counter';
-        counter.innerHTML = `<span id="designs-count">${designCount}</span> designs disponibles`;
-        const designsSection = document.querySelector('.designs .container');
-        if (designsSection) {
-            designsSection.appendChild(counter);
-        }
-        return counter.querySelector('#designs-count');
-    }
-    
-    if (counterElement) {
-        counterElement.textContent = designCount;
-    }
-    
-    // Ajouter un effet visuel lors du défilement
-    if (designsContainer) {
-        // Activer le défilement uniquement si beaucoup d'images
-        if (designCount > 8) {
-            designsContainer.style.maxHeight = '600px';
-            designsContainer.style.overflowY = 'auto';
-            
-            // Ajouter un effet au scroll
-            designsContainer.addEventListener('scroll', function() {
-                const scrollPercentage = (designsContainer.scrollTop / 
-                    (designsContainer.scrollHeight - designsContainer.clientHeight)) * 100;
-                
-                // Changer la couleur de la barre de défilement selon la position
-                updateScrollbarColor(scrollPercentage);
-                
-                // Ajouter un effet de flou aux bords
-                const topBlur = Math.min(designsContainer.scrollTop / 20, 10);
-                const bottomBlur = Math.min(
-                    (designsContainer.scrollHeight - designsContainer.clientHeight - designsContainer.scrollTop) / 20, 
-                    10
-                );
-                
-                designsContainer.style.setProperty('--top-blur', `${topBlur}px`);
-                designsContainer.style.setProperty('--bottom-blur', `${bottomBlur}px`);
+            designImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    fullscreenImg.src = img.src;
+                    fullscreenContainer.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
             });
-            
-            // Initialiser la couleur de la scrollbar
-            updateScrollbarColor(0);
-        }
-    }
-    
-    // Animation d'apparition des images
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.style.opacity = '0';
-                img.style.transform = 'scale(0.95)';
-                
-                setTimeout(() => {
-                    img.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                    img.style.opacity = '1';
-                    img.style.transform = 'scale(1)';
-                }, 100);
-                
-                observer.unobserve(img);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-    
-    // Observer chaque image de design
-    designImages.forEach(img => {
-        observer.observe(img);
-    });
-});
 
-// Fonction pour mettre à jour la couleur de la scrollbar
-function updateScrollbarColor(scrollPercentage) {
-    const designsContainer = document.querySelector('.designs-container');
-    if (!designsContainer) return;
-    
-    // Calculer une couleur basée sur la position du scroll
-    const hue = 10 + (scrollPercentage * 0.6);
-    
-    // Mettre à jour la scrollbar via CSS variables
-    designsContainer.style.setProperty('--scrollbar-hue', hue);
-    
-    // Appliquer le style si nous sommes dans WebKit
-    const styleId = 'scrollbar-dynamic-style';
-    let styleElement = document.getElementById(styleId);
-    
-    if (!styleElement) {
-        styleElement = document.createElement('style');
-        styleElement.id = styleId;
-        document.head.appendChild(styleElement);
-    }
-    
-    styleElement.textContent = `
-        .designs-container::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, 
-                hsl(var(--scrollbar-hue, 10), 100%, 60%), 
-                hsl(calc(var(--scrollbar-hue, 10) + 60), 100%, 60%));
-        }
-        
-        .designs-container::before {
-            backdrop-filter: blur(var(--top-blur, 0px));
-        }
-        
-        .designs-container::after {
-            backdrop-filter: blur(var(--bottom-blur, 0px));
-        }
-    `;
-}
+            closeBtn.addEventListener('click', () => {
+                fullscreenContainer.style.display = 'none';
+                fullscreenImg.src = '';
+                document.body.style.overflow = 'auto';
+            });
 
-// Navigation entre images en plein écran (optionnel - si vous voulez naviguer)
-let currentImageIndex = 0;
+            fullscreenContainer.addEventListener('click', (e) => {
+                if (e.target === fullscreenContainer) {
+                    fullscreenContainer.style.display = 'none';
+                    fullscreenImg.src = '';
+                    document.body.style.overflow = 'auto';
+                }
+            });
 
-function setupFullscreenNavigation() {
-    document.addEventListener('keydown', (e) => {
-        if (fullscreenContainer.style.display !== 'flex') return;
-        
-        if (e.key === 'ArrowRight') {
-            navigateImages(1);
-        } else if (e.key === 'ArrowLeft') {
-            navigateImages(-1);
-        }
-    });
-}
-
-function navigateImages(direction) {
-    const images = Array.from(designImages);
-    currentImageIndex = images.findIndex(img => img.src === fullscreenImg.src);
-    
-    if (currentImageIndex !== -1) {
-        currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
-        fullscreenImg.style.opacity = '0';
-        
-        setTimeout(() => {
-            fullscreenImg.src = images[currentImageIndex].src;
-            fullscreenImg.alt = images[currentImageIndex].alt;
-            fullscreenImg.style.opacity = '1';
-        }, 200);
-    }
-}
-
-// Initialiser la navigation si vous le souhaitez
-// setupFullscreenNavigation();
             // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
