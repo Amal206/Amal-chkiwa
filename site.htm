@@ -2319,6 +2319,203 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
     <script>
+         document.addEventListener("DOMContentLoaded", function () {
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Navbar active link
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Typing effect
+            const words = [
+                "Designer Graphique",
+                "Développeuse Web",
+                "Créatrice d'identités visuelles",
+                "Passionnée par l'innovation"
+            ];
+            
+            let i = 0;
+            let j = 0;
+            let currentWord = "";
+            let isDeleting = false;
+            let speed = 100;
+
+            function typeEffect() {
+                const typingElement = document.querySelector(".typing");
+
+                if (!typingElement) return;
+
+                if (i < words.length) {
+                    if (!isDeleting && j <= words[i].length) {
+                        currentWord = words[i].substring(0, j++);
+                        typingElement.textContent = currentWord;
+                        speed = 100;
+                    }
+
+                    if (isDeleting && j >= 0) {
+                        currentWord = words[i].substring(0, j--);
+                        typingElement.textContent = currentWord;
+                        speed = 50;
+                    }
+
+                    if (j === words[i].length + 1) {
+                        isDeleting = true;
+                        speed = 1000;
+                        setTimeout(typeEffect, speed);
+                        return;
+                    } 
+                    else if (j < 0) {
+                        isDeleting = false;
+                        i++;
+                        if (i === words.length) i = 0;
+                        speed = 500;
+                    }
+                }
+
+                setTimeout(typeEffect, speed);
+            }
+
+            typeEffect();
+
+            // Animation About section
+            const aboutText = document.getElementById('about-text');
+            const aboutObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        aboutText.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            aboutObserver.observe(aboutText);
+
+            // Stats counter animation
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        statNumbers.forEach(stat => {
+                            const target = stat;
+                            const count = parseInt(target.getAttribute('data-count'));
+                            const duration = 2000;
+                            const increment = count / (duration / 16);
+                            let current = 0;
+
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= count) {
+                                    target.textContent = count;
+                                    clearInterval(timer);
+                                } else {
+                                    target.textContent = Math.floor(current);
+                                }
+                            }, 16);
+                        });
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            statsObserver.observe(document.querySelector('.about-stats'));
+
+            // Service cards animation
+            const serviceCards = document.querySelectorAll(".service-card");
+            const serviceObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add("visible");
+                        }, index * 200);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            serviceCards.forEach(card => serviceObserver.observe(card));
+
+            // Competence cards animation
+            const competenceCards = document.querySelectorAll(".competence-card");
+            const competenceObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    competenceCards.forEach((card, i) => {
+                        setTimeout(() => card.classList.add("visible"), i * 100);
+                    });
+                }
+            }, { threshold: 0.1 });
+
+            competenceObserver.observe(document.getElementById("competences"));
+
+            // Fullscreen image modal
+            const fullscreenContainer = document.getElementById('fullscreenImage');
+            const fullscreenImg = document.getElementById('fullscreenImg');
+            const designImages = document.querySelectorAll('.design-item img');
+            const closeBtn = document.querySelector('.close-btn');
+
+            designImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    fullscreenImg.src = img.src;
+                    fullscreenContainer.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                fullscreenContainer.style.display = 'none';
+                fullscreenImg.src = '';
+                document.body.style.overflow = 'auto';
+            });
+
+            fullscreenContainer.addEventListener('click', (e) => {
+                if (e.target === fullscreenContainer) {
+                    fullscreenContainer.style.display = 'none';
+                    fullscreenImg.src = '';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
         // Designs Scroll Animation
 const designsScrollWrapper = document.querySelector('.designs-scroll-wrapper');
 const scrollPrevBtn = document.getElementById('scrollPrev');
@@ -2751,5 +2948,6 @@ document.querySelectorAll('.design-scroll-item').forEach(item => {
     </script>
 </body>
 </html>
+
 
 
