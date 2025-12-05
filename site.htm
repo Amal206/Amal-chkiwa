@@ -182,7 +182,7 @@
             pointer-events: none;
         }
         
-        /* Floating Icons */
+        /* Floating Icons avec retour (restauré de l'original) */
         .floating-icons {
             position: absolute;
             width: 100%;
@@ -194,42 +194,86 @@
         
         .floating-icons .icon {
             position: absolute;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 99, 71, 0.2);
+            width: 70px;
             opacity: 0;
-            animation: floatIcons linear infinite;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: explodeIcons linear infinite;
         }
         
-        .floating-icons .icon img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px rgba(255, 99, 71, 0.5));
+        @keyframes explodeIcons {
+            0% { opacity: 0; transform: translate(0,0) scale(0.5) rotate(0deg); }
+            10% { opacity: 0.7; }
+            50% { opacity: 1; transform: translate(var(--moveX), var(--moveY)) scale(1) rotate(180deg); }
+            100% { opacity: 0; transform: translate(calc(var(--moveX)*2), calc(var(--moveY)*2)) scale(0.2) rotate(360deg); }
         }
         
-        @keyframes floatIcons {
-            0% { 
-                opacity: 0; 
-                transform: translate(0, 0) scale(0.5) rotate(0deg); 
-            }
-            10% { opacity: 0.8; }
-            50% { 
-                opacity: 1; 
-                transform: translate(var(--moveX), var(--moveY)) scale(1) rotate(180deg); 
-            }
-            90% { opacity: 0.8; }
-            100% { 
-                opacity: 0; 
-                transform: translate(calc(var(--moveX) * 1.5), calc(var(--moveY) * 1.5)) scale(0.3) rotate(360deg); 
-            }
+        .floating-icons .icon:nth-child(1) {
+            top: 10%; left: 10%;
+            --moveX: 180px;
+            --moveY: -200px;
+            animation-duration: 6s;
+        }
+        
+        .floating-icons .icon:nth-child(2) {
+            top: 20%; left: 80%;
+            --moveX: -220px;
+            --moveY: 150px;
+            animation-duration: 7s;
+        }
+        
+        .floating-icons .icon:nth-child(3) {
+            top: 50%; left: 25%;
+            --moveX: 150px;
+            --moveY: -100px;
+            animation-duration: 8s;
+        }
+        
+        .floating-icons .icon:nth-child(4) {
+            top: 70%; left: 70%;
+            --moveX: -180px;
+            --moveY: 200px;
+            animation-duration: 9s;
+        }
+        
+        .floating-icons .icon:nth-child(5) {
+            top: 40%; left: 50%;
+            --moveX: 200px;
+            --moveY: -180px;
+            animation-duration: 6.5s;
+        }
+        
+        .floating-icons .icon:nth-child(6) {
+            top: 60%; left: 20%;
+            --moveX: 120px;
+            --moveY: 150px;
+            animation-duration: 7.5s;
+        }
+        
+        .floating-icons .icon:nth-child(7) {
+            top: 15%; left: 50%;
+            --moveX: -150px;
+            --moveY: 180px;
+            animation-duration: 8.5s;
+        }
+        
+        .floating-icons .icon:nth-child(8) {
+            top: 30%; left: 75%;
+            --moveX: 200px;
+            --moveY: 100px;
+            animation-duration: 9.2s;
+        }
+        
+        .floating-icons .icon:nth-child(9) {
+            top: 55%; left: 35%;
+            --moveX: -180px;
+            --moveY: 200px;
+            animation-duration: 10s;
+        }
+        
+        .floating-icons .icon:nth-child(10) {
+            top: 80%; left: 60%;
+            --moveX: 220px;
+            --moveY: -150px;
+            animation-duration: 11s;
         }
         
         /* Hero Content */
@@ -247,6 +291,12 @@
             margin-bottom: 20px;
             font-family: 'Space Grotesk', sans-serif;
             line-height: 1.1;
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 8px var(--primary); }
+            50% { text-shadow: 0 0 22px #ffcc70; }
         }
         
         .hero-title span {
@@ -347,7 +397,7 @@
             60% { transform: translateY(-5px); }
         }
 
-        /* ===== ABOUT SECTION ===== */
+        /* ===== ABOUT SECTION AVEC ANIMATIONS ENRICHIES ===== */
         .about {
             background: linear-gradient(135deg, var(--dark-light), #232536);
             position: relative;
@@ -378,29 +428,68 @@
         .about-img img {
             width: 100%;
             height: auto;
-            border-radius: 20px;
+            border-radius: 50%;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             border: 5px solid rgba(255, 99, 71, 0.3);
             position: relative;
             z-index: 2;
+            animation: float 6s ease-in-out infinite;
+            filter: brightness(1.05) contrast(1.1);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
         }
         
         .about-img::before {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 110%;
+            height: 110%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
-            top: 20px;
-            left: 20px;
+            border-radius: 50%;
+            top: -5%;
+            left: -5%;
             z-index: 1;
             opacity: 0.3;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.05); }
+        }
+        
+        .about-img::after {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            border: 2px dashed rgba(255, 99, 71, 0.2);
+            border-radius: 50%;
+            top: -10%;
+            left: -10%;
+            z-index: 0;
+            animation: spin 20s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         .about-text {
             flex: 1;
             min-width: 300px;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 1s ease;
+        }
+        
+        .about-text.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .about-text h3 {
@@ -408,6 +497,23 @@
             margin-bottom: 20px;
             color: var(--primary);
             font-family: 'Space Grotesk', sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 1s ease 0.5s;
+        }
+        
+        .about-text.visible h3::after {
+            width: 100%;
         }
         
         .about-text p {
@@ -415,6 +521,22 @@
             color: var(--gray);
             margin-bottom: 20px;
             line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .about-text.visible p:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+        
+        .about-text.visible p:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+        
+        .about-text.visible p {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .about-stats {
@@ -422,10 +544,30 @@
             gap: 30px;
             margin-top: 30px;
             flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+        
+        .about-text.visible .about-stats {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.9s;
         }
         
         .stat-item {
             text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            min-width: 120px;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 99, 71, 0.1);
+            box-shadow: 0 10px 20px rgba(255, 99, 71, 0.2);
         }
         
         .stat-number {
@@ -434,6 +576,7 @@
             color: var(--primary);
             display: block;
             line-height: 1;
+            font-family: 'Space Grotesk', sans-serif;
         }
         
         .stat-label {
@@ -441,6 +584,7 @@
             color: var(--gray);
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-top: 5px;
         }
 
         /* ===== SERVICES SECTION ===== */
@@ -1057,7 +1201,7 @@
     <!-- HERO SECTION -->
     <section id="home" class="hero-creative">
         <div class="hero-content">
-            <h1 class="hero-title">Amal <span>Chkiwa</span></h1>
+            <h1 class="hero-title">Amal Chkiwa</h1>
             <h3 class="hero-subtitle">
                 <span class="typing"></span>
             </h3>
@@ -1065,7 +1209,7 @@
                 Je transforme des idées en expériences digitales mémorables. Passionnée par le design et le développement, je crée des solutions visuelles qui captivent et engagent.
             </p>
             <div class="hero-buttons">
-                <a href="#portfolio" class="hero-btn">
+                <a href="#projects" class="hero-btn">
                     <i class="fas fa-eye"></i> Voir mes projets
                 </a>
                 <a href="#contact" class="hero-btn secondary">
@@ -1074,16 +1218,18 @@
             </div>
         </div>
 
-        <!-- Floating Icons -->
+        <!-- Floating Icons avec retour (restauré) -->
         <div class="floating-icons">
-            <div class="icon"><img src="icons/ps.png" alt="Photoshop"></div>
-            <div class="icon"><img src="icons/ai.png" alt="Illustrator"></div>
-            <div class="icon"><img src="icons/html.png" alt="HTML"></div>
-            <div class="icon"><img src="icons/css.png" alt="CSS"></div>
-            <div class="icon"><img src="icons/js.png" alt="JavaScript"></div>
-            <div class="icon"><img src="icons/figma.png" alt="Figma"></div>
-            <div class="icon"><img src="icons/Python.png" alt="Python"></div>
-            <div class="icon"><img src="icons/ae.png" alt="After Effects"></div>
+            <img src="icons/win.png" class="icon">
+            <img src="icons/ps.png" class="icon">
+            <img src="icons/ae.png" class="icon">
+            <img src="icons/ai.png" class="icon">
+            <img src="icons/html.png" class="icon">
+            <img src="icons/css.png" class="icon">
+            <img src="icons/js.png" class="icon">
+            <img src="icons/canva.png" class="icon">
+            <img src="icons/Python.png" class="icon">
+            <img src="icons/figma.png" class="icon">
         </div>
 
         <div class="scroll-indicator">
@@ -1092,7 +1238,7 @@
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT SECTION AVEC ANIMATIONS ENRICHIES -->
     <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">À propos de moi</h2>
@@ -1104,7 +1250,7 @@
                 <div class="about-img">
                     <img src="1.jpg" alt="Amal Chkiwa">
                 </div>
-                <div class="about-text">
+                <div class="about-text" id="about-text">
                     <h3>Designer & Développeuse Créative</h3>
                     <p>
                         Passionnée par le design visuel et le développement web, je transforme des idées en expériences immersives. 
@@ -1114,6 +1260,10 @@
                     <p>
                         Mon objectif ? Créer des projets qui racontent une histoire et qui marquent. Chaque pixel, chaque ligne de code 
                         est pensé pour offrir une expérience utilisateur optimale et esthétiquement aboutie.
+                    </p>
+                    <p>
+                        Mon approche combine une vision artistique aiguisée avec une expertise technique solide, 
+                        permettant de créer des solutions qui sont à la fois belles et fonctionnelles.
                     </p>
                     
                     <div class="about-stats">
@@ -1128,6 +1278,10 @@
                         <div class="stat-item">
                             <span class="stat-number" data-count="3">0</span>
                             <span class="stat-label">Années d'expérience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="10">0</span>
+                            <span class="stat-label">Technologies maîtrisées</span>
                         </div>
                     </div>
                 </div>
@@ -1550,37 +1704,46 @@
 
             typeEffect();
 
-            // Stats counter animation
-            const statNumbers = document.querySelectorAll('.stat-number');
-            const observerOptions = {
-                threshold: 0.5
-            };
-
-            const observer = new IntersectionObserver((entries) => {
+            // Animation About section
+            const aboutText = document.getElementById('about-text');
+            const aboutObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const target = entry.target;
-                        const count = parseInt(target.getAttribute('data-count'));
-                        const duration = 2000;
-                        const increment = count / (duration / 16);
-                        let current = 0;
-
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= count) {
-                                target.textContent = count;
-                                clearInterval(timer);
-                            } else {
-                                target.textContent = Math.floor(current);
-                            }
-                        }, 16);
-                        
-                        observer.unobserve(target);
+                        aboutText.classList.add('visible');
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.3 });
 
-            statNumbers.forEach(stat => observer.observe(stat));
+            aboutObserver.observe(aboutText);
+
+            // Stats counter animation
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        statNumbers.forEach(stat => {
+                            const target = stat;
+                            const count = parseInt(target.getAttribute('data-count'));
+                            const duration = 2000;
+                            const increment = count / (duration / 16);
+                            let current = 0;
+
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= count) {
+                                    target.textContent = count;
+                                    clearInterval(timer);
+                                } else {
+                                    target.textContent = Math.floor(current);
+                                }
+                            }, 16);
+                        });
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            statsObserver.observe(document.querySelector('.about-stats'));
 
             // Service cards animation
             const serviceCards = document.querySelectorAll(".service-card");
