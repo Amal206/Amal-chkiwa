@@ -1157,6 +1157,131 @@
             color: white;
             transform: translateY(-5px);
         }
+        /* ===== SOFT SKILLS SECTION ===== */
+.soft-skills {
+    background: linear-gradient(135deg, #232536, #1a1c27);
+    position: relative;
+}
+
+.soft-skills::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 99, 71, 0.07) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(102, 252, 241, 0.07) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.soft-skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.soft-skill-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    height: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    position: relative;
+    overflow: hidden;
+}
+
+.soft-skill-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.soft-skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 99, 71, 0.1), rgba(102, 252, 241, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.soft-skill-card:hover::before {
+    opacity: 1;
+}
+
+.soft-skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 99, 71, 0.2);
+    border-color: rgba(255, 99, 71, 0.3);
+}
+
+.soft-skill-icon {
+    font-size: 3rem;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.soft-skill-card:hover .soft-skill-icon {
+    transform: scale(1.1);
+}
+
+.soft-skill-card h5 {
+    font-size: 1.3rem;
+    color: white;
+    margin-bottom: 15px;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+}
+
+.soft-skill-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+/* Animation for soft skills cards */
+.soft-skill-card:nth-child(1) { transition-delay: 0.1s; }
+.soft-skill-card:nth-child(2) { transition-delay: 0.2s; }
+.soft-skill-card:nth-child(3) { transition-delay: 0.3s; }
+.soft-skill-card:nth-child(4) { transition-delay: 0.4s; }
+.soft-skill-card:nth-child(5) { transition-delay: 0.5s; }
+.soft-skill-card:nth-child(6) { transition-delay: 0.6s; }
+.soft-skill-card:nth-child(7) { transition-delay: 0.7s; }
+.soft-skill-card:nth-child(8) { transition-delay: 0.8s; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .soft-skills-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    
+    .soft-skill-card {
+        padding: 25px 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .soft-skills-container {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+}
         
         footer a {
             color: var(--primary);
@@ -1252,26 +1377,29 @@
     <div class="space-background"></div>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#home">Amal Chkiwa</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#home">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#all-designs">Tous mes Designs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#logos">Logos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
+   <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#home">Amal Chkiwa</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#home">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
+                <!-- Ajoutez cette ligne pour le lien vers les Qualités -->
+                <li class="nav-item"><a class="nav-link" href="#soft-skills">Qualités</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+                <li class="nav-item"><a class="nav-link" href="#all-designs">Tous mes Designs</a></li>
+                <li class="nav-item"><a class="nav-link" href="#logos">Logos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- HERO SECTION -->
     <section id="home" class="hero-creative">
@@ -1464,7 +1592,81 @@
             </div>
         </div>
     </section>
-
+<!-- SOFT SKILLS SECTION -->
+<section id="soft-skills" class="soft-skills">
+    <div class="container">
+        <h2 class="section-title">Qualités Professionnelles</h2>
+        <p class="section-subtitle">
+            En plus de mes compétences techniques, je possède des qualités personnelles essentielles pour collaborer efficacement et mener à bien les projets.
+        </p>
+        
+        <div class="soft-skills-container">
+            <div class="soft-skill-card">
+                <div class="soft-skill-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h5>Travail d'équipe</h5>
+                <p>Capacité à collaborer efficacement avec des équipes pluridisciplinaires pour atteindre des objectifs communs.</p>
+            </div>
+            
+            <div class="soft-skill-card">
+                <div class="soft-skill-icon">
+                    <i class="fas fa-flag"></i>
+                </div>
+                <h5>Leadership</h5>
+                <p>Capacité à prendre des initiatives, motiver les équipes et guider les projets vers leur réussite.</p>
+            </div>
+            
+            <div class="soft-skill-card">
+                <div class="soft-skill-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h5>Recherche & Curiosité</h5>
+                <p>Esprit de recherche et capacité à trouver des solutions innovantes par l'exploration et l'apprentissage continu.</p>
+            </div>
+            
+            <div class="soft-skill-card">
+                <div class="soft-skill-icon">
+                    <i class="fas fa-headphones-alt"></i>
+                </div>
+                <h5>Écoute active</h5>
+                <p>Capacité à écouter attentivement les besoins clients et les retours pour améliorer continuellement les projets.</p>
+            </div>
+            
+            <div class="soft-skill-card">
+                <div class="soft-skill-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h5>Communication</h5>
+                <p>Excellentes compétences en communication écrite et verbale pour échanger clairement avec clients et collègues.</p>
+            </div>
+            
+            <div class="soft-skill-card">
+                <div class="soft-skill-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h5>Sérieux professionnel</h5>
+                <p>Approche rigoureuse et professionnelle dans l'exécution des tâches et le respect des délais.</p>
+            </div>
+            
+            <div class="soft-skill-card">
+                <div class="soft-skill-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h5>Motivation</h5>
+                <p>Passion et détermination à mener chaque projet à son terme avec énergie et enthousiasme.</p>
+            </div>
+            
+            <div class="soft-skill-card">
+                <div class="soft-skill-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h5>Créativité</h5>
+                <p>Approche innovante pour résoudre les problèmes et proposer des solutions originales et efficaces.</p>
+            </div>
+        </div>
+    </div>
+</section>
     <!-- PROJECTS SECTION -->
 <section id="projects" class="projects">
     <div class="container">
@@ -1688,19 +1890,27 @@
     </section>
 
     <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-behance"></i></a>
-                <a href="#"><i class="fab fa-dribbble"></i></a>
-            </div>
-            <p>&copy; 2024 Amal Chkiwa. Tous droits réservés.</p>
-            <p>Designé et développé avec <i class="fas fa-heart" style="color: #ff6347;"></i> par Amal Chkiwa</p>
+   <!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/amal-chkiwa-610ba1254/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Amal206" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="#" title="Behance">
+                <i class="fab fa-behance"></i>
+            </a>
+            <a href="#" title="Dribbble">
+                <i class="fab fa-dribbble"></i>
+            </a>
         </div>
-    </footer>
-
+        <p>&copy; 2024 Amal Chkiwa. Tous droits réservés.</p>
+        <p>Designé et développé avec <i class="fas fa-heart" style="color: #ff6347;"></i> par Amal Chkiwa</p>
+    </div>
+</footer>
     <!-- FULLSCREEN IMAGE MODAL -->
     <div id="fullscreenImage">
         <div class="close-btn">&times;</div>
@@ -2009,6 +2219,17 @@
                 });
             });
         });
+        // Soft skills cards animation
+const softSkillCards = document.querySelectorAll(".soft-skill-card");
+const softSkillsObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+        softSkillCards.forEach((card, i) => {
+            setTimeout(() => card.classList.add("visible"), i * 100);
+        });
+    }
+}, { threshold: 0.1 });
+
+softSkillsObserver.observe(document.getElementById("soft-skills"));
     </script>
 </body>
 </html>
