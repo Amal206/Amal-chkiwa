@@ -218,6 +218,68 @@
             animation: fadeInUp 1s ease 0.3s both;
         }
 
+        /* ===== IMAGE GALLERY ===== */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(66, 133, 244, 0.1);
+        }
+
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.4),
+                0 0 50px rgba(66, 133, 244, 0.2);
+            border-color: rgba(66, 133, 244, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .gallery-item:hover .image-label {
+            transform: translateY(0);
+        }
+
         /* ===== FEATURES GRID ===== */
         .features {
             margin-top: 80px;
@@ -291,62 +353,6 @@
             color: var(--neon-blue);
             margin-bottom: 15px;
             font-size: 1.4rem;
-        }
-
-        /* ===== IMAGE PREVIEW ===== */
-        .preview-section {
-            margin-top: 80px;
-        }
-
-        .preview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .preview-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid rgba(66, 133, 244, 0.1);
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .preview-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .preview-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(66, 133, 244, 0.3);
-            box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.3),
-                0 0 60px rgba(66, 133, 244, 0.1);
-        }
-
-        .preview-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .preview-card:hover .preview-image {
-            transform: scale(1.1);
-        }
-
-        .preview-content {
-            padding: 20px;
-        }
-
-        .preview-title {
-            color: var(--neon-blue);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
         }
 
         /* ===== TECH STACK ===== */
@@ -426,8 +432,7 @@
                 font-size: 1.8rem;
             }
             
-            .feature-grid,
-            .preview-grid {
+            .feature-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -479,8 +484,8 @@
     <section class="project-hero">
         <h1>Nird 3D STL Viewer</h1>
         <p class="project-subtitle">
-            Une application web moderne pour visualiser, analyser et manipuler des fichiers STL en 3D. 
-            Intégration d'IA pour la génération automatique de descriptions et d'analyses.
+            Application web avancée pour visualiser, analyser et manipuler des fichiers STL en 3D. 
+            Intégration d'IA pour la génération automatique de descriptions et d'analyses détaillées.
         </p>
         <div>
             <span class="tech-badge" style="--delay: 0s">
@@ -504,95 +509,92 @@
         <section>
             <h2 class="section-title">Présentation du Projet</h2>
             <p class="description">
-                Nird 3D STL Viewer est une application web avancée permettant aux utilisateurs 
+                Nird 3D STL Viewer est une application web complète permettant aux utilisateurs 
                 de télécharger, visualiser et analyser des fichiers STL (Standard Triangle Language) 
                 directement dans leur navigateur. L'application offre une expérience 3D fluide avec 
-                des contrôles intuitifs de zoom, rotation et translation.
+                des contrôles intuitifs de zoom, rotation et translation, ainsi que des outils 
+                d'analyse géométrique avancés.
                 <br><br>
                 L'innovation principale réside dans l'intégration de l'intelligence artificielle 
                 qui analyse automatiquement les modèles 3D pour générer des descriptions détaillées, 
-                des dimensions précises et des recommandations d'optimisation. Que vous soyez ingénieur, 
-                designer 3D ou amateur d'impression 3D, Nird offre tous les outils nécessaires pour 
-                travailler efficacement avec des modèles STL.
+                des dimensions précises, des suggestions d'optimisation et même des rapports 
+                d'analyse structurelle. Que vous soyez ingénieur, designer 3D ou amateur d'impression 3D, 
+                Nird offre tous les outils nécessaires pour travailler efficacement avec des modèles STL.
             </p>
+        </section>
+
+        <!-- Image Gallery -->
+        <section>
+            <h2 class="section-title">Interface de l'Application</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="4/1.png" alt="Interface principale 3D">
+                    <div class="image-label">Interface principale avec visualiseur 3D et contrôles</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="4/2.png" alt="Analyse géométrique">
+                    <div class="image-label">Panel d'analyse avec dimensions et propriétés</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="4/3.png" alt="Module IA">
+                    <div class="image-label">Module d'intelligence artificielle intégré</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="4/4.png" alt="Outils de mesure">
+                    <div class="image-label">Outils de mesure interactifs et précision</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="4/5.png" alt="Export et rapports">
+                    <div class="image-label">Système d'export et génération de rapports</div>
+                </div>
+            </div>
         </section>
 
         <!-- Features -->
         <section class="features">
-            <h2 class="section-title">Fonctionnalités Avancées</h2>
+            <h2 class="section-title">Fonctionnalités Principales</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-upload"></i>
                     </div>
                     <h3>Upload & Prévisualisation</h3>
-                    <p>Téléchargez vos fichiers STL et visualisez-les instantanément dans le navigateur avec un rendu 3D optimisé.</p>
+                    <p>Téléchargez vos fichiers STL jusqu'à 500MB et visualisez-les instantanément dans le navigateur avec un rendu 3D optimisé et textures HD.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-vector-square"></i>
                     </div>
                     <h3>Analyse Géométrique</h3>
-                    <p>Calcul automatique des dimensions, volume, surface, nombre de faces et sommets pour chaque modèle.</p>
+                    <p>Calcul automatique des dimensions, volume, surface, nombre de faces et sommets avec détection d'anomalies et suggestions de correction.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-search"></i>
                     </div>
                     <h3>Contrôles 3D Complets</h3>
-                    <p>Zoom, rotation, translation avec la souris ou le toucher. Vue orthographique et perspective.</p>
+                    <p>Zoom, rotation, translation avec la souris ou le toucher. Vues orthographique et perspective avec éclairage dynamique et textures.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-robot"></i>
                     </div>
                     <h3>IA Intégrée</h3>
-                    <p>Génération automatique de descriptions, détection de défauts et suggestions d'amélioration par IA.</p>
+                    <p>Génération automatique de descriptions, détection de défauts d'impression 3D, suggestions d'amélioration et analyses structurelles par IA.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-ruler-combined"></i>
                     </div>
                     <h3>Mesures Précises</h3>
-                    <p>Outils de mesure interactifs pour analyser les distances entre différents points du modèle.</p>
+                    <p>Outils de mesure interactifs pour analyser les distances, angles et surfaces entre différents points du modèle avec précision au millimètre.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-download"></i>
                     </div>
                     <h3>Export & Partage</h3>
-                    <p>Exportez les analyses, générez des rapports PDF et partagez vos modèles via des liens sécurisés.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Preview Images -->
-        <section class="preview-section">
-            <h2 class="section-title">Aperçu de l'Interface</h2>
-            <div class="preview-grid">
-                <div class="preview-card">
-                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Interface 3D Viewer" class="preview-image">
-                    <div class="preview-content">
-                        <h3 class="preview-title">Vue 3D Principale</h3>
-                        <p>Interface de visualisation avec contrôles et informations en temps réel</p>
-                    </div>
-                </div>
-                <div class="preview-card">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Analyse Géométrique" class="preview-image">
-                    <div class="preview-content">
-                        <h3 class="preview-title">Panel d'Analyse</h3>
-                        <p>Informations détaillées sur les dimensions et propriétés du modèle</p>
-                    </div>
-                </div>
-                <div class="preview-card">
-                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Interface IA" class="preview-image">
-                    <div class="preview-content">
-                        <h3 class="preview-title">Module IA</h3>
-                        <p>Génération automatique de descriptions et analyses intelligentes</p>
-                    </div>
+                    <p>Exportez les analyses au format PDF, CSV ou PNG. Générez des rapports détaillés et partagez vos modèles via des liens sécurisés avec permissions.</p>
                 </div>
             </div>
         </section>
@@ -625,6 +627,10 @@
                     <i class="fab fa-docker tech-icon"></i>
                     <span>Docker + CI/CD</span>
                 </div>
+                <div class="tech-item">
+                    <i class="fas fa-server tech-icon"></i>
+                    <span>WebGL + Web Workers</span>
+                </div>
             </div>
         </section>
     </main>
@@ -632,14 +638,14 @@
     <!-- Footer -->
     <footer class="project-footer">
         <p class="footer-text">© 2024 Amal Chkiwa | Nird 3D STL Viewer - Visualisation 3D Avancée</p>
-        <p class="footer-text">Technologies de pointe au service de la modélisation 3D</p>
+        <p class="footer-text">Technologies de pointe au service de la modélisation 3D et de l'analyse IA</p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Animation des cartes de fonctionnalités
+            // Animation des cartes de galerie et fonctionnalités
+            const galleryItems = document.querySelectorAll('.gallery-item');
             const featureCards = document.querySelectorAll('.feature-card');
-            const previewCards = document.querySelectorAll('.preview-card');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
@@ -654,10 +660,10 @@
                 rootMargin: '0px 0px -50px 0px'
             });
 
+            galleryItems.forEach(item => observer.observe(item));
             featureCards.forEach(card => observer.observe(card));
-            previewCards.forEach(card => observer.observe(card));
 
-            // Effet de particules pour le hero (simplifié)
+            // Effet de particules pour le hero
             const heroSection = document.querySelector('.project-hero');
             const colors = ['#00ffff', '#ff00ff', '#4285f4', '#34a853'];
             
@@ -697,6 +703,13 @@
 
             // Continuer à créer des particules
             setInterval(createParticle, 300);
+
+            // Effet de parallaxe sur le hero
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.project-hero');
+                hero.style.transform = `translateY(${scrolled * 0.05}px)`;
+            });
         });
     </script>
 </body>
