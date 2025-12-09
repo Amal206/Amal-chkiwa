@@ -218,66 +218,188 @@
             animation: fadeInUp 1s ease 0.3s both;
         }
 
-        /* ===== IMAGE GALLERY ===== */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .gallery-item {
+        /* ===== INTERFACE SHOWCASE ===== */
+        .interface-section {
+            margin-top: 80px;
             position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(66, 133, 244, 0.1);
         }
 
-        .gallery-item.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .desktop-showcase {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
         }
 
-        .gallery-item:hover {
-            transform: translateY(-10px) scale(1.02);
+        .desktop-device {
+            background: #1a1a1a;
+            border-radius: 20px;
+            margin: 0 auto;
+            position: relative;
             box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.4),
-                0 0 50px rgba(66, 133, 244, 0.2);
-            border-color: rgba(66, 133, 244, 0.3);
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+            border: 15px solid #000;
+            overflow: hidden;
+            padding-bottom: 20px;
         }
 
-        .gallery-item img {
+        .desktop-topbar {
+            background: #2d2d2d;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .desktop-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .desktop-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .desktop-dot.red { background: #ff5f57; }
+        .desktop-dot.yellow { background: #ffbd2e; }
+        .desktop-dot.green { background: #28ca42; }
+
+        .desktop-screen {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.1);
+        .screen-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .image-label {
+        .desktop-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .desktop-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #0a0a0a;
+            filter: brightness(0.9);
+        }
+
+        .slide-info {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 30px;
             color: white;
-            padding: 20px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .desktop-slide.active .slide-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .slide-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--neon-blue);
+        }
+
+        .slide-description {
             font-size: 0.9rem;
             opacity: 0.9;
         }
 
-        .gallery-item:hover .image-label {
-            transform: translateY(0);
+        /* Contrôles desktop */
+        .desktop-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .desktop-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .desktop-btn:hover {
+            background: var(--tech-blue);
+            transform: scale(1.1);
+            border-color: var(--tech-blue);
+        }
+
+        .desktop-dots-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .desktop-nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .desktop-nav-dot::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--tech-blue), var(--neon-blue));
+            transition: left 0.3s ease;
+        }
+
+        .desktop-nav-dot.active::before {
+            left: 0;
+        }
+
+        .desktop-nav-dot.active {
+            transform: scale(1.3);
+        }
+
+        .desktop-nav-dot:hover::before {
+            left: 0;
         }
 
         /* ===== FEATURES GRID ===== */
@@ -353,6 +475,60 @@
             color: var(--neon-blue);
             margin-bottom: 15px;
             font-size: 1.4rem;
+        }
+
+        /* ===== INTERFACE GALLERY ===== */
+        .interface-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .interface-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(66, 133, 244, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .interface-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .interface-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(66, 133, 244, 0.3);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(66, 133, 244, 0.1);
+        }
+
+        .interface-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            background: #0a0a0a;
+            transition: transform 0.5s ease;
+        }
+
+        .interface-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .interface-info {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .interface-info h4 {
+            color: var(--neon-blue);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
         }
 
         /* ===== TECH STACK ===== */
@@ -432,7 +608,12 @@
                 font-size: 1.8rem;
             }
             
-            .feature-grid {
+            .desktop-screen {
+                height: 400px;
+            }
+            
+            .feature-grid,
+            .interface-gallery {
                 grid-template-columns: 1fr;
             }
             
@@ -460,6 +641,10 @@
             .back-btn {
                 padding: 10px 20px;
                 font-size: 0.9rem;
+            }
+            
+            .desktop-screen {
+                height: 300px;
             }
             
             .tech-list {
@@ -523,29 +708,108 @@
             </p>
         </section>
 
-        <!-- Image Gallery -->
+        <!-- Interface Showcase -->
+        <section class="interface-section">
+            <h2 class="section-title">Démonstration des Interfaces</h2>
+            <div class="desktop-showcase">
+                <div class="desktop-device">
+                    <div class="desktop-topbar">
+                        <div class="desktop-dots">
+                            <div class="desktop-dot red"></div>
+                            <div class="desktop-dot yellow"></div>
+                            <div class="desktop-dot green"></div>
+                        </div>
+                    </div>
+                    <div class="desktop-screen">
+                        <div class="screen-content" id="screenContent">
+                            <div class="desktop-slide active">
+                                <img src="4/1.png" alt="Interface principale 3D">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Interface Principale 3D</h3>
+                                    <p class="slide-description">Visualiseur 3D avec contrôles et panneau latéral d'outils</p>
+                                </div>
+                            </div>
+                            <div class="desktop-slide">
+                                <img src="4/2.png" alt="Analyse géométrique">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Analyse Géométrique</h3>
+                                    <p class="slide-description">Panel d'analyse avec dimensions, volume et propriétés du modèle</p>
+                                </div>
+                            </div>
+                            <div class="desktop-slide">
+                                <img src="4/3.png" alt="Module IA">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Module Intelligence Artificielle</h3>
+                                    <p class="slide-description">Interface d'analyse IA avec génération automatique de descriptions</p>
+                                </div>
+                            </div>
+                            <div class="desktop-slide">
+                                <img src="4/4.png" alt="Outils de mesure">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Outils de Mesure</h3>
+                                    <p class="slide-description">Instruments de mesure interactifs avec précision au millimètre</p>
+                                </div>
+                            </div>
+                            <div class="desktop-slide">
+                                <img src="4/5.png" alt="Export et rapports">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Export et Rapports</h3>
+                                    <p class="slide-description">Système d'export et génération de rapports détaillés</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="desktop-controls">
+                    <button class="desktop-btn prev-desktop" onclick="prevDesktopSlide()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="desktop-btn next-desktop" onclick="nextDesktopSlide()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="desktop-dots-nav" id="desktopDots"></div>
+            </div>
+        </section>
+
+        <!-- Interface Gallery -->
         <section>
-            <h2 class="section-title">Interface de l'Application</h2>
-            <div class="image-gallery">
-                <div class="gallery-item">
+            <h2 class="section-title">Toutes les Interfaces</h2>
+            <div class="interface-gallery">
+                <div class="interface-item">
                     <img src="4/1.png" alt="Interface principale 3D">
-                    <div class="image-label">Interface principale avec visualiseur 3D et contrôles</div>
+                    <div class="interface-info">
+                        <h4>Interface Principale</h4>
+                        <p>Visualiseur 3D avec contrôles de navigation et outils de manipulation</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
+                <div class="interface-item">
                     <img src="4/2.png" alt="Analyse géométrique">
-                    <div class="image-label">Panel d'analyse avec dimensions et propriétés</div>
+                    <div class="interface-info">
+                        <h4>Analyse Géométrique</h4>
+                        <p>Calcul des dimensions, volume, surface et propriétés du modèle</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
+                <div class="interface-item">
                     <img src="4/3.png" alt="Module IA">
-                    <div class="image-label">Module d'intelligence artificielle intégré</div>
+                    <div class="interface-info">
+                        <h4>Intelligence Artificielle</h4>
+                        <p>Génération automatique de descriptions et analyses par IA</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
+                <div class="interface-item">
                     <img src="4/4.png" alt="Outils de mesure">
-                    <div class="image-label">Outils de mesure interactifs et précision</div>
+                    <div class="interface-info">
+                        <h4>Outils de Mesure</h4>
+                        <p>Mesures précises de distances, angles et surfaces</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
+                <div class="interface-item">
                     <img src="4/5.png" alt="Export et rapports">
-                    <div class="image-label">Système d'export et génération de rapports</div>
+                    <div class="interface-info">
+                        <h4>Export & Rapports</h4>
+                        <p>Système d'export multi-format et génération de rapports</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -643,9 +907,75 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Animation des cartes de galerie et fonctionnalités
-            const galleryItems = document.querySelectorAll('.gallery-item');
+            const screenContent = document.getElementById('screenContent');
+            const desktopSlides = document.querySelectorAll('.desktop-slide');
+            const desktopDotsContainer = document.getElementById('desktopDots');
+            let currentDesktopSlide = 0;
+            let autoSlideInterval;
+
+            // Créer les dots pour le carousel desktop
+            desktopSlides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('desktop-nav-dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToDesktopSlide(index));
+                desktopDotsContainer.appendChild(dot);
+            });
+
+            function updateDesktopCarousel() {
+                screenContent.style.transform = `translateX(-${currentDesktopSlide * 100}%)`;
+                
+                // Mettre à jour les slides actives
+                desktopSlides.forEach((slide, index) => {
+                    slide.classList.toggle('active', index === currentDesktopSlide);
+                });
+                
+                // Mettre à jour les dots
+                document.querySelectorAll('.desktop-nav-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentDesktopSlide);
+                });
+            }
+
+            function nextDesktopSlide() {
+                currentDesktopSlide = (currentDesktopSlide + 1) % desktopSlides.length;
+                updateDesktopCarousel();
+            }
+
+            function prevDesktopSlide() {
+                currentDesktopSlide = (currentDesktopSlide - 1 + desktopSlides.length) % desktopSlides.length;
+                updateDesktopCarousel();
+            }
+
+            function goToDesktopSlide(index) {
+                currentDesktopSlide = index;
+                updateDesktopCarousel();
+            }
+
+            // Exposer les fonctions globalement
+            window.nextDesktopSlide = nextDesktopSlide;
+            window.prevDesktopSlide = prevDesktopSlide;
+            window.goToDesktopSlide = goToDesktopSlide;
+
+            // Auto-slide
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextDesktopSlide, 4000);
+            }
+
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+
+            // Démarrer l'auto-slide
+            startAutoSlide();
+
+            // Arrêter l'auto-slide au survol
+            const desktopScreen = document.querySelector('.desktop-screen');
+            desktopScreen.addEventListener('mouseenter', stopAutoSlide);
+            desktopScreen.addEventListener('mouseleave', startAutoSlide);
+
+            // Animation des cartes de fonctionnalités et interfaces
             const featureCards = document.querySelectorAll('.feature-card');
+            const interfaceItems = document.querySelectorAll('.interface-item');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
@@ -660,8 +990,8 @@
                 rootMargin: '0px 0px -50px 0px'
             });
 
-            galleryItems.forEach(item => observer.observe(item));
             featureCards.forEach(card => observer.observe(card));
+            interfaceItems.forEach(item => observer.observe(item));
 
             // Effet de particules pour le hero
             const heroSection = document.querySelector('.project-hero');
