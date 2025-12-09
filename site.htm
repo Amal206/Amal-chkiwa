@@ -586,7 +586,20 @@
         );
     }
 }
+/* Style pour le titre À propos de moi dans le texte */
+.about-inline-title {
+    text-align: left;
+    left: 0;
+    transform: none;
+    display: block;
+    margin: 0 0 20px 0;
+    font-size: 2.2rem;
+}
 
+.about-inline-title::after {
+    left: 0;
+    width: 60px;
+}
 /* Ajoutez un curseur pour indiquer que c'est cliquable */
 .about-img {
     cursor: pointer;
@@ -1823,7 +1836,6 @@
     <!-- ABOUT SECTION -->
    <section id="about" class="about">
     <div class="container">
-         <h2 class="section-title">À propos de moi</h2>
         <div class="about-content">
             <div class="about-img">
                 <!-- Effets lumineux derrière -->
@@ -1851,6 +1863,7 @@
             </div>
             
             <div class="about-text" id="about-text">
+<h2 class="section-title about-inline-title">À propos de moi</h2>
                 <p>
                     Passionnée par le design visuel et le développement web, je transforme des idées en expériences immersives. 
                     J'allie créativité, technique et sens du détail pour concevoir des identités visuelles fortes, des interfaces élégantes 
@@ -2844,4 +2857,3 @@ if (document.getElementById("soft-skills")) {
     </script>
 </body>
 </html>
-
