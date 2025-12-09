@@ -207,51 +207,66 @@
             animation: fadeInUp 1s ease 0.3s both;
         }
 
-        /* ===== CAROUSEL ===== */
-        .carousel-section {
+        /* ===== PROTOTYPE SHOWCASE ===== */
+        .prototype-section {
             margin-top: 80px;
             position: relative;
         }
 
-        .carousel-container {
-            position: relative;
+        .mobile-showcase {
             max-width: 900px;
             margin: 0 auto;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
         }
 
-        .carousel-track {
+        .mobile-device {
+            width: 300px;
+            height: 600px;
+            background: #1a1a1a;
+            border-radius: 40px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+            border: 15px solid #000;
+            overflow: hidden;
+        }
+
+        .mobile-screen {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
             display: flex;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .carousel-slide {
+        .mobile-slide {
             min-width: 100%;
+            height: 100%;
             position: relative;
         }
 
-        .carousel-slide img {
+        .mobile-slide img {
             width: 100%;
-            height: 500px;
+            height: 100%;
             object-fit: cover;
             filter: brightness(0.9);
-            transition: filter 0.3s ease;
         }
 
-        .carousel-slide.active img {
-            filter: brightness(1);
-        }
-
-        .slide-content {
+        .slide-info {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
             padding: 30px;
             color: white;
             transform: translateY(20px);
@@ -259,67 +274,68 @@
             transition: all 0.5s ease;
         }
 
-        .carousel-slide.active .slide-content {
+        .mobile-slide.active .slide-info {
             transform: translateY(0);
             opacity: 1;
         }
 
         .slide-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             margin-bottom: 10px;
             color: var(--tunisia-sand);
         }
 
         .slide-description {
-            font-size: 1rem;
+            font-size: 0.9rem;
             opacity: 0.9;
         }
 
-        .carousel-btn {
+        /* Contrôles mobile */
+        .mobile-controls {
             position: absolute;
             top: 50%;
+            width: 100%;
             transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .mobile-btn {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             color: white;
-            font-size: 2rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            width: 60px;
-            height: 60px;
+            border: none;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        .carousel-btn:hover {
+        .mobile-btn:hover {
             background: var(--tunisia-red);
-            transform: translateY(-50%) scale(1.1);
+            transform: scale(1.1);
             border-color: var(--tunisia-red);
         }
 
-        .prev-btn {
-            left: 20px;
-        }
-
-        .next-btn {
-            right: 20px;
-        }
-
-        .carousel-dots {
+        .mobile-dots {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
-        .dot {
-            width: 15px;
-            height: 15px;
+        .mobile-dot {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
@@ -328,7 +344,7 @@
             overflow: hidden;
         }
 
-        .dot::before {
+        .mobile-dot::before {
             content: '';
             position: absolute;
             top: 0;
@@ -339,19 +355,33 @@
             transition: left 0.3s ease;
         }
 
-        .dot.active::before {
+        .mobile-dot.active::before {
             left: 0;
         }
 
-        .dot.active {
+        .mobile-dot.active {
             transform: scale(1.3);
         }
 
-        .dot:hover::before {
+        .mobile-dot:hover::before {
             left: 0;
         }
 
-        /* ===== FEATURES ===== */
+        /* Notch mobile */
+        .mobile-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #000;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 2;
+        }
+
+        /* ===== PROTOTYPE FEATURES ===== */
         .features {
             margin-top: 80px;
         }
@@ -415,32 +445,54 @@
             font-size: 1.4rem;
         }
 
-        /* ===== DESTINATIONS ===== */
-        .destinations {
-            margin-top: 80px;
+        /* ===== PROTOTYPE SCREENS GRID ===== */
+        .screens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        .destination-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 30px;
-            justify-content: center;
+        .screen-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        .destination-tag {
-            padding: 10px 25px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .screen-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .destination-tag:hover {
-            background: var(--tunisia-red);
-            transform: translateY(-3px);
-            border-color: var(--tunisia-red);
+        .screen-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--tunisia-blue);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.3);
+        }
+
+        .screen-card img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .screen-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .screen-info {
+            padding: 20px;
+        }
+
+        .screen-info h4 {
+            color: var(--tunisia-sand);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
         }
 
         /* ===== FOOTER ===== */
@@ -484,20 +536,18 @@
                 font-size: 1.8rem;
             }
             
-            .carousel-slide img {
-                height: 300px;
+            .mobile-device {
+                width: 280px;
+                height: 560px;
             }
             
-            .slide-content {
-                padding: 20px;
-            }
-            
-            .slide-title {
-                font-size: 1.4rem;
-            }
-            
-            .feature-grid {
+            .feature-grid,
+            .screens-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .screen-card img {
+                height: 400px;
             }
         }
 
@@ -520,10 +570,13 @@
                 font-size: 0.9rem;
             }
             
-            .carousel-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
+            .mobile-device {
+                width: 250px;
+                height: 500px;
+            }
+            
+            .screen-card img {
+                height: 350px;
             }
         }
     </style>
@@ -543,8 +596,8 @@
     <section class="project-hero">
         <h1>Explorer de Tunisie</h1>
         <p class="project-subtitle">
-            Application mobile immersive pour découvrir les trésors cachés et les destinations 
-            incontournables de la Tunisie. Une expérience numérique au cœur du patrimoine tunisien.
+            Prototype d'application mobile innovante pour découvrir les trésors cachés et 
+            les destinations incontournables de la Tunisie. Design moderne et interface intuitive.
         </p>
         <div class="tagline">Votre guide numérique pour l'aventure tunisienne</div>
     </section>
@@ -553,206 +606,222 @@
     <main class="project-content">
         <!-- Description -->
         <section>
-            <h2 class="section-title">Découvrez la Tunisie</h2>
+            <h2 class="section-title">Prototype Mobile</h2>
             <p class="description">
-                Explorer de Tunisie est une application mobile complète conçue pour les voyageurs 
-                souhaitant découvrir les merveilles de la Tunisie. De l'architecture historique de 
-                Carthage aux paysages désertiques du Sahara, en passant par les plages méditerranéennes 
-                de Djerba, l'application guide les utilisateurs à travers une expérience immersive 
-                et personnalisée.
+                Explorer de Tunisie est un prototype d'application mobile complète conçue pour les voyageurs 
+                souhaitant découvrir les merveilles de la Tunisie. Ce projet présente une interface utilisateur 
+                moderne avec des écrans soigneusement conçus pour offrir une expérience utilisateur optimale.
                 <br><br>
-                L'application combine cartographie interactive, réalité augmentée, recommandations 
-                personnalisées et fonctionnalités sociales pour créer une expérience de voyage unique. 
-                Chaque destination est présentée avec des photos haute qualité, des descriptions 
-                détaillées, des informations pratiques et des témoignages d'autres voyageurs.
+                Les maquettes montrent une navigation fluide entre les différentes sections : carte interactive, 
+                détails des destinations, fonctionnalités sociales, et système de recommandations. Chaque écran 
+                a été pensé pour être à la fois esthétique et fonctionnel, avec une attention particulière 
+                portée à l'expérience utilisateur sur mobile.
             </p>
         </section>
 
-        <!-- Carousel -->
-        <section class="carousel-section">
-            <h2 class="section-title">Galerie de l'Application</h2>
-            <div class="carousel-container">
-                <div class="carousel-track" id="carouselTrack">
-                    <div class="carousel-slide active">
-                        <img src="3/36.jpg" alt="Écran d'accueil">
-                        <div class="slide-content">
-                            <h3 class="slide-title">Écran d'Accueil</h3>
-                            <p class="slide-description">Interface principale avec découverte des destinations populaires</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="3/31.jpg" alt="Carte interactive">
-                        <div class="slide-content">
-                            <h3 class="slide-title">Carte Interactive</h3>
-                            <p class="slide-description">Navigation géolocalisée avec points d'intérêt</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="3/32.jpg" alt="Détail destination">
-                        <div class="slide-content">
-                            <h3 class="slide-title">Détail Destination</h3>
-                            <p class="slide-description">Informations complètes sur chaque lieu touristique</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="3/33.jpg" alt="Réalité augmentée">
-                        <div class="slide-content">
-                            <h3 class="slide-title">Réalité Augmentée</h3>
-                            <p class="slide-description">Visualisation 3D des sites historiques</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="3/34.jpg" alt="Planning de voyage">
-                        <div class="slide-content">
-                            <h3 class="slide-title">Planning de Voyage</h3>
-                            <p class="slide-description">Organisez votre itinéraire personnalisé</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="3/35.jpg" alt="Communauté">
-                        <div class="slide-content">
-                            <h3 class="slide-title">Communauté</h3>
-                            <p class="slide-description">Partagez vos expériences avec d'autres voyageurs</p>
+        <!-- Prototype Showcase -->
+        <section class="prototype-section">
+            <h2 class="section-title">Démonstration du Prototype</h2>
+            <div class="mobile-showcase">
+                <div class="mobile-device">
+                    <div class="mobile-notch"></div>
+                    <div class="mobile-screen">
+                        <div class="screen-content" id="screenContent">
+                            <div class="mobile-slide active">
+                                <img src="3/36.jpg" alt="Écran d'accueil">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Écran d'Accueil</h3>
+                                    <p class="slide-description">Interface principale avec destinations populaires</p>
+                                </div>
+                            </div>
+                            <div class="mobile-slide">
+                                <img src="3/31.jpg" alt="Carte interactive">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Carte Interactive</h3>
+                                    <p class="slide-description">Navigation géolocalisée avec points d'intérêt</p>
+                                </div>
+                            </div>
+                            <div class="mobile-slide">
+                                <img src="3/32.jpg" alt="Détail destination">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Détail Destination</h3>
+                                    <p class="slide-description">Informations complètes sur chaque lieu</p>
+                                </div>
+                            </div>
+                            <div class="mobile-slide">
+                                <img src="3/33.jpg" alt="Réalité augmentée">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Réalité Augmentée</h3>
+                                    <p class="slide-description">Visualisation 3D des sites historiques</p>
+                                </div>
+                            </div>
+                            <div class="mobile-slide">
+                                <img src="3/34.jpg" alt="Planning de voyage">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Planning de Voyage</h3>
+                                    <p class="slide-description">Organisation d'itinéraire personnalisé</p>
+                                </div>
+                            </div>
+                            <div class="mobile-slide">
+                                <img src="3/35.jpg" alt="Communauté">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Communauté</h3>
+                                    <p class="slide-description">Partage d'expériences avec autres voyageurs</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-btn prev-btn" onclick="prevSlide()">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-btn next-btn" onclick="nextSlide()">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <div class="mobile-controls">
+                    <button class="mobile-btn prev-mobile" onclick="prevMobileSlide()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="mobile-btn next-mobile" onclick="nextMobileSlide()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="mobile-dots" id="mobileDots"></div>
             </div>
-            <div class="carousel-dots" id="carouselDots"></div>
         </section>
 
         <!-- Features -->
         <section class="features">
-            <h2 class="section-title">Fonctionnalités Principales</h2>
+            <h2 class="section-title">Fonctionnalités du Prototype</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
                     <h3>Carte Interactive</h3>
-                    <p>Navigation GPS avec tous les points d'intérêt touristiques, restaurants, hébergements et activités.</p>
+                    <p>Navigation GPS avec tous les points d'intérêt touristiques, restaurants, hébergements et activités avec géolocalisation en temps réel.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-camera"></i>
                     </div>
                     <h3>Réalité Augmentée</h3>
-                    <p>Visualisez les sites historiques en 3D et découvrez leur histoire à travers des overlays interactifs.</p>
+                    <p>Visualisez les sites historiques en 3D et découvrez leur histoire à travers des overlays interactifs et des reconstructions numériques.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-route"></i>
                     </div>
                     <h3>Itinéraires Personnalisés</h3>
-                    <p>Créez vos propres circuits ou suivez nos recommandations basées sur vos centres d'intérêt.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3>Guide Audio Multilingue</h3>
-                    <p>Visites guidées avec commentaires audio en français, anglais, arabe et allemand.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>Recommandations Intelligentes</h3>
-                    <p>Système de recommandation basé sur vos préférences et les avis de la communauté.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Communauté de Voyageurs</h3>
-                    <p>Partagez vos photos, avis et conseils avec d'autres passionnés de voyage.</p>
+                    <p>Créez vos propres circuits ou suivez nos recommandations basées sur vos centres d'intérêt, durée de séjour et budget.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Destinations -->
-        <section class="destinations">
-            <h2 class="section-title">Destinations Populaires</h2>
-            <div class="destination-tags">
-                <span class="destination-tag">Carthage</span>
-                <span class="destination-tag">Sidi Bou Saïd</span>
-                <span class="destination-tag">Djerba</span>
-                <span class="destination-tag">Douz</span>
-                <span class="destination-tag">Tozeur</span>
-                <span class="destination-tag">Hammamet</span>
-                <span class="destination-tag">Kairouan</span>
-                <span class="destination-tag">Monastir</span>
-                <span class="destination-tag">Tabarka</span>
-                <span class="destination-tag">Matmata</span>
+        <!-- Screens Grid -->
+        <section>
+            <h2 class="section-title">Écrans du Prototype</h2>
+            <div class="screens-grid">
+                <div class="screen-card">
+                    <img src="3/36.jpg" alt="Écran d'accueil">
+                    <div class="screen-info">
+                        <h4>Écran d'Accueil</h4>
+                        <p>Interface principale avec découverte des destinations populaires et recommandations personnalisées</p>
+                    </div>
+                </div>
+                <div class="screen-card">
+                    <img src="3/31.jpg" alt="Carte interactive">
+                    <div class="screen-info">
+                        <h4>Carte Interactive</h4>
+                        <p>Carte géolocalisée avec filtres par catégorie et recherche avancée</p>
+                    </div>
+                </div>
+                <div class="screen-card">
+                    <img src="3/32.jpg" alt="Détail destination">
+                    <div class="screen-info">
+                        <h4>Détail Destination</h4>
+                        <p>Fiche complète avec photos, descriptions, avis et informations pratiques</p>
+                    </div>
+                </div>
+                <div class="screen-card">
+                    <img src="3/33.jpg" alt="Réalité augmentée">
+                    <div class="screen-info">
+                        <h4>Réalité Augmentée</h4>
+                        <p>Interface de visualisation 3D avec informations historiques contextuelles</p>
+                    </div>
+                </div>
+                <div class="screen-card">
+                    <img src="3/34.jpg" alt="Planning de voyage">
+                    <div class="screen-info">
+                        <h4>Planning de Voyage</h4>
+                        <p>Création et gestion d'itinéraires avec estimation des coûts et temps de trajet</p>
+                    </div>
+                </div>
+                <div class="screen-card">
+                    <img src="3/35.jpg" alt="Communauté">
+                    <div class="screen-info">
+                        <h4>Communauté</h4>
+                        <p>Partage de photos, avis et conseils avec système de notation et commentaires</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="project-footer">
-        <p class="footer-text">© 2024 Amal Chkiwa | Explorer de Tunisie - Votre compagnon de voyage numérique</p>
-        <p class="footer-text">Découvrez la beauté de la Tunisie à travers une expérience digitale unique</p>
+        <p class="footer-text">© 2024 Amal Chkiwa | Explorer de Tunisie - Prototype d'application mobile</p>
+        <p class="footer-text">Design d'interface utilisateur moderne et expérience mobile optimisée</p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const track = document.getElementById('carouselTrack');
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dotsContainer = document.getElementById('carouselDots');
-            let currentSlide = 0;
+            const screenContent = document.getElementById('screenContent');
+            const mobileSlides = document.querySelectorAll('.mobile-slide');
+            const mobileDotsContainer = document.getElementById('mobileDots');
+            let currentMobileSlide = 0;
             let autoSlideInterval;
 
-            // Créer les dots
-            slides.forEach((_, index) => {
+            // Créer les dots pour le mobile
+            mobileSlides.forEach((_, index) => {
                 const dot = document.createElement('div');
-                dot.classList.add('dot');
+                dot.classList.add('mobile-dot');
                 if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(index));
-                dotsContainer.appendChild(dot);
+                dot.addEventListener('click', () => goToMobileSlide(index));
+                mobileDotsContainer.appendChild(dot);
             });
 
-            function updateCarousel() {
-                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            function updateMobileCarousel() {
+                screenContent.style.transform = `translateX(-${currentMobileSlide * 100}%)`;
                 
                 // Mettre à jour les slides actives
-                slides.forEach((slide, index) => {
-                    slide.classList.toggle('active', index === currentSlide);
+                mobileSlides.forEach((slide, index) => {
+                    slide.classList.toggle('active', index === currentMobileSlide);
                 });
                 
                 // Mettre à jour les dots
-                document.querySelectorAll('.dot').forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
+                document.querySelectorAll('.mobile-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentMobileSlide);
                 });
             }
 
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                updateCarousel();
+            function nextMobileSlide() {
+                currentMobileSlide = (currentMobileSlide + 1) % mobileSlides.length;
+                updateMobileCarousel();
             }
 
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                updateCarousel();
+            function prevMobileSlide() {
+                currentMobileSlide = (currentMobileSlide - 1 + mobileSlides.length) % mobileSlides.length;
+                updateMobileCarousel();
             }
 
-            function goToSlide(index) {
-                currentSlide = index;
-                updateCarousel();
+            function goToMobileSlide(index) {
+                currentMobileSlide = index;
+                updateMobileCarousel();
             }
 
             // Exposer les fonctions globalement
-            window.nextSlide = nextSlide;
-            window.prevSlide = prevSlide;
-            window.goToSlide = goToSlide;
+            window.nextMobileSlide = nextMobileSlide;
+            window.prevMobileSlide = prevMobileSlide;
+            window.goToMobileSlide = goToMobileSlide;
 
             // Auto-slide
             function startAutoSlide() {
-                autoSlideInterval = setInterval(nextSlide, 5000);
+                autoSlideInterval = setInterval(nextMobileSlide, 4000);
             }
 
             function stopAutoSlide() {
@@ -763,11 +832,14 @@
             startAutoSlide();
 
             // Arrêter l'auto-slide au survol
-            track.addEventListener('mouseenter', stopAutoSlide);
-            track.addEventListener('mouseleave', startAutoSlide);
+            const mobileScreen = document.querySelector('.mobile-screen');
+            mobileScreen.addEventListener('mouseenter', stopAutoSlide);
+            mobileScreen.addEventListener('mouseleave', startAutoSlide);
 
-            // Animation des cartes de fonctionnalités
+            // Animation des cartes de fonctionnalités et écrans
             const featureCards = document.querySelectorAll('.feature-card');
+            const screenCards = document.querySelectorAll('.screen-card');
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
@@ -776,9 +848,20 @@
                         }, index * 200);
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
 
             featureCards.forEach(card => observer.observe(card));
+            screenCards.forEach(card => observer.observe(card));
+
+            // Effet de parallaxe sur le hero
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.project-hero');
+                hero.style.transform = `translateY(${scrolled * 0.05}px)`;
+            });
         });
     </script>
 </body>
