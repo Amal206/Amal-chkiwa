@@ -554,4 +554,93 @@
                 </div>
                 <div class="feature-item">
                     <i class="fas fa-random"></i>
-                    <h3>Animations
+                    <h3>Animations Chaotiques</h3>
+                    <p>Tout bouge, tremble, tourne et clignote en permanence</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <h3>Navigation Déroutante</h3>
+                    <p>Boutons qui bougent, liens cachés, scroll imprévisible</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="project-footer">
+        <p class="footer-text">© 2024 Amal Chkiwa | Projet Bad UI - À ne pas reproduire!</p>
+        <p class="footer-text">Vos yeux vous remercient de revenir au portfolio principal</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('carouselTrack');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dotsContainer = document.getElementById('carouselDots');
+            let currentSlide = 0;
+
+            // Créer les dots
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Mettre à jour les dots
+                document.querySelectorAll('.dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+                
+                // Animation aléatoire pour le Bad UI
+                const currentImg = slides[currentSlide].querySelector('img');
+                const randomHue = Math.floor(Math.random() * 360);
+                currentImg.style.setProperty('--hue-rotate', `${randomHue}deg`);
+                
+                // Vibration aléatoire
+                if (Math.random() > 0.5) {
+                    track.style.transform += ' translateY(10px)';
+                }
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                updateCarousel();
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                updateCarousel();
+            }
+
+            // Exposer les fonctions globalement
+            window.nextSlide = nextSlide;
+            window.prevSlide = prevSlide;
+            window.goToSlide = goToSlide;
+
+            // Auto-slide avec un timing aléatoire (mauvais UX)
+            setInterval(() => {
+                if (Math.random() > 0.3) {
+                    nextSlide();
+                }
+            }, Math.random() * 3000 + 2000);
+
+            // Effet de vibration aléatoire sur le body (très mauvais UX)
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    document.body.style.transform = `translate(${Math.random() * 10 - 5}px, ${Math.random() * 10 - 5}px)`;
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>
