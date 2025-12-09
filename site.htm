@@ -1027,7 +1027,78 @@
         .horizontal-scroll-wrapper:active {
             cursor: grabbing;
         }
-        
+        /* Style pour la note créative */
+.creative-note {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.note-content {
+    position: relative;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 99, 71, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.note-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.note-text {
+    color: var(--gray);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.note-text::before,
+.note-text::after {
+    content: '"';
+    color: var(--secondary);
+    font-size: 1.8rem;
+    font-weight: bold;
+    position: absolute;
+}
+
+.note-text::before {
+    top: -5px;
+    left: -15px;
+}
+
+.note-text::after {
+    bottom: -15px;
+    right: -15px;
+}
+
+.note-signature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.signature-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+.signature-text {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
         .all-design-item {
             flex: 0 0 auto;
             width: 350px;
@@ -2177,35 +2248,57 @@
     </div>
 </section>
     
-<!-- ALL DESIGNS SECTION WITH HORIZONTAL SCROLL -->
+<!-- SECTION DESIGNS GRAPHIQUES - GALERIE INTERACTIVE -->
 <section id="all-designs" class="all-designs">
     <div class="container">
-        <h2 class="section-title">Mes Designs Graphiques</h2>
+        <h2 class="section-title">Portfolio Graphique</h2>
         
-        <p class="section-subtitle">
-            Parcourez tous mes designs graphiques créés avec Adobe Photoshop, Illustrator et Canva.
-        </p>
-
-        <p class="section-subtitle mt-2">
-            Découvrez un univers visuel varié : flyers percutants, posters artistiques, premières pages de magazines et bien d’autres créations graphiques uniques.
-        </p>
+        <div class="text-center mb-5">
+            <p class="section-subtitle mb-3">
+                Une collection variée de mes créations visuelles réalisées avec les outils Adobe et Canva.
+            </p>
+            
+            <div class="designs-intro">
+                <p>
+                    Cette galerie interactive rassemble différents types de supports graphiques : 
+                    de la communication print avec des flyers et affiches, 
+                    aux maquettes éditoriales en passant par des créations digitales uniques.
+                </p>
+            </div>
+        </div>
         
+        <!-- Conteneur principal de la galerie -->
         <div class="all-designs-container">
-            <div class="horizontal-scroll-wrapper" id="designScroll">
-                <!-- Design items will be dynamically added here from the JavaScript -->
+            <div class="horizontal-scroll-wrapper" id="designScroll" aria-label="Galerie de designs graphiques">
+                <!-- Contenu chargé dynamiquement -->
             </div>
             
-            <div class="scroll-controls">
-                <div class="scroll-btn" id="scrollLeft">
+            <!-- Contrôles de navigation -->
+            <div class="scroll-controls mt-4">
+                <div class="scroll-btn" id="scrollLeft" title="Précédent">
                     <i class="fas fa-chevron-left"></i>
                 </div>
-                <div class="scroll-btn" id="scrollRight">
+                
+               
+                <div class="scroll-btn" id="scrollRight" title="Suivant">
                     <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
             
-            <div class="scroll-info">
-                <i class="fas fa-mouse-pointer"></i> Faites glisser pour faire défiler ou utilisez les boutons de navigation
+        
+        <!-- Note créative finale -->
+        <div class="creative-note mt-5">
+            <div class="note-content">
+                <i class="fas fa-palette note-icon"></i>
+                <p class="note-text">
+                    Chaque visuel est une pièce unique, née de l'alliance entre créativité et intention stratégique, 
+                    conçue pour raconter une histoire, véhiculer une émotion ou amplifier un message.
+                </p>
+                <div class="note-signature">
+                    <span class="signature-line"></span>
+                    <span class="signature-text">Créations sur mesure</span>
+                    <span class="signature-line"></span>
+                </div>
             </div>
         </div>
     </div>
@@ -2861,7 +2954,6 @@ if (document.getElementById("soft-skills")) {
     </script>
 </body>
 </html>
-
 
 
 
