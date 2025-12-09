@@ -722,7 +722,226 @@
             color: white;
             margin: 0;
         }
+/* ===== PROFESSIONAL SKILLS SECTION ===== */
+.professional-skills {
+    background: linear-gradient(135deg, #232536, #1a1c27);
+    position: relative;
+}
 
+.professional-skills::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, #232536);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.skill-category {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skill-category:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 99, 71, 0.2);
+    border-color: rgba(255, 99, 71, 0.3);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.category-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.category-header h3 {
+    color: var(--primary);
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skill-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 15px;
+}
+
+.skill-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 180px;
+}
+
+.skill-name i {
+    color: var(--primary);
+    font-size: 1.2rem;
+    width: 24px;
+}
+
+.skill-name span {
+    font-weight: 500;
+    color: white;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-level {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 4px;
+    transition: width 1.5s ease-in-out;
+}
+
+.skill-percent {
+    color: var(--secondary);
+    font-weight: 600;
+    min-width: 45px;
+    text-align: right;
+}
+
+/* Volunteer Section */
+.volunteer-section {
+    margin-top: 80px;
+    padding-top: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.volunteer-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.volunteer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.volunteer-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.volunteer-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--secondary);
+    box-shadow: 0 15px 30px rgba(102, 252, 241, 0.2);
+}
+
+.volunteer-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--secondary), #45a29e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin: 0 auto 20px;
+}
+
+.volunteer-card h4 {
+    color: var(--secondary);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.volunteer-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Animation for skill bars */
+@keyframes fillBar {
+    from { width: 0; }
+    to { width: var(--target-width); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .skill-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .skill-name {
+        min-width: auto;
+    }
+    
+    .volunteer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .volunteer-title {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .skill-category {
+        padding: 20px;
+    }
+    
+    .category-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .volunteer-card {
+        padding: 20px;
+    }
+}
         /* ===== PROJECTS SECTION ===== */
         .projects {
             background: var(--dark-light);
@@ -1264,6 +1483,7 @@
                     <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#professional-skills">Compétences Pro</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
                     <li class="nav-item"><a class="nav-link" href="#all-designs">Tous mes Designs</a></li>
                     <li class="nav-item"><a class="nav-link" href="#logos">Logos</a></li>
@@ -1464,7 +1684,206 @@
             </div>
         </div>
     </section>
+    <!-- PROFESSIONAL SKILLS SECTION -->
+    <section id="professional-skills" class="professional-skills">
+        <div class="container">
+            <h2 class="section-title">Compétences Professionnelles</h2>
+            <p class="section-subtitle">
+                Au-delà des compétences techniques, découvrez mes aptitudes relationnelles et managériales 
+                qui font de moi un atout pour vos projets d'équipe.
+            </p>
+            
+            <div class="skills-grid">
+                <!-- Communication & Teamwork -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Travail d'Équipe & Leadership</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <i class="fas fa-comments"></i>
+                                <span>Communication</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <i class="fas fa-hands-helping"></i>
+                                <span>Collaboration</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <i class="fas fa-flag"></i>
+                                <span>Leadership</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <i class="fas fa-brain"></i>
+                                <span>Résolution de Problèmes</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 92%"></div>
+                            </div>
+                            <span class="skill-percent">92%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Engagement & Soft Skills -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Engagement & Soft Skills</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <i class="fas fa-handshake"></i>
+                                <span>Engagement Associatif</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 88%"></div>
+                            </div>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Créativité</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 94%"></div>
+                            </div>
+                            <span class="skill-percent">94%</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <i class="fas fa-search"></i>
+                                <span>Recherche & Veille</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 87%"></div>
+                            </div>
+                            <span class="skill-percent">87%</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <i class="fas fa-clock"></i>
+                                <span>Gestion du Temps</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 91%"></div>
+                            </div>
+                            <span class="skill-percent">91%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technical & Analytical -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Capacités Analytiques</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <i class="fas fa-cogs"></i>
+                                <span>Analyse Technique</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 89%"></div>
+                            </div>
+                            <span class="skill-percent">89%</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>Gestion de Projet</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 86%"></div>
+                            </div>
+                            <span class="skill-percent">86%</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <i class="fas fa-balance-scale"></i>
+                                <span>Prise de Décision</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <i class="fas fa-book"></i>
+                                <span>Apprentissage Continu</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 96%"></div>
+                            </div>
+                            <span class="skill-percent">96%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Volunteer Experience -->
+            <div class="volunteer-section">
+                <h3 class="volunteer-title">Expérience Associative & Bénévolat</h3>
+                <div class="volunteer-grid">
+                    <div class="volunteer-card">
+                        <div class="volunteer-icon">
+                            <i class="fas fa-hands"></i>
+                        </div>
+                        <h4>Bénévolat Communautaire</h4>
+                        <p>Participation active à des projets communautaires et initiatives sociales locales.</p>
+                    </div>
+                    <div class="volunteer-card">
+                        <div class="volunteer-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Mentorat Étudiant</h4>
+                        <p>Accompagnement d'étudiants en design et développement web pour leurs projets académiques.</p>
+                    </div>
+                    <div class="volunteer-card">
+                        <div class="volunteer-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h4>Initiatives Écologiques</h4>
+                        <p>Engagement dans des projets environnementaux et promotion du développement durable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects">
+        <!-- ... Le reste de votre code projets ... -->
     <!-- PROJECTS SECTION -->
 <section id="projects" class="projects">
     <div class="container">
@@ -1807,7 +2226,42 @@
             }, { threshold: 0.3 });
 
             aboutObserver.observe(aboutText);
+// Ajoutez cette fonction dans votre script existant
+// Animation pour les barres de compétences
+const professionalSkillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Animer les barres de compétences
+            const skillBars = document.querySelectorAll('.skill-level');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+            
+            // Animer les cartes de bénévolat
+            const volunteerCards = document.querySelectorAll('.volunteer-card');
+            volunteerCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                }, index * 200);
+            });
+            
+            professionalSkillsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
 
+professionalSkillsObserver.observe(document.getElementById('professional-skills'));
             // Stats counter animation
             const statNumbers = document.querySelectorAll('.stat-number');
             const statsObserver = new IntersectionObserver((entries) => {
@@ -2012,6 +2466,7 @@
     </script>
 </body>
 </html>
+
 
 
 
