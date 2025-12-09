@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 4 - Nird 3D STL Viewer | Amal Chkiwa</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6347;
+            --secondary: #66fcf1;
+            --dark: #0b0c1b;
+            --dark-light: #1a1c27;
+            --light: #f8f9fa;
+            --gray: #c5c6c7;
+            --tech-blue: #4285f4;
+            --tech-green: #34a853;
+            --tech-yellow: #fbbc05;
+            --tech-red: #ea4335;
+            --neon-blue: #00ffff;
+            --neon-pink: #ff00ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0b0c1b, #1a1c27);
+            color: white;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .project-nav {
+            background: linear-gradient(135deg, var(--dark), #111827);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(66, 133, 244, 0.2);
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.8s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--tech-blue), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--tech-blue), #5b8bf7);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(66, 133, 244, 0.5);
+            background: linear-gradient(135deg, #5b8bf7, var(--tech-blue));
+        }
+
+        /* ===== HERO SECTION ===== */
+        .project-hero {
+            padding: 160px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 0%, rgba(66, 133, 244, 0.1) 0%, transparent 50%);
+        }
+
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--neon-blue), 
+                var(--neon-pink), 
+                transparent);
+            animation: scanline 2s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .project-hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(0, 255, 255, 0.3),
+                             0 0 40px rgba(0, 255, 255, 0.2),
+                             0 0 60px rgba(0, 255, 255, 0.1);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(0, 255, 255, 0.5),
+                             0 0 60px rgba(0, 255, 255, 0.3),
+                             0 0 90px rgba(0, 255, 255, 0.2);
+            }
+        }
+
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(66, 133, 244, 0.1);
+            border: 1px solid rgba(66, 133, 244, 0.3);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 5px;
+            animation: float 3s ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* ===== CONTENT SECTION ===== */
+        .project-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 100px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            color: var(--neon-blue);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            border-radius: 3px;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        /* ===== FEATURES GRID ===== */
+        .features {
+            margin-top: 80px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(66, 133, 244, 0.1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(66, 133, 244, 0.05) 50%, 
+                transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(66, 133, 244, 0.3);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 50px rgba(66, 133, 244, 0.1);
+        }
+
+        .feature-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--tech-blue), var(--neon-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+        }
+
+        .feature-card h3 {
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* ===== IMAGE PREVIEW ===== */
+        .preview-section {
+            margin-top: 80px;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .preview-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(66, 133, 244, 0.1);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .preview-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .preview-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(66, 133, 244, 0.3);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(66, 133, 244, 0.1);
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .preview-card:hover .preview-image {
+            transform: scale(1.1);
+        }
+
+        .preview-content {
+            padding: 20px;
+        }
+
+        .preview-title {
+            color: var(--neon-blue);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* ===== TECH STACK ===== */
+        .tech-stack {
+            margin-top: 80px;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px 30px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            background: rgba(66, 133, 244, 0.1);
+            border-color: rgba(66, 133, 244, 0.3);
+        }
+
+        .tech-icon {
+            font-size: 1.5rem;
+            color: var(--tech-blue);
+        }
+
+        /* ===== FOOTER ===== */
+        .project-footer {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #111827, #0b0c1b);
+            border-top: 1px solid rgba(66, 133, 244, 0.2);
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .project-footer::before {
+            content: '</>';
+            position: absolute;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 8rem;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .footer-text {
+            color: var(--gray);
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .project-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .project-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .feature-grid,
+            .preview-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-badge {
+                font-size: 0.8rem;
+                padding: 6px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .project-title {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+            
+            .back-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .tech-list {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="project-nav">
+        <div class="nav-container">
+            <h1 class="project-title">Nird 3D STL Viewer</h1>
+            <a href="site.htm" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Retour au Portfolio
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <h1>Nird 3D STL Viewer</h1>
+        <p class="project-subtitle">
+            Une application web moderne pour visualiser, analyser et manipuler des fichiers STL en 3D. 
+            Intégration d'IA pour la génération automatique de descriptions et d'analyses.
+        </p>
+        <div>
+            <span class="tech-badge" style="--delay: 0s">
+                <i class="fab fa-react"></i> React/TypeScript
+            </span>
+            <span class="tech-badge" style="--delay: 0.2s">
+                <i class="fas fa-cube"></i> Three.js
+            </span>
+            <span class="tech-badge" style="--delay: 0.4s">
+                <i class="fab fa-node-js"></i> Node.js
+            </span>
+            <span class="tech-badge" style="--delay: 0.6s">
+                <i class="fas fa-robot"></i> AI Integration
+            </span>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <main class="project-content">
+        <!-- Description -->
+        <section>
+            <h2 class="section-title">Présentation du Projet</h2>
+            <p class="description">
+                Nird 3D STL Viewer est une application web avancée permettant aux utilisateurs 
+                de télécharger, visualiser et analyser des fichiers STL (Standard Triangle Language) 
+                directement dans leur navigateur. L'application offre une expérience 3D fluide avec 
+                des contrôles intuitifs de zoom, rotation et translation.
+                <br><br>
+                L'innovation principale réside dans l'intégration de l'intelligence artificielle 
+                qui analyse automatiquement les modèles 3D pour générer des descriptions détaillées, 
+                des dimensions précises et des recommandations d'optimisation. Que vous soyez ingénieur, 
+                designer 3D ou amateur d'impression 3D, Nird offre tous les outils nécessaires pour 
+                travailler efficacement avec des modèles STL.
+            </p>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <h2 class="section-title">Fonctionnalités Avancées</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <h3>Upload & Prévisualisation</h3>
+                    <p>Téléchargez vos fichiers STL et visualisez-les instantanément dans le navigateur avec un rendu 3D optimisé.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-vector-square"></i>
+                    </div>
+                    <h3>Analyse Géométrique</h3>
+                    <p>Calcul automatique des dimensions, volume, surface, nombre de faces et sommets pour chaque modèle.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Contrôles 3D Complets</h3>
+                    <p>Zoom, rotation, translation avec la souris ou le toucher. Vue orthographique et perspective.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>IA Intégrée</h3>
+                    <p>Génération automatique de descriptions, détection de défauts et suggestions d'amélioration par IA.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3>Mesures Précises</h3>
+                    <p>Outils de mesure interactifs pour analyser les distances entre différents points du modèle.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Export & Partage</h3>
+                    <p>Exportez les analyses, générez des rapports PDF et partagez vos modèles via des liens sécurisés.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preview Images -->
+        <section class="preview-section">
+            <h2 class="section-title">Aperçu de l'Interface</h2>
+            <div class="preview-grid">
+                <div class="preview-card">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Interface 3D Viewer" class="preview-image">
+                    <div class="preview-content">
+                        <h3 class="preview-title">Vue 3D Principale</h3>
+                        <p>Interface de visualisation avec contrôles et informations en temps réel</p>
+                    </div>
+                </div>
+                <div class="preview-card">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Analyse Géométrique" class="preview-image">
+                    <div class="preview-content">
+                        <h3 class="preview-title">Panel d'Analyse</h3>
+                        <p>Informations détaillées sur les dimensions et propriétés du modèle</p>
+                    </div>
+                </div>
+                <div class="preview-card">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Interface IA" class="preview-image">
+                    <div class="preview-content">
+                        <h3 class="preview-title">Module IA</h3>
+                        <p>Génération automatique de descriptions et analyses intelligentes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="tech-stack">
+            <h2 class="section-title">Stack Technologique</h2>
+            <div class="tech-list">
+                <div class="tech-item">
+                    <i class="fab fa-react tech-icon"></i>
+                    <span>React 18 + TypeScript</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-cube tech-icon"></i>
+                    <span>Three.js + @react-three</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-node-js tech-icon"></i>
+                    <span>Node.js + Express</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-database tech-icon"></i>
+                    <span>MongoDB + Mongoose</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-robot tech-icon"></i>
+                    <span>OpenAI API / Qwen2-VL</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-docker tech-icon"></i>
+                    <span>Docker + CI/CD</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="project-footer">
+        <p class="footer-text">© 2024 Amal Chkiwa | Nird 3D STL Viewer - Visualisation 3D Avancée</p>
+        <p class="footer-text">Technologies de pointe au service de la modélisation 3D</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation des cartes de fonctionnalités
+            const featureCards = document.querySelectorAll('.feature-card');
+            const previewCards = document.querySelectorAll('.preview-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 200);
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            featureCards.forEach(card => observer.observe(card));
+            previewCards.forEach(card => observer.observe(card));
+
+            // Effet de particules pour le hero (simplifié)
+            const heroSection = document.querySelector('.project-hero');
+            const colors = ['#00ffff', '#ff00ff', '#4285f4', '#34a853'];
+            
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = Math.random() * 3 + 1 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = '-10px';
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                particle.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px currentColor`;
+                heroSection.appendChild(particle);
+
+                // Animation
+                const duration = Math.random() * 3 + 2;
+                particle.animate([
+                    { transform: 'translateY(0) translateX(0)', opacity: particle.style.opacity },
+                    { transform: `translateY(${window.innerHeight}px) translateX(${Math.random() * 100 - 50}px)`, opacity: 0 }
+                ], {
+                    duration: duration * 1000,
+                    easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                });
+
+                // Supprimer après l'animation
+                setTimeout(() => {
+                    particle.remove();
+                }, duration * 1000);
+            }
+
+            // Créer quelques particules au démarrage
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createParticle, Math.random() * 1000);
+            }
+
+            // Continuer à créer des particules
+            setInterval(createParticle, 300);
+        });
+    </script>
+</body>
+</html>
