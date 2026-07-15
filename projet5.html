@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 5 - OCTOGO Platform | Amal Chkiwa</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6347;
+            --secondary: #66fcf1;
+            --dark: #0b0c1b;
+            --dark-light: #1a1c27;
+            --light: #f8f9fa;
+            --gray: #c5c6c7;
+            --tech-blue: #1a6b6b;
+            --tech-green: #34a853;
+            --tech-yellow: #b8960c;
+            --tech-red: #ea4335;
+            --neon-blue: #2fe6d0;
+            --neon-pink: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0b0c1b, #1a1c27);
+            color: white;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .project-nav {
+            background: linear-gradient(135deg, var(--dark), #111827);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(26, 107, 107, 0.25);
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.8s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--tech-blue), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--tech-blue), #238e8e);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(26, 107, 107, 0.35);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 107, 107, 0.55);
+            background: linear-gradient(135deg, #238e8e, var(--tech-blue));
+        }
+
+        /* ===== HERO SECTION ===== */
+        .project-hero {
+            padding: 160px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 0%, rgba(26, 107, 107, 0.12) 0%, transparent 50%);
+        }
+
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon-pink), transparent);
+            animation: scanline 2s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .project-hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(47, 230, 208, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(47, 230, 208, 0.3),
+                             0 0 40px rgba(47, 230, 208, 0.2),
+                             0 0 60px rgba(47, 230, 208, 0.1);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(47, 230, 208, 0.5),
+                             0 0 60px rgba(47, 230, 208, 0.3),
+                             0 0 90px rgba(47, 230, 208, 0.2);
+            }
+        }
+
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 750px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(26, 107, 107, 0.12);
+            border: 1px solid rgba(47, 230, 208, 0.3);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 5px;
+            animation: float 3s ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* ===== CONTENT SECTION ===== */
+        .project-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 100px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            color: var(--neon-blue);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            border-radius: 3px;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        /* ===== INTERFACE SHOWCASE ===== */
+        .interface-section {
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .desktop-showcase {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .desktop-device {
+            background: #1a1a1a;
+            border-radius: 20px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+                        inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+            border: 15px solid #000;
+            overflow: hidden;
+            padding-bottom: 20px;
+        }
+
+        .desktop-topbar {
+            background: #2d2d2d;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .desktop-dots { display: flex; gap: 8px; }
+
+        .desktop-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .desktop-dot.red { background: #ff5f57; }
+        .desktop-dot.yellow { background: #ffbd2e; }
+        .desktop-dot.green { background: #28ca42; }
+
+        .desktop-screen {
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .desktop-slide { min-width: 100%; height: 100%; position: relative; }
+
+        .desktop-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #0a0a0a;
+            filter: brightness(0.9);
+        }
+
+        .slide-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 30px;
+            color: white;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .desktop-slide.active .slide-info { transform: translateY(0); opacity: 1; }
+
+        .slide-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--neon-blue);
+        }
+
+        .slide-description { font-size: 0.9rem; opacity: 0.9; }
+
+        .desktop-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .desktop-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .desktop-btn:hover {
+            background: var(--tech-blue);
+            transform: scale(1.1);
+            border-color: var(--tech-blue);
+        }
+
+        .desktop-dots-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .desktop-nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .desktop-nav-dot::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--tech-blue), var(--neon-blue));
+            transition: left 0.3s ease;
+        }
+
+        .desktop-nav-dot.active::before { left: 0; }
+        .desktop-nav-dot.active { transform: scale(1.3); }
+        .desktop-nav-dot:hover::before { left: 0; }
+
+        /* ===== FEATURES GRID ===== */
+        .features { margin-top: 80px; }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(26, 107, 107, 0.15);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.visible { opacity: 1; transform: translateY(0); }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(26, 107, 107, 0.08) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(47, 230, 208, 0.35);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 50px rgba(26, 107, 107, 0.15);
+        }
+
+        .feature-card:hover::before { transform: translateX(100%); }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--tech-blue), var(--neon-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(26, 107, 107, 0.35);
+        }
+
+        .feature-card h3 { color: var(--neon-blue); margin-bottom: 15px; font-size: 1.4rem; }
+        .feature-card p { color: var(--gray); }
+
+        /* ===== TECH STACK ===== */
+        .tech-stack { margin-top: 80px; }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px 30px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            background: rgba(26, 107, 107, 0.12);
+            border-color: rgba(47, 230, 208, 0.3);
+        }
+
+        .tech-icon { font-size: 1.5rem; color: var(--tech-blue); }
+
+        /* ===== FOOTER ===== */
+        .project-footer {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #111827, #0b0c1b);
+            border-top: 1px solid rgba(26, 107, 107, 0.25);
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .project-footer::before {
+            content: '</>';
+            position: absolute;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 8rem;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .footer-text { color: var(--gray); font-size: 1rem; position: relative; z-index: 1; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .project-hero h1 { font-size: 2.5rem; }
+            .project-subtitle { font-size: 1.1rem; }
+            .section-title { font-size: 1.8rem; }
+            .desktop-screen { height: 400px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .tech-badge { font-size: 0.8rem; padding: 6px 15px; }
+        }
+
+        @media (max-width: 480px) {
+            .project-hero h1 { font-size: 2rem; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .project-title { font-size: 1.5rem; text-align: center; }
+            .back-btn { padding: 10px 20px; font-size: 0.9rem; }
+            .desktop-screen { height: 300px; }
+            .tech-list { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="project-nav">
+        <div class="nav-container">
+            <h1 class="project-title">OCTOGO Platform</h1>
+            <a href="site.htm" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Retour au Portfolio
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <h1>OCTOGO Platform</h1>
+        <p class="project-subtitle">
+            Plateforme web complète de formation &amp; conseil en neurosciences appliquées : catalogue de
+            programmes, génération automatique de parcours sur mesure, devis, coaching et tableaux de bord —
+            pensée pour digitaliser l'activité d'OCTOGO Formation &amp; Conseil et de l'École de la
+            Cohérence Adaptative (ÉCA).
+        </p>
+        <div>
+            <span class="tech-badge" style="--delay: 0s">
+                <i class="fab fa-react"></i> React 18 / Vite
+            </span>
+            <span class="tech-badge" style="--delay: 0.2s">
+                <i class="fab fa-node-js"></i> Node.js / Express
+            </span>
+            <span class="tech-badge" style="--delay: 0.4s">
+                <i class="fas fa-brain"></i> Génération de Programmes
+            </span>
+            <span class="tech-badge" style="--delay: 0.6s">
+                <i class="fas fa-shield-halved"></i> Auth JWT
+            </span>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <main class="project-content">
+        <!-- Description -->
+        <section>
+            <h2 class="section-title">Présentation du Projet</h2>
+            <p class="description">
+                OCTOGO est la plateforme digitale d'OCTOGO Formation &amp; Conseil et de l'École de la
+                Cohérence Adaptative (ÉCA), premier cabinet de formation et de conseil en neurosciences
+                appliquées d'Afrique du Nord. Elle centralise l'ensemble du parcours client : découverte du
+                catalogue de programmes (neuroleadership, neuromanagement, neurosales, coaching
+                comportemental et team building), génération automatique de programmes annuels sur mesure,
+                émission de devis, pilotage des formateurs et de leurs disponibilités, prise de rendez-vous
+                et suivi via des tableaux de bord dédiés à l'administration comme aux clients.
+                <br><br>
+                L'innovation principale de la plateforme réside dans son moteur de génération de programmes :
+                à partir d'une thématique, d'une taille de groupe et de contraintes de dates, il croise un
+                catalogue de programmes phares (ÉVEIL, RESET, CAPTE, VOL D'AIGLE, TRIVIUM...), les
+                disponibilités réelles des formateurs et une grille tarifaire pour produire instantanément un
+                calendrier annuel cohérent et un formateur recommandé. Ce moteur a été conçu dès le départ
+                comme un point de branchement unique pour une future intelligence artificielle plus avancée,
+                sans qu'aucune interface ni route n'ait besoin d'être modifiée le jour venu.
+                <br><br>
+                L'objectif du projet est de remplacer les processus manuels historiques du cabinet — devis
+                rédigés à la main, plannings partagés en tableur — par un back-office intelligent, fiable et
+                évolutif, capable d'accompagner la croissance d'OCTOGO auprès de ses clients (BIAT, Nouvelair,
+                Deloitte, Mövenpick, Rose Blanche Group, Onetech...) sur l'ensemble de la région MENA.
+            </p>
+        </section>
+
+        <!-- Interface Showcase -->
+        <section class="interface-section">
+            <h2 class="section-title">Démonstration des Interfaces</h2>
+            <div class="desktop-showcase">
+                <div class="desktop-device">
+                    <div class="desktop-topbar">
+                        <div class="desktop-dots">
+                            <div class="desktop-dot red"></div>
+                            <div class="desktop-dot yellow"></div>
+                            <div class="desktop-dot green"></div>
+                        </div>
+                    </div>
+                    <div class="desktop-screen">
+                        <div class="screen-content" id="screenContent">
+                            <div class="desktop-slide active">
+                                <img src="5/1.png" alt="Page d'accueil OCTOGO">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Page d'Accueil</h3>
+                                    <p class="slide-description">Présentation de la plateforme, chiffres clés et accès rapide au catalogue et aux devis</p>
+                                </div>
+                            </div>
+                            <div class="desktop-slide">
+                                <img src="5/2.png" alt="Catalogue de formations">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Catalogue de Formations</h3>
+                                    <p class="slide-description">Programmes ÉVEIL, RESET, CAPTE, VOL D'AIGLE... filtrables par thème et durée</p>
+                                </div>
+                            </div>
+                            <div class="desktop-slide">
+                                <img src="5/3.png" alt="Génération automatique de programme">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Génération de Programme</h3>
+                                    <p class="slide-description">Moteur intelligent : paramètres du besoin transformés en programme annuel et formateur recommandé</p>
+                                </div>
+                            </div>
+                            <div class="desktop-slide">
+                                <img src="5/4.png" alt="Dashboard administrateur">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Dashboard Administrateur</h3>
+                                    <p class="slide-description">KPIs, répartition des formations et statut des devis en un coup d'œil</p>
+                                </div>
+                            </div>
+                            <div class="desktop-slide">
+                                <img src="5/5.png" alt="Coaching et team building">
+                                <div class="slide-info">
+                                    <h3 class="slide-title">Coaching &amp; Team Building</h3>
+                                    <p class="slide-description">Calendrier de réservation et suivi des séances individuelles et collectives</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desktop-controls">
+                        <button class="desktop-btn prev-desktop" onclick="prevDesktopSlide()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="desktop-btn next-desktop" onclick="nextDesktopSlide()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="desktop-dots-nav" id="desktopDots"></div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <h2 class="section-title">Fonctionnalités Principales</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3>Génération Automatique de Programmes</h3>
+                    <p>Moteur qui croise thématique, mots-clés, taille de groupe et disponibilités réelles des formateurs pour produire un programme annuel complet et un formateur recommandé.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Catalogue de Formations</h3>
+                    <p>Programmes phares ÉVEIL, RESET, CAPTE, VOL D'AIGLE et TRIVIUM présentés par thème, durée et objectifs, avec back-office dédié pour l'équipe OCTOGO.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>Devis &amp; Documents PDF</h3>
+                    <p>Génération automatisée de devis et de programmes au format PDF, directement depuis la plateforme, avec suivi de leur statut jusqu'à la signature.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Tableaux de Bord Admin &amp; Client</h3>
+                    <p>Indicateurs clés, répartition des formations par thème et suivi des devis grâce à des graphiques dynamiques dédiés à chaque profil d'utilisateur.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Coaching &amp; Team Building</h3>
+                    <p>Prise de rendez-vous, calendrier de séances individuelles et collectives, et synchronisation avec Google Agenda pour les formateurs et les clients.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h3>Authentification &amp; Rôles Sécurisés</h3>
+                    <p>Connexion sécurisée par jeton JWT avec espaces distincts pour l'administration, les formateurs et les clients, chacun avec ses propres accès.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="tech-stack">
+            <h2 class="section-title">Stack Technologique</h2>
+            <div class="tech-list">
+                <div class="tech-item">
+                    <i class="fab fa-react tech-icon"></i>
+                    <span>React 18 + Vite</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-route tech-icon"></i>
+                    <span>React Router DOM</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-chart-bar tech-icon"></i>
+                    <span>Chart.js + react-chartjs-2</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-wand-sparkles tech-icon"></i>
+                    <span>Framer Motion</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-node-js tech-icon"></i>
+                    <span>Node.js + Express</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-key tech-icon"></i>
+                    <span>JWT (jsonwebtoken)</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-file-pdf tech-icon"></i>
+                    <span>PDFKit</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-database tech-icon"></i>
+                    <span>Stockage JSON</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-calendar-alt tech-icon"></i>
+                    <span>Google Calendar API</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="project-footer">
+        <p class="footer-text">© 2026 Amal Chkiwa | OCTOGO Platform - Neurosciences Appliquées</p>
+        <p class="footer-text">Une plateforme au service de la formation, du conseil et de la performance humaine</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const screenContent = document.getElementById('screenContent');
+            const desktopSlides = document.querySelectorAll('.desktop-slide');
+            const desktopDotsContainer = document.getElementById('desktopDots');
+            let currentDesktopSlide = 0;
+            let autoSlideInterval;
+
+            // Créer les dots pour le carousel desktop
+            desktopSlides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('desktop-nav-dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToDesktopSlide(index));
+                desktopDotsContainer.appendChild(dot);
+            });
+
+            function updateDesktopCarousel() {
+                screenContent.style.transform = `translateX(-${currentDesktopSlide * 100}%)`;
+
+                desktopSlides.forEach((slide, index) => {
+                    slide.classList.toggle('active', index === currentDesktopSlide);
+                });
+
+                document.querySelectorAll('.desktop-nav-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentDesktopSlide);
+                });
+            }
+
+            function nextDesktopSlide() {
+                currentDesktopSlide = (currentDesktopSlide + 1) % desktopSlides.length;
+                updateDesktopCarousel();
+            }
+
+            function prevDesktopSlide() {
+                currentDesktopSlide = (currentDesktopSlide - 1 + desktopSlides.length) % desktopSlides.length;
+                updateDesktopCarousel();
+            }
+
+            function goToDesktopSlide(index) {
+                currentDesktopSlide = index;
+                updateDesktopCarousel();
+            }
+
+            window.nextDesktopSlide = nextDesktopSlide;
+            window.prevDesktopSlide = prevDesktopSlide;
+            window.goToDesktopSlide = goToDesktopSlide;
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextDesktopSlide, 4000);
+            }
+
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+
+            startAutoSlide();
+
+            const desktopScreen = document.querySelector('.desktop-screen');
+            desktopScreen.addEventListener('mouseenter', stopAutoSlide);
+            desktopScreen.addEventListener('mouseleave', startAutoSlide);
+
+            // Animation des cartes de fonctionnalités
+            const featureCards = document.querySelectorAll('.feature-card');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 200);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            featureCards.forEach(card => observer.observe(card));
+
+            // Effet de particules pour le hero (palette OCTOGO : teal / gold)
+            const heroSection = document.querySelector('.project-hero');
+            const colors = ['#2fe6d0', '#b8960c', '#1a6b6b', '#ffffff'];
+
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = Math.random() * 3 + 1 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = '-10px';
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                particle.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px currentColor`;
+                heroSection.appendChild(particle);
+
+                const duration = Math.random() * 3 + 2;
+                particle.animate([
+                    { transform: 'translateY(0) translateX(0)', opacity: particle.style.opacity },
+                    { transform: `translateY(${window.innerHeight}px) translateX(${Math.random() * 100 - 50}px)`, opacity: 0 }
+                ], {
+                    duration: duration * 1000,
+                    easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                });
+
+                setTimeout(() => {
+                    particle.remove();
+                }, duration * 1000);
+            }
+
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createParticle, Math.random() * 1000);
+            }
+
+            setInterval(createParticle, 300);
+
+            // Effet de parallaxe sur le hero
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.project-hero');
+                hero.style.transform = `translateY(${scrolled * 0.05}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
