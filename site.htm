@@ -1180,6 +1180,177 @@
             margin-top: 10px;
         }
 
+        /* ===== CATALOGUE DESIGNS SECTION ===== */
+        /* Nouvelle section : grille de cartes présentant des catalogues (PDF/brochures).
+           Conserve la charte graphique existante (couleurs --primary/--secondary,
+           typographies Space Grotesk / Inter, ombres et micro-animations du site). */
+        .catalogue-designs {
+            background: var(--dark-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .catalogue-designs::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255, 99, 71, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(102, 252, 241, 0.08) 0%, transparent 45%);
+            pointer-events: none;
+        }
+
+        /* Grille responsive : s'adapte automatiquement en fonction de la largeur d'écran */
+        .catalogue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Carte catalogue : coins arrondis + ombre légère + zoom discret au survol */
+        .catalogue-card {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            outline: none;
+        }
+
+        .catalogue-card:hover,
+        .catalogue-card:focus-visible {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(255, 99, 71, 0.35);
+            border-color: rgba(255, 99, 71, 0.3);
+        }
+
+        /* Conteneur média : ratio fixe 3000x2250 (4/3) conservé quelle que soit la taille de la carte */
+        .catalogue-media {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3; /* correspond au format des images 3000x2250 px */
+            overflow: hidden;
+            border-radius: 18px;
+        }
+
+        .catalogue-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* l'image garde son ratio sans être déformée */
+            display: block;
+            transition: transform 0.6s ease, filter 0.6s ease;
+        }
+
+        .catalogue-card:hover .catalogue-media img,
+        .catalogue-card:focus-visible .catalogue-media img {
+            transform: scale(1.08); /* zoom discret au survol */
+            filter: brightness(0.85);
+        }
+
+        /* Overlay noir 50% d'opacité, limité à la carte, qui glisse depuis le bas */
+        .catalogue-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+        }
+
+        /* Ouverture de l'overlay : ajoutée/retirée en JS via la classe .active */
+        .catalogue-card.active .catalogue-overlay {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .catalogue-overlay-content {
+            max-width: 90%;
+            transform: translateY(15px);
+            opacity: 0;
+            transition: transform 0.5s ease 0.1s, opacity 0.5s ease 0.1s;
+        }
+
+        .catalogue-card.active .catalogue-overlay-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .catalogue-name {
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .catalogue-desc {
+            color: #f5f5f5;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* Petite icône indiquant l'interaction possible (visible même sans survol) */
+        .catalogue-hint {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(11, 12, 27, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            backdrop-filter: blur(4px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .catalogue-card.active .catalogue-hint {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        /* ===== RESPONSIVE : tablette ===== */
+        @media (max-width: 992px) {
+            .catalogue-grid {
+                gap: 30px;
+            }
+
+            .catalogue-name {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* ===== RESPONSIVE : mobile ===== */
+        @media (max-width: 576px) {
+            .catalogue-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .catalogue-desc {
+                font-size: 0.9rem;
+            }
+        }
+
         /* ===== LOGOS SECTION ===== */
         .logos-section {
             background: linear-gradient(135deg, var(--dark-light), var(--dark));
@@ -1857,6 +2028,7 @@
                 <li class="nav-item"><a class="nav-link" href="#soft-skills">Qualités</a></li>
                 <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
                 <li class="nav-item"><a class="nav-link" href="#all-designs">Mes Designs</a></li>
+                <li class="nav-item"><a class="nav-link" href="#catalogue-designs">Catalogues</a></li>
                 <li class="nav-item"><a class="nav-link" href="#logos">Logos</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
@@ -2317,6 +2489,76 @@
 </section>
 
         
+
+
+<!-- SECTION CATALOGUE DESIGNS - GRILLE DE CARTES AVEC OVERLAY -->
+<!-- Pour ajouter un nouveau catalogue : dupliquer un bloc .catalogue-card en changeant
+     l'image, le nom (.catalogue-name) et la description (.catalogue-desc). -->
+<section id="catalogue-designs" class="catalogue-designs">
+    <div class="container">
+        <h2 class="section-title">Catalogue Designs</h2>
+        <p class="section-subtitle mb-5">
+            Découvrez mes catalogues complets : cliquez sur une couverture pour afficher son résumé.
+        </p>
+
+        <div class="catalogue-grid">
+
+            <!-- Carte 1 : Catalogue Trivium -->
+            <div class="catalogue-card" tabindex="0" role="button" aria-pressed="false">
+                <div class="catalogue-media">
+                    <img src="des/cata/1.jpg" alt="Couverture du Catalogue Trivium" loading="lazy">
+                    <div class="catalogue-overlay">
+                        <div class="catalogue-overlay-content">
+                            <h3 class="catalogue-name">Catalogue Trivium</h3>
+                            <p class="catalogue-desc">
+                                Le programme complet TRIVIUM : ancrage mémoriel, ateliers ÉVEIL,
+                                RESET Management et VOL D'AIGLE en un seul document de référence.
+                            </p>
+                        </div>
+                    </div>
+                    <span class="catalogue-hint"><i class="fas fa-eye"></i></span>
+                </div>
+            </div>
+
+            <!-- Carte 2 : Catalogue Octogo 2026 -->
+            <div class="catalogue-card" tabindex="0" role="button" aria-pressed="false">
+                <div class="catalogue-media">
+                    <img src="des/cata/2.jpg" alt="Couverture du Catalogue Octogo 2026" loading="lazy">
+                    <div class="catalogue-overlay">
+                        <div class="catalogue-overlay-content">
+                            <h3 class="catalogue-name">Catalogue Octogo 2026</h3>
+                            <p class="catalogue-desc">
+                                L'offre annuelle OCTOGO Formation &amp; Conseil : neuroleadership,
+                                neuromanagement et neurosales pour les organisations en 2026.
+                            </p>
+                        </div>
+                    </div>
+                    <span class="catalogue-hint"><i class="fas fa-eye"></i></span>
+                </div>
+            </div>
+
+            <!-- Carte 3 : Design Notebook Octogo -->
+            <div class="catalogue-card" tabindex="0" role="button" aria-pressed="false">
+                <div class="catalogue-media">
+                    <img src="des/cata/3.jpg" alt="Couverture du Design Notebook Octogo" loading="lazy">
+                    <div class="catalogue-overlay">
+                        <div class="catalogue-overlay-content">
+                            <h3 class="catalogue-name">Design Notebook Octogo</h3>
+                            <p class="catalogue-desc">
+                                Un carnet visuel regroupant l'identité graphique et les créations
+                                design réalisées pour l'écosystème OCTOGO / ÉCA.
+                            </p>
+                        </div>
+                    </div>
+                    <span class="catalogue-hint"><i class="fas fa-eye"></i></span>
+                </div>
+            </div>
+
+            <!-- Pour ajouter un nouveau catalogue, copier-coller un bloc <div class="catalogue-card">...</div> ici -->
+
+        </div>
+    </div>
+</section>
 
 
     <!-- LOGOS SECTION -->
@@ -2944,6 +3186,47 @@ if (document.getElementById("soft-skills")) {
                     }
                 });
             }
+
+            // ===== CATALOGUE DESIGNS - Overlay glissant au clic =====
+            // Chaque carte .catalogue-card contient un overlay (.catalogue-overlay)
+            // qui se deploie depuis le bas au clic (classe .active) et se referme
+            // au second clic sur la carte, sur une autre carte, ou en cliquant ailleurs.
+            const catalogueCards = document.querySelectorAll('.catalogue-card');
+
+            function closeAllCatalogueCards(exceptCard) {
+                catalogueCards.forEach(c => {
+                    if (c !== exceptCard) {
+                        c.classList.remove('active');
+                        c.setAttribute('aria-pressed', 'false');
+                    }
+                });
+            }
+
+            catalogueCards.forEach(card => {
+                // Clic (ou tap) sur la carte : ouvre/ferme son overlay
+                card.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const isActive = card.classList.contains('active');
+                    closeAllCatalogueCards(card);
+                    card.classList.toggle('active', !isActive);
+                    card.setAttribute('aria-pressed', String(!isActive));
+                });
+
+                // Accessibilite clavier : Entree / Espace ouvrent ou ferment l'overlay
+                card.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        card.click();
+                    }
+                });
+            });
+
+            // Clic en dehors d'une carte catalogue : referme tous les overlays ouverts
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.catalogue-card')) {
+                    closeAllCatalogueCards(null);
+                }
+            });
 
             // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
